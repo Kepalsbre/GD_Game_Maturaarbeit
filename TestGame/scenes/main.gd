@@ -12,7 +12,9 @@ func game_over():
 	$HUD.show_game_over()
 	$Music.stop()
 	$RecordMusic.stop()
+	$Record2Music.stop()
 	$DeathSound.play()
+	
 	
 func new_game():
 	score = 0
@@ -33,9 +35,12 @@ func game_start():
 func score_timer():
 	score += 1
 	$HUD.update_score(score)
-	if score == 15:
+	if score == 10:
 		$Music.stop()
 		$RecordMusic.play()
+	if score == 18:
+		$RecordMusic.stop()
+		$Record2Music.play()
 
 
 func _on_mob_timer_timeout():
