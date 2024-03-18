@@ -35,11 +35,11 @@ func game_start():
 func score_timer():
 	score += 1
 	$HUD.update_score(score)
+	if score == 18:
+		$Record2Music.stop()
+		$RecordMusic.play()
 	if score == 10:
 		$Music.stop()
-		$RecordMusic.play()
-	if score == 18:
-		$RecordMusic.stop()
 		$Record2Music.play()
 
 
