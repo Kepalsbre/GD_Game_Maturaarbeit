@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://14w1yhbvtxgk"]
+
+[ext_resource type="Texture2D" uid="uid://kh2fo4jcmbvk" path="res://icon.svg" id="1_dtilu"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_kbxrs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4smr"]
+size = Vector2(124, 124)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_kbxrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dtilu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n4smr")
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_speed = 10.0
+rotation_smoothing_speed = 1.0
+drag_left_margin = 0.4
+drag_top_margin = 0.3
+drag_right_margin = 0.4
+drag_bottom_margin = 0.3
+
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true
