@@ -26,4 +26,9 @@ drag_right_margin = 0.4
 drag_bottom_margin = 0.3
 
 [node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.35
+one_shot = true
+
+[node name="DashTimeout" type="Timer" parent="DashTimer"]
+wait_time = 1.5
 one_shot = true
