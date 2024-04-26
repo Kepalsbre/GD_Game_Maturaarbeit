@@ -1,30 +1,145 @@
-[gd_scene load_steps=4 format=3 uid="uid://14w1yhbvtxgk"]
+[gd_scene load_steps=18 format=3 uid="uid://14w1yhbvtxgk"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_kbxrs"]
 [ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player_normal.png" id="2_jscfx"]
+[ext_resource type="Texture2D" uid="uid://8ybi3uupkem0" path="res://art/animations/player_walk_animations.png" id="3_h0ifn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ww83b"]
 radius = 31.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpbdo"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u8uw"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw534"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flhsi"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov5it"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssx2y"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3gka"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kflid"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyi4t"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4g41"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io0t1"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxifw"]
+atlas = ExtResource("3_h0ifn")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7ahq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpbdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u8uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw534")
+}],
+"loop": true,
+"name": &"normal_dl_ur",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flhsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov5it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssx2y")
+}],
+"loop": true,
+"name": &"normal_dr_ul",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3gka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kflid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyi4t")
+}],
+"loop": true,
+"name": &"normal_right_left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4g41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io0t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxifw")
+}],
+"loop": true,
+"name": &"normal_up_down",
+"speed": 10.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_kbxrs")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, 4)
-texture = ExtResource("2_jscfx")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ww83b")
 
+[node name="PlayerImage" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, 4)
+texture = ExtResource("2_jscfx")
+
+[node name="WalkAnimations" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, 0)
+sprite_frames = SubResource("SpriteFrames_h7ahq")
+animation = &"normal_dr_ul"
+
 [node name="PlayerCamera" type="Camera2D" parent="."]
-zoom = Vector2(0.4, 0.4)
+zoom = Vector2(0.5, 0.5)
 position_smoothing_speed = 10.0
 rotation_smoothing_speed = 1.0
-drag_left_margin = 0.4
-drag_top_margin = 0.3
-drag_right_margin = 0.4
-drag_bottom_margin = 0.3
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 62)
+emitting = false
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.35

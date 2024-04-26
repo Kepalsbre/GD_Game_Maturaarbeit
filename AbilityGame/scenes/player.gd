@@ -23,23 +23,41 @@ func _process(delta):
 		$DashTimer.start()
 		
 	
-	# additional camera settings (x-achse)
-	$PlayerCamera.offset.x += velocity.x * speed/3 * delta 
-	if $PlayerCamera.offset.x > 250:
-		$PlayerCamera.offset.x = 250
-	if $PlayerCamera.offset.x < -250:
-		$PlayerCamera.offset.x = -250
-	
-	# additional camera settings (y-achse)
-	$PlayerCamera.offset.y += velocity.y * speed/3 * delta 
-	if $PlayerCamera.offset.y > 150:
-		$PlayerCamera.offset.y = 150
-	if $PlayerCamera.offset.y < -150:
-		$PlayerCamera.offset.y = -150
+	#
 	
 	# normalize vector to prevent inconsistent movement and apply speed
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
+	else:
+		$WalkAnimations.stop()
+	
+	# change walking animation for each direction
+	if velocity.x != 0 and velocity.y != 0:
+		if velocity.x == velocity.y:
+			$WalkAnimations.animation = "normal_dr_ul"
+			if velocity.x < 0:
+				$WalkAnimations.play_backwards()
+			else:
+				$WalkAnimations.play()
+		else:
+			$WalkAnimations.animation = "normal_dl_ur"
+			if velocity.x > 0:
+				$WalkAnimations.play_backwards()
+			else:
+				$WalkAnimations.play()
+	elif velocity.x != 0:
+		$WalkAnimations.animation = "normal_right_left"
+		if velocity.x < 0:
+			$WalkAnimations.play_backwards()
+		else:
+			$WalkAnimations.play()
+	elif velocity.y != 0:
+		$WalkAnimations.animation = "normal_up_down"
+		if velocity.y < 0:
+				$WalkAnimations.play_backwards()
+		else:
+			$WalkAnimations.play()
+	
 	
 	# dash when dashing
 	if is_dashing:
