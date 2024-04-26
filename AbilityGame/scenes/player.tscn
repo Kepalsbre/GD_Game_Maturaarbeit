@@ -1,23 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://14w1yhbvtxgk"]
 
-[ext_resource type="Texture2D" uid="uid://kh2fo4jcmbvk" path="res://icon.svg" id="1_dtilu"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_kbxrs"]
+[ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player_normal.png" id="2_jscfx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4smr"]
-size = Vector2(124, 124)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ww83b"]
+radius = 31.0
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_kbxrs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_dtilu")
+position = Vector2(2, 4)
+texture = ExtResource("2_jscfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_n4smr")
+shape = SubResource("CircleShape2D_ww83b")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.4, 0.4)
 position_smoothing_speed = 10.0
 rotation_smoothing_speed = 1.0
 drag_left_margin = 0.4

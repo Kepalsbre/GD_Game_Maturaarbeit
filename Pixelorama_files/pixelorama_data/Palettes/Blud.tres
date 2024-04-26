@@ -1,0 +1,93 @@
+[gd_resource type="Resource" load_steps=16 format=2]
+
+[ext_resource path="res://src/Palette/PaletteColor.gd" type="Script" id=1]
+[ext_resource path="res://src/Palette/Palette.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 1 )
+color = Color( 0.25805, 0.78, 0.2106, 1 )
+index = 0
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 1 )
+color = Color( 0.46, 0.46, 0.46, 1 )
+index = 7
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 1 )
+color = Color( 0.1776, 0.74, 0.271333, 1 )
+index = 8
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 1 )
+color = Color( 0.42, 0.42, 0.42, 1 )
+index = 15
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+color = Color( 0.14902, 0.701961, 0.376471, 1 )
+index = 16
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 1 )
+color = Color( 0.013, 0.1, 0.06085, 1 )
+index = 17
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+color = Color( 0.376471, 0.376471, 0.376471, 1 )
+index = 23
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 1 )
+color = Color( 0.1584, 0.66, 0.4928, 1 )
+index = 24
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 1 )
+color = Color( 0.34, 0.34, 0.34, 1 )
+index = 31
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 1 )
+color = Color( 0.1674, 0.62, 0.582283, 1 )
+index = 32
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 1 )
+color = Color( 0.3, 0.3, 0.3, 1 )
+index = 39
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 1 )
+color = Color( 0.124427, 0.1232, 0.16, 1 )
+index = 27
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 1 )
+color = Color( 0.137255, 0.145098, 0.184314, 1 )
+index = 19
+
+[resource]
+resource_name = "Blud"
+script = ExtResource( 2 )
+name = "Blud"
+comment = ""
+width = 8
+height = 8
+colors = {
+0: SubResource( 4 ),
+7: SubResource( 11 ),
+8: SubResource( 3 ),
+15: SubResource( 10 ),
+16: SubResource( 2 ),
+17: SubResource( 7 ),
+19: SubResource( 13 ),
+23: SubResource( 1 ),
+24: SubResource( 5 ),
+27: SubResource( 12 ),
+31: SubResource( 8 ),
+32: SubResource( 6 ),
+39: SubResource( 9 )
+}
+colors_max = 64
