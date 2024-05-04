@@ -21,6 +21,7 @@ func _process(delta):
 		is_dashing = true
 		dash_velocity = velocity
 		$DashTimer.start()
+		$DashParticles.emitting = true
 		
 	
 	#
@@ -65,6 +66,7 @@ func _process(delta):
 		if $DashTimer.is_stopped(): 
 			is_dashing = false # stop dash
 			$DashTimer/DashTimeout.start() # start dash timeout
+			$DashParticles.emitting = false
 	
 	position += velocity * delta # update position
 
