@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://14w1yhbvtxgk"]
+[gd_scene load_steps=18 format=3 uid="uid://14w1yhbvtxgk"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_kbxrs"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_kbxrs"]
 [ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player_normal.png" id="2_jscfx"]
 [ext_resource type="Texture2D" uid="uid://8ybi3uupkem0" path="res://art/animations/player_walk_animations.png" id="3_h0ifn"]
-[ext_resource type="Script" path="res://scenes/PlayerStats.gd" id="4_ygphj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpbdo"]
 atlas = ExtResource("3_h0ifn")
@@ -161,6 +160,3 @@ one_shot = true
 [node name="DashTimeout" type="Timer" parent="DashTimer"]
 wait_time = 1.5
 one_shot = true
-
-[node name="PlayerStats" type="Node" parent="."]
-script = ExtResource("4_ygphj")
