@@ -24,7 +24,6 @@ func _process(delta):
 		$DashParticles.emitting = true
 		
 	
-	#
 	
 	# normalize vector to prevent inconsistent movement and apply speed
 	if velocity.length() > 0:
