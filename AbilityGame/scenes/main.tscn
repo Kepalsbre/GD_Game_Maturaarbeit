@@ -6,8 +6,6 @@
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_rhsj6")]
-speed = null
-dash_speed = null
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-911, 322)

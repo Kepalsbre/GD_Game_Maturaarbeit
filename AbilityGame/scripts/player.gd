@@ -22,9 +22,6 @@ func _process(delta):
 		dash_velocity = velocity
 		$DashTimer.start()
 		$DashParticles.emitting = true
-		
-	
-	#
 	
 	# normalize vector to prevent inconsistent movement and apply speed
 	if velocity.length() > 0:
