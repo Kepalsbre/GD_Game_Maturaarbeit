@@ -8,13 +8,16 @@
 [node name="Player" parent="." instance=ExtResource("1_rhsj6")]
 
 [node name="Icon" type="Sprite2D" parent="."]
+texture_filter = 2
 position = Vector2(-911, 322)
 texture = ExtResource("2_qm8v3")
 
 [node name="Icon2" type="Sprite2D" parent="."]
+texture_filter = 2
 position = Vector2(-471, -437)
 texture = ExtResource("2_qm8v3")
 
 [node name="Icon3" type="Sprite2D" parent="."]
+texture_filter = 2
 position = Vector2(713, 376)
 texture = ExtResource("2_qm8v3")

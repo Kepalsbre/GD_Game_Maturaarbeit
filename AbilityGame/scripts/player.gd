@@ -5,7 +5,8 @@ extends CharacterBody2D
 var is_dashing = false
 var dash_velocity
 
-func _process(delta):
+
+func _physics_process(delta):
 	var velocity = Vector2.ZERO # speed when pressing nothing
 	
 	# changing direction when pressing a button and other inputs
@@ -68,8 +69,6 @@ func _process(delta):
 			$DashParticles.emitting = false
 	
 	position += velocity * delta # update position
-
-
 
 	
 	
