@@ -5,28 +5,18 @@ extends CharacterBody2D
 var is_dashing = false
 var dash_velocity
 
-
 func _physics_process(delta):
-	var velocity = Vector2.ZERO # speed when pressing nothing
+	velocity = Vector2.ZERO # speed when pressing nothing
 	
-	# changing direction when pressing a button and other inputs
-	if Input.is_action_pressed("down"):
-		velocity.y += 1
-	if Input.is_action_pressed("up"):
-		velocity.y -= 1
-	if Input.is_action_pressed("right"):
-		velocity.x += 1
-	if Input.is_action_pressed("left"):
-		velocity.x -= 1
+	# Inputs
+	velocity = Input.get_vector("left","right","up","down")
 	if Input.is_action_just_pressed("space") and not is_dashing and velocity.length() > 0 and $DashTimer/DashTimeout.is_stopped():
 		is_dashing = true
 		dash_velocity = velocity
 		$DashTimer.start()
 		$DashParticles.emitting = true
-		
 	
-	
-	# normalize vector to prevent inconsistent movement and apply speed
+	# set velocity final
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 	else:
@@ -59,7 +49,6 @@ func _physics_process(delta):
 		else:
 			$WalkAnimations.play()
 	
-	
 	# dash when dashing
 	if is_dashing:
 		velocity = dash_velocity.normalized() * dash_speed # apply dash
@@ -68,9 +57,7 @@ func _physics_process(delta):
 			$DashTimer/DashTimeout.start() # start dash timeout
 			$DashParticles.emitting = false
 	
-	position += velocity * delta # update position
+	move_and_slide()
 
-	
-	
-	
-	
+
+
