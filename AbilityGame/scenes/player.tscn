@@ -1,8 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://14w1yhbvtxgk"]
+[gd_scene load_steps=21 format=3 uid="uid://14w1yhbvtxgk"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kbxrs"]
 [ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player/player_normal.png" id="2_jscfx"]
 [ext_resource type="Texture2D" uid="uid://8ybi3uupkem0" path="res://art/player/player_walk_animations.png" id="3_h0ifn"]
+[ext_resource type="Script" path="res://compo/HealthCompoment.gd" id="4_aif5s"]
+[ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="5_156dx"]
+[ext_resource type="PackedScene" uid="uid://dgtjr83q81pyl" path="res://scenes/sword.tscn" id="6_vqgxr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpbdo"]
 atlas = ExtResource("3_h0ifn")
@@ -140,6 +143,8 @@ position = Vector2(2, -2)
 sprite_frames = SubResource("SpriteFrames_h7ahq")
 animation = &"normal_up_down"
 
+[node name="Sword" parent="." instance=ExtResource("6_vqgxr")]
+
 [node name="PlayerImage" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(2, 2)
@@ -160,3 +165,10 @@ one_shot = true
 [node name="DashTimeout" type="Timer" parent="DashTimer"]
 wait_time = 1.5
 one_shot = true
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_aif5s")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_156dx")
+health_component = NodePath("../HealthComponent")

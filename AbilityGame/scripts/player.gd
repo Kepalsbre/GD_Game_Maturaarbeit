@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
+
+@onready var sword = $Sword
 @export var speed = 800
 @export var dash_speed = 3000
 var is_dashing = false
-var dash_velocity
+var dash_velocity: Vector2
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO # speed when pressing nothing
@@ -15,6 +17,10 @@ func _physics_process(delta):
 		dash_velocity = velocity
 		$DashTimer.start()
 		$DashParticles.emitting = true
+	if Input.is_action_pressed("primary_mouse") and not sword.animation_player.is_playing():
+		sword.attack_started()
+	if Input.is_action_just_released("primary_mouse"):
+		sword.attack_stopped()
 	
 	# set velocity final
 	if velocity.length() > 0:
@@ -56,6 +62,7 @@ func _physics_process(delta):
 			is_dashing = false # stop dash
 			$DashTimer/DashTimeout.start() # start dash timeout
 			$DashParticles.emitting = false
+	
 	
 	move_and_slide()
 

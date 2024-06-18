@@ -12,3 +12,6 @@ func _process(delta):
 	# kill if health is below 0
 	if health <= 0:
 		get_parent().queue_free()
+
+func damage(attack: Attack):
+	health -= attack.attack_damage

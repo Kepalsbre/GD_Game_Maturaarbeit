@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgtjr83q81pyl"]
+
+[ext_resource type="Script" path="res://scripts/sword.gd" id="1_and6q"]
+[ext_resource type="Texture2D" uid="uid://41bfjjquqy7b" path="res://art/sword/sword_1.png" id="2_0q0lm"]
+[ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="3_ernn2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1m2q8"]
+radius = 16.0
+height = 124.451
+
+[sub_resource type="Animation" id="Animation_xjfg6"]
+resource_name = "attack"
+length = 0.8
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lvl1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.174533, 1.74533, -0.174533]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"current_loop_ended"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4gggg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lvl1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ae42"]
+_data = {
+"RESET": SubResource("Animation_4gggg"),
+"attack": SubResource("Animation_xjfg6")
+}
+
+[node name="Sword" type="Node2D"]
+script = ExtResource("1_and6q")
+
+[node name="lvl1" type="Sprite2D" parent="."]
+position = Vector2(16, 0)
+texture = ExtResource("2_0q0lm")
+centered = false
+offset = Vector2(0, -128)
+
+[node name="HitboxComponent" type="Area2D" parent="lvl1"]
+position = Vector2(-16, 0)
+script = ExtResource("3_ernn2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lvl1/HitboxComponent"]
+position = Vector2(88, -72)
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_1m2q8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2ae42")
+}
+
+[connection signal="area_entered" from="lvl1/HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
