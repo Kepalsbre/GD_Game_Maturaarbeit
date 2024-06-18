@@ -1,0 +1,51 @@
+[gd_resource type="Resource" load_steps=9 format=2]
+
+[ext_resource path="res://src/Palette/PaletteColor.gd" type="Script" id=1]
+[ext_resource path="res://src/Palette/Palette.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+color = Color( 0.137255, 0.137255, 0.137255, 1 )
+index = 16
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+color = Color( 0.847059, 0, 0.298039, 1 )
+index = 17
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 1 )
+color = Color( 0.109375, 0.109375, 0.109375, 1 )
+index = 24
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 1 )
+color = Color( 0.164706, 0.164706, 0.164706, 1 )
+index = 8
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 1 )
+color = Color( 1, 1, 1, 1 )
+index = 18
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 1 )
+color = Color( 0.9, 0.09, 0.441, 1 )
+index = 9
+
+[resource]
+resource_name = "Enemy"
+script = ExtResource( 2 )
+name = "Enemy"
+comment = ""
+width = 8
+height = 8
+colors = {
+8: SubResource( 6 ),
+9: SubResource( 8 ),
+16: SubResource( 1 ),
+17: SubResource( 2 ),
+18: SubResource( 7 ),
+24: SubResource( 5 )
+}
+colors_max = 64

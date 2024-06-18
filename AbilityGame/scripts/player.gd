@@ -2,9 +2,11 @@ extends CharacterBody2D
 
 
 @onready var sword = $Sword
-@export var speed = 800
-@export var dash_speed = 3000
-var is_dashing = false
+@export var speed: int = 800
+var dash_speed: int:
+	get:
+		return speed + 2200
+var is_dashing := false
 var dash_velocity: Vector2
 
 func _physics_process(delta):

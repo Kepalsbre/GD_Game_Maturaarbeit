@@ -8,6 +8,21 @@
 radius = 16.0
 height = 124.451
 
+[sub_resource type="Animation" id="Animation_4gggg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lvl1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_xjfg6"]
 resource_name = "attack"
 length = 0.8
@@ -39,21 +54,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_4gggg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("lvl1:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ae42"]
 _data = {
 "RESET": SubResource("Animation_4gggg"),
@@ -64,6 +64,7 @@ _data = {
 script = ExtResource("1_and6q")
 
 [node name="lvl1" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(16, 0)
 texture = ExtResource("2_0q0lm")
 centered = false
