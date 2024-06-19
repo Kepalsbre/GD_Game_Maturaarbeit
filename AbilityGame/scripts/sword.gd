@@ -18,7 +18,10 @@ func attack_started():
 	attacking = true
 	sword_image.visible = true
 	sword_collision.set_deferred("disabled", false)
-	animation_player.play("attack")
+	if global_position.x > get_global_mouse_position().x:
+		animation_player.play_backwards("attack")
+	else:
+		animation_player.play("attack")
 	look_at(get_global_mouse_position())
 
 	

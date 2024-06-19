@@ -152,7 +152,7 @@ position = Vector2(2, 2)
 texture = ExtResource("2_jscfx")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.3, 0.3)
 position_smoothing_speed = 8.0
 rotation_smoothing_speed = 1.0
 

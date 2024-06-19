@@ -62,7 +62,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_sl4a3")
 
 [node name="WalkAnimation" type="AnimatedSprite2D" parent="."]
-visible = false
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_th02n")
 frame_progress = 0.88314
@@ -89,3 +88,8 @@ script = ExtResource("5_5n5gj")
 health_component = NodePath("../HealthComponent")
 lenght = 100
 pos_y = 25
+
+[node name="OffsetTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]

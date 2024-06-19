@@ -23,7 +23,7 @@ func _ready():
 	position = Vector2(-(lenght/4), pos_y)
 
 	
-func _process(delta):
+func _process(_delta):
 	set_value_no_signal(health_component.health)
 	if health_component.health != max_value and not visible:
 		visible = true
