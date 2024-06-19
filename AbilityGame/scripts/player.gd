@@ -9,7 +9,7 @@ var dash_speed: int:
 var is_dashing := false
 var dash_velocity: Vector2
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = Vector2.ZERO # speed when pressing nothing
 	
 	# Inputs

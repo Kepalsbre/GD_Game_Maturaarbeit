@@ -3,8 +3,8 @@ extends Node2D
 @onready var sword_collision = $lvl1/HitboxComponent/CollisionShape2D
 @onready var sword_image = $lvl1
 @onready var animation_player = $AnimationPlayer
-@export var damage := 20
-@export var knockback := 100
+@export var damage := 20.0
+@export var knockback := 100.0
 var attacking:bool = false
 
 func current_loop_ended():
@@ -27,9 +27,10 @@ func attack_stopped():
 	
 	
 func _on_hitbox_component_area_entered(area):
-	if area.has_method("damage"):
+	if area is HitboxComponent:
+		var hitbox : HitboxComponent = area
 		var attack = Attack.new()
 		attack.attack_damage = damage
 		attack.knockback_force = knockback
 		attack.attack_position = global_position
-		area.damage(attack)
+		hitbox.damage(attack)
