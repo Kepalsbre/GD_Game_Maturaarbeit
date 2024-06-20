@@ -13,23 +13,29 @@ var offset : Vector2
 var knockback_received: float 
 var knockback := 1.2
 var damage = 10
+var awake := false
+
+signal wake_up
 
 func _ready():
 	walk_animation.visible = false
-
+	for enemy in get_parent().get_children():
+		enemy.wake_up.connect(_on_wake_up)
 	
 func _physics_process(_delta):
 	player_pos = get_node("/root/Main/Player").get_global_position()
 	match current_state:
 		state.idle:
 			if global_position.distance_to(player_pos) < wake_lenght \
-			or health_component.max_health != health_component.health:
+			or health_component.max_health != health_component.health \
+			or awake:
 				current_state = state.seek
 				idle_image.visible = false
 				walk_animation.visible = true
 				offset = randoffset()
 				offset_timer.start()
 				walk_animation.play()
+				wake_up.emit()
 		state.seek:
 			velocity = (player_pos - position + offset)
 			velocity = velocity.normalized() * (speed + speed * knockback_received)
@@ -60,3 +66,10 @@ func _on_hitbox_component_area_entered(area):
 		attack.knockback_force = knockback
 		attack.attack_position = global_position
 		hitbox.damage(attack)
+
+
+func _on_wake_up():
+	await get_tree().create_timer(randf_range(1,15)).timeout
+	awake = true
+	
+	

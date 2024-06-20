@@ -39,3 +39,33 @@ position = Vector2(1148, 366)
 
 [node name="SpinnerEnemy" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(1048, -1)
+
+[node name="SpinnerEnemy6" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(-959, 603)
+
+[node name="SpinnerEnemy7" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(-884, -577)
+
+[node name="SpinnerEnemy13" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(475, 746)
+
+[node name="SpinnerEnemy14" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(-4, 820)
+
+[node name="SpinnerEnemy12" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(-524, 747)
+
+[node name="SpinnerEnemy16" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(350, -768)
+
+[node name="SpinnerEnemy15" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(-443, -784)
+
+[node name="SpinnerEnemy8" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(-1041, -273)
+
+[node name="SpinnerEnemy9" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(-1062, 354)
+
+[node name="SpinnerEnemy10" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(-1069, 9)
