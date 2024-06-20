@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://14w1yhbvtxgk"]
+[gd_scene load_steps=23 format=3 uid="uid://14w1yhbvtxgk"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kbxrs"]
 [ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player/player_normal.png" id="2_jscfx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://compo/HealthCompoment.gd" id="4_aif5s"]
 [ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="5_156dx"]
 [ext_resource type="PackedScene" uid="uid://dgtjr83q81pyl" path="res://scenes/sword.tscn" id="6_vqgxr"]
+[ext_resource type="Script" path="res://compo/hp_bar_component.gd" id="7_iug8f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpbdo"]
 atlas = ExtResource("3_h0ifn")
@@ -117,6 +118,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ww83b"]
 radius = 35.0143
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_y3npq"]
+radius = 28.0179
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
 motion_mode = 1
@@ -157,6 +161,7 @@ position_smoothing_speed = 8.0
 rotation_smoothing_speed = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_ww83b")
 
 [node name="DashTimer" type="Timer" parent="."]
@@ -173,3 +178,34 @@ script = ExtResource("4_aif5s")
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("5_156dx")
 health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_y3npq")
+
+[node name="HpBarComponent" type="ProgressBar" parent="." node_paths=PackedStringArray("health_component")]
+offset_top = -27.0
+offset_right = 4.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+show_percentage = false
+script = ExtResource("7_iug8f")
+health_component = NodePath("../HealthComponent")
+lenght = 450
+height = 50
+pos_x = -1020
+pos_y = 510
+scale_factor = 1.0
+fill_color = "#2fba00"
+
+[node name="Label" type="Label" parent="HpBarComponent"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1

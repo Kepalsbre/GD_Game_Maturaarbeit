@@ -79,6 +79,7 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("CircleShape2D_77jv1")
 
 [node name="HpBarComponent" type="ProgressBar" parent="." node_paths=PackedStringArray("health_component")]
+visible = false
 offset_left = -50.0
 offset_top = 35.0
 offset_right = 51.0
@@ -87,9 +88,11 @@ show_percentage = false
 script = ExtResource("5_5n5gj")
 health_component = NodePath("../HealthComponent")
 lenght = 100
+pos_x = -25
 pos_y = 25
 
 [node name="OffsetTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]

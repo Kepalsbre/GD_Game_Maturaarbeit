@@ -23,11 +23,19 @@ texture_filter = 2
 position = Vector2(713, 376)
 texture = ExtResource("2_qm8v3")
 
-[node name="SpinnerEnemy2" parent="." instance=ExtResource("3_ak5ec")]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="SpinnerEnemy2" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(861, 593)
 
-[node name="SpinnerEnemy3" parent="." instance=ExtResource("3_ak5ec")]
+[node name="SpinnerEnemy3" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(874, -544)
 
-[node name="SpinnerEnemy" parent="." instance=ExtResource("3_ak5ec")]
+[node name="SpinnerEnemy4" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(1112, -259)
+
+[node name="SpinnerEnemy5" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(1148, 366)
+
+[node name="SpinnerEnemy" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(1048, -1)

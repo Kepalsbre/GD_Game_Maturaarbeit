@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-
+@onready var label = $HpBarComponent/Label
+@onready var health_component = $HealthComponent
 @onready var sword = $Sword
 @export var speed: int = 800
 var dash_speed: int:
@@ -8,6 +9,11 @@ var dash_speed: int:
 		return speed + 2200
 var is_dashing := false
 var dash_velocity: Vector2
+
+
+func _process(_delta):
+	label.text = str(health_component.health) + "/" + str(health_component.max_health)
+
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO # speed when pressing nothing

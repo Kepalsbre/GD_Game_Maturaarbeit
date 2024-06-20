@@ -7,12 +7,15 @@ var health: float
 
 func _ready():
 	health = max_health
-	
+
 func _process(_delta):
+
 	# kill if health is below 0
 	if health <= 0:
-		get_parent().queue_free()
+		if get_parent().name == "Player":
+			pass # write death code here
+		else:
+			get_parent().queue_free()
 
 func damage(attack: Attack):
 	health -= attack.attack_damage
-	
