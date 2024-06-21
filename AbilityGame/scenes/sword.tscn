@@ -74,7 +74,6 @@ centered = false
 offset = Vector2(0, -128)
 
 [node name="HitboxComponent" type="Area2D" parent="lvl1"]
-visible = false
 position = Vector2(-16, 0)
 collision_layer = 8
 collision_mask = 2

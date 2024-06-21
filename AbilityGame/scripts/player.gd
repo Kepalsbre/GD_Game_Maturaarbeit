@@ -10,6 +10,17 @@ var dash_speed: int:
 var is_dashing := false
 var dash_velocity: Vector2
 
+var knock_frames := 0
+var knockback_received := Vector2.ZERO
+
+
+func knock_back(knockforce, knock_pos):
+	knockback_received = (global_position - knock_pos) 
+	knockback_received = knockback_received.normalized() * speed * knockforce
+
+	knock_frames = 10
+	
+
 
 func _process(_delta):
 	label.text = str(health_component.health) + "/" + str(health_component.max_health)
@@ -71,6 +82,11 @@ func _physics_process(_delta):
 			$DashTimer/DashTimeout.start() # start dash timeout
 			$DashParticles.emitting = false
 	
+	if knock_frames != 0:
+		knock_frames -= 1
+		velocity += knockback_received
+	else:
+		knockback_received = Vector2.ZERO
 	
 	move_and_slide()
 

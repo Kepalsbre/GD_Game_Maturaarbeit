@@ -4,7 +4,7 @@ extends Node2D
 @onready var sword_image = $lvl1
 @onready var animation_player = $AnimationPlayer
 @export var damage := 20.0
-@export var knockback := 100.0
+@export var knockback := 1.0
 var attacking:bool = false
 
 func current_loop_ended():
@@ -12,8 +12,10 @@ func current_loop_ended():
 		sword_collision.set_deferred("disabled", true)
 		sword_image.visible = false
 		animation_player.stop()
-
-
+	$lvl1/HitboxComponent.monitoring = false
+	$lvl1/HitboxComponent.monitoring = true
+	
+	
 func attack_started():
 	attacking = true
 	sword_image.visible = true

@@ -2,18 +2,21 @@ extends CharacterBody2D
 
 enum state {idle, seek, attack}
 @export var current_state: state = state.idle
+@export var wake_lenght := 800
+@export var knockback := 1.2
+@export var damage = 10
+
 @onready var walk_animation = $WalkAnimation
 @onready var idle_image = $IdleImage
-var player_pos
-@export var wake_lenght := 800
 @onready var offset_timer = $OffsetTimer
+@onready var health_component = $HealthComponent
+
+var player_pos
 var speed : int = randi_range(500, 580)
 var offset : Vector2
-@onready var health_component = $HealthComponent
-var knockback_received: float 
-var knockback := 1.2
-var damage = 10
+var knockback_received := Vector2.ZERO
 var awake := false
+var knock_frames := 0
 
 signal wake_up
 
@@ -38,15 +41,22 @@ func _physics_process(_delta):
 				wake_up.emit()
 		state.seek:
 			velocity = (player_pos - position + offset)
-			velocity = velocity.normalized() * (speed + speed * knockback_received)
+			velocity = velocity.normalized() * speed + knockback_received
 			if position.distance_to(player_pos) < 200:
 				current_state = state.attack
 		state.attack:
 			velocity = (player_pos - position)
-			velocity = velocity.normalized() * (speed + speed * knockback_received)
+			velocity = velocity.normalized() * speed
 			if position.distance_to(player_pos) > 200:
 				current_state = state.seek
+	
+	if knock_frames != 0:
+		knock_frames -= 1
+		velocity = knockback_received
+	else:
+		knockback_received = Vector2.ZERO
 	move_and_slide()
+	
 
 func randoffset():
 	var angle = randi_range(0, 360)
@@ -67,7 +77,13 @@ func _on_hitbox_component_area_entered(area):
 		attack.attack_position = global_position
 		hitbox.damage(attack)
 
+func knock_back(knockforce, knock_pos):
+	knockback_received = (global_position - knock_pos) 
+	knockback_received = knockback_received.normalized() * (speed / 4) * knockforce
 
+	knock_frames = 20
+	
+	
 func _on_wake_up():
 	await get_tree().create_timer(randf_range(1,15)).timeout
 	awake = true
