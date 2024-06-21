@@ -18,4 +18,8 @@ func _process(_delta):
 			get_parent().queue_free()
 
 func damage(attack: Attack):
+	if get_parent().name == "Player":
+		if get_parent().is_dashing:
+			attack.attack_damage /= 2
+	
 	health -= attack.attack_damage
