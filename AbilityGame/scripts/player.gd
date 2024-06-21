@@ -17,7 +17,6 @@ var knockback_received := Vector2.ZERO
 func knock_back(knockforce, knock_pos):
 	knockback_received = (global_position - knock_pos) 
 	knockback_received = knockback_received.normalized() * speed * knockforce
-
 	knock_frames = 10
 	
 
@@ -87,7 +86,7 @@ func _physics_process(_delta):
 		velocity += knockback_received
 	else:
 		knockback_received = Vector2.ZERO
-	
+	Global.player_pos = global_position
 	move_and_slide()
 
 

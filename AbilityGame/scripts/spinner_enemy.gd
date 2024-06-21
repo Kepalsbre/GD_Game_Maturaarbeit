@@ -26,7 +26,7 @@ func _ready():
 		enemy.wake_up.connect(_on_wake_up)
 	
 func _physics_process(_delta):
-	player_pos = get_node("/root/Main/Player").get_global_position()
+	player_pos = Global.player_pos
 	match current_state:
 		state.idle:
 			if global_position.distance_to(player_pos) < wake_lenght \

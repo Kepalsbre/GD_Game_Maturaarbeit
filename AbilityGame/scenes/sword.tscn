@@ -13,7 +13,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("lvl1:rotation")
+tracks/0/path = NodePath("SwordImage:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +30,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("lvl1:rotation")
+tracks/0/path = NodePath("SwordImage:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -66,20 +66,20 @@ _data = {
 [node name="Sword" type="Node2D"]
 script = ExtResource("1_and6q")
 
-[node name="lvl1" type="Sprite2D" parent="."]
+[node name="SwordImage" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(16, 0)
 texture = ExtResource("2_0q0lm")
 centered = false
 offset = Vector2(0, -128)
 
-[node name="HitboxComponent" type="Area2D" parent="lvl1"]
+[node name="HitboxComponent" type="Area2D" parent="SwordImage"]
 position = Vector2(-16, 0)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("3_ernn2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="lvl1/HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordImage/HitboxComponent"]
 position = Vector2(88, -72)
 rotation = 0.785398
 shape = SubResource("CapsuleShape2D_1m2q8")
@@ -90,4 +90,4 @@ libraries = {
 "": SubResource("AnimationLibrary_2ae42")
 }
 
-[connection signal="area_entered" from="lvl1/HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="area_entered" from="SwordImage/HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
