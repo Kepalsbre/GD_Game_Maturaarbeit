@@ -38,8 +38,7 @@ position = Vector2(1112, -259)
 position = Vector2(1148, 366)
 
 [node name="SpinnerEnemy" parent="Enemies" instance=ExtResource("3_ak5ec")]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(1570, -12)
+position = Vector2(1605, -48)
 scale = Vector2(10, 10)
 
 [node name="SpinnerEnemy6" parent="Enemies" instance=ExtResource("3_ak5ec")]

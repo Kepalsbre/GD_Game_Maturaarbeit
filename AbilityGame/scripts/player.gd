@@ -39,6 +39,10 @@ func _physics_process(_delta):
 		sword.attack_started()
 	if Input.is_action_just_released("primary_mouse"):
 		sword.attack_stopped()
+	if Input.is_action_just_pressed("interact"):
+		sword.lvlup()
+	
+	
 	
 	# set velocity final
 	if velocity.length() > 0:

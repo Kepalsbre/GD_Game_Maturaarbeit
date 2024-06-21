@@ -10,14 +10,20 @@ var current_level := 1
 var lvl2 = load("res://art/sword/sword_2.png")
 var lvl3 = load("res://art/sword/sword_3.png")
 var lvl4 = load("res://art/sword/sword_4.png")
+var attack_animation = "attack"
 
 func lvlup():
 	if current_level == 2:
-		pass
+		sword_image.texture = lvl2
+		sword_collision.shape.height = 145
+		sword_collision.position = Vector2(98, -82)
 	elif current_level == 4:
-		pass
-	else:
-		pass
+		sword_image.texture = lvl3
+		attack_animation = "laser_attack"
+		animation_player.speed_scale += 0.2
+	elif current_level == 6:
+		sword_image.texture = lvl4
+		
 	current_level += 1
 
 
@@ -35,9 +41,9 @@ func attack_started():
 	sword_image.visible = true
 	sword_collision.set_deferred("disabled", false)
 	if global_position.x > get_global_mouse_position().x:
-		animation_player.play_backwards("attack")
+		animation_player.play_backwards(attack_animation)
 	else:
-		animation_player.play("attack")
+		animation_player.play(attack_animation)
 	look_at(get_global_mouse_position())
 
 	
