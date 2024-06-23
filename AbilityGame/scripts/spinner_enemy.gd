@@ -3,8 +3,12 @@ extends CharacterBody2D
 enum state {idle, seek, attack}
 @export var current_state: state = state.idle
 @export var wake_lenght := 800
-@export var knockback := 1.2
-@export var damage = 10
+@export var knockback: float = 1.2:
+	get:
+		return knockback * Global.enemy_knockback_multiplier
+@export var damage: int = 10:
+	get:
+		return damage * Global.enemy_dmg_multiplier
 
 @onready var walk_animation = $WalkAnimation
 @onready var idle_image = $IdleImage
@@ -24,6 +28,8 @@ func _ready():
 	walk_animation.visible = false
 	for enemy in get_parent().get_children():
 		enemy.wake_up.connect(_on_wake_up)
+	health_component.max_health *= Global.enemy_hp_multiplier
+	health_component.health *= Global.enemy_hp_multiplier
 	
 func _physics_process(_delta):
 	player_pos = Global.player_pos

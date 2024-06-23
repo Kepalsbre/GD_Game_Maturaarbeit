@@ -13,7 +13,6 @@ class_name HpBarComponent
 
 
 func _ready():
-	max_value = health_component.max_health
 	step = 1
 	scale = Vector2(scale_factor,scale_factor)
 	var sb = StyleBoxFlat.new()
@@ -28,6 +27,7 @@ func _ready():
 
 	
 func _process(_delta):
+	max_value = health_component.max_health
 	set_value_no_signal(health_component.health)
 	if health_component.health != max_value and not visible:
 		visible = true

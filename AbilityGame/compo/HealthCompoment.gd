@@ -9,7 +9,9 @@ func _ready():
 	health = max_health
 
 func _process(_delta):
-
+	
+	if health > max_health:
+		health = max_health
 	# kill if health is below 0
 	if health <= 0:
 		if get_parent().name == "Player":

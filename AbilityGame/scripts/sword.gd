@@ -12,11 +12,16 @@ var lvl3 = load("res://art/sword/sword_3.png")
 var lvl4 = load("res://art/sword/sword_4.png")
 var attack_animation = "attack"
 
+
+func _ready():
+	sword_image.visible = false
+
+
 func lvlup():
 	if current_level == 2:
 		sword_image.texture = lvl2
 		sword_collision.shape.height = 145
-		sword_collision.position = Vector2(98, -82)
+		sword_collision.position = Vector2(82, -82)
 	elif current_level == 4:
 		sword_image.texture = lvl3
 		attack_animation = "laser_attack"
