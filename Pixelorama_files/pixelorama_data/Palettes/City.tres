@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=14 format=2]
+[gd_resource type="Resource" load_steps=21 format=2]
 
 [ext_resource path="res://src/Palette/PaletteColor.gd" type="Script" id=1]
 [ext_resource path="res://src/Palette/Palette.gd" type="Script" id=2]
@@ -13,6 +13,11 @@ script = ExtResource( 1 )
 color = Color( 0.215686, 0.25098, 0.356863, 1 )
 index = 8
 
+[sub_resource type="Resource" id=8]
+script = ExtResource( 1 )
+color = Color( 0.780392, 0.847059, 0.886275, 1 )
+index = 11
+
 [sub_resource type="Resource" id=2]
 script = ExtResource( 1 )
 color = Color( 0.2, 0.235294, 0.341176, 1 )
@@ -23,40 +28,70 @@ script = ExtResource( 1 )
 color = Color( 0.960784, 0.968627, 0.980392, 1 )
 index = 17
 
-[sub_resource type="Resource" id=4]
-script = ExtResource( 1 )
-color = Color( 0.176471, 0.211765, 0.317647, 1 )
-index = 24
-
-[sub_resource type="Resource" id=5]
-script = ExtResource( 1 )
-color = Color( 0.160784, 0.196078, 0.301961, 1 )
-index = 32
-
-[sub_resource type="Resource" id=9]
-script = ExtResource( 1 )
-color = Color( 0.521569, 0.352941, 0, 1 )
-index = 41
-
-[sub_resource type="Resource" id=8]
-script = ExtResource( 1 )
-color = Color( 0.780392, 0.847059, 0.886275, 1 )
-index = 11
-
 [sub_resource type="Resource" id=10]
 script = ExtResource( 1 )
 color = Color( 0.6972, 0.77574, 0.84, 1 )
 index = 19
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 1 )
+color = Color( 0.176471, 0.211765, 0.317647, 1 )
+index = 24
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 1 )
 color = Color( 0.6162, 0.697307, 0.79, 1 )
 index = 27
 
+[sub_resource type="Resource" id=5]
+script = ExtResource( 1 )
+color = Color( 0.160784, 0.196078, 0.301961, 1 )
+index = 32
+
 [sub_resource type="Resource" id=12]
 script = ExtResource( 1 )
 color = Color( 0.099, 0.113117, 0.22, 1 )
 index = 40
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 1 )
+color = Color( 0.521569, 0.352941, 0, 1 )
+index = 41
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 1 )
+color = Color( 0.639216, 0.0509804, 0.152941, 1 )
+index = 29
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 1 )
+color = Color( 0.843137, 0.843137, 0.843137, 1 )
+index = 30
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 1 )
+color = Color( 0.709804, 0.709804, 0.709804, 1 )
+index = 38
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 1 )
+color = Color( 0.717647, 0.0705882, 0.0705882, 1 )
+index = 21
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 1 )
+color = Color( 0.815686, 0.415686, 0.0627451, 1 )
+index = 37
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 1 )
+color = Color( 0.0705882, 0.321569, 0.721569, 1 )
+index = 13
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 1 )
+color = Color( 0.75, 0.4165, 0.06, 1 )
+index = 45
 
 [resource]
 resource_name = "City"
@@ -69,13 +104,20 @@ colors = {
 0: SubResource( 7 ),
 8: SubResource( 6 ),
 11: SubResource( 8 ),
+13: SubResource( 18 ),
 16: SubResource( 2 ),
 17: SubResource( 3 ),
 19: SubResource( 10 ),
+21: SubResource( 16 ),
 24: SubResource( 4 ),
 27: SubResource( 11 ),
+29: SubResource( 13 ),
+30: SubResource( 14 ),
 32: SubResource( 5 ),
+37: SubResource( 17 ),
+38: SubResource( 15 ),
 40: SubResource( 12 ),
-41: SubResource( 9 )
+41: SubResource( 9 ),
+45: SubResource( 19 )
 }
 colors_max = 64
