@@ -70,3 +70,8 @@ position = Vector2(-1062, 354)
 
 [node name="SpinnerEnemy10" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(-1069, 9)
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Map"]
+format = 2
