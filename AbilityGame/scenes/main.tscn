@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpmpj0rn60cnp"]
+[gd_scene load_steps=5 format=3 uid="uid://dpmpj0rn60cnp"]
 
+[ext_resource type="PackedScene" uid="uid://dymvai80iri3" path="res://scenes/level_1.tscn" id="1_o2y6u"]
 [ext_resource type="PackedScene" uid="uid://14w1yhbvtxgk" path="res://scenes/player.tscn" id="1_rhsj6"]
 [ext_resource type="Texture2D" uid="uid://kh2fo4jcmbvk" path="res://icon.svg" id="2_qm8v3"]
 [ext_resource type="PackedScene" uid="uid://14r6tbaldkb3" path="res://scenes/spinner_enemy.tscn" id="3_ak5ec"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Level1" parent="Map" instance=ExtResource("1_o2y6u")]
 
 [node name="Player" parent="." instance=ExtResource("1_rhsj6")]
 
@@ -70,8 +75,3 @@ position = Vector2(-1062, 354)
 
 [node name="SpinnerEnemy10" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(-1069, 9)
-
-[node name="Map" type="Node2D" parent="."]
-
-[node name="TileMap" type="TileMap" parent="Map"]
-format = 2
