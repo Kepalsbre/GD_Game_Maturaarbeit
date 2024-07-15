@@ -96,5 +96,7 @@ pos_y = 25
 [node name="OffsetTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]

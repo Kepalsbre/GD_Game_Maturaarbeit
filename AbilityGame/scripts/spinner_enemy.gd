@@ -14,6 +14,8 @@ enum state {idle, seek, attack}
 @onready var idle_image = $IdleImage
 @onready var offset_timer = $OffsetTimer
 @onready var health_component = $HealthComponent
+@onready var navigation_agent_2d = $NavigationAgent2D
+
 
 var player_pos
 var speed : int = randi_range(500, 580)
@@ -46,8 +48,10 @@ func _physics_process(_delta):
 				walk_animation.play()
 				wake_up.emit()
 		state.seek:
-			velocity = (player_pos - position + offset)
-			velocity = velocity.normalized() * speed + knockback_received
+			navigation_agent_2d.target_position = player_pos + offset
+			var current_agent_position = global_position
+			var next_agent_position = navigation_agent_2d.get_next_path_position()
+			velocity = current_agent_position.direction_to(next_agent_position) * speed + knockback_received
 			if position.distance_to(player_pos) < 200:
 				current_state = state.attack
 		state.attack:
