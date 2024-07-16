@@ -52,8 +52,6 @@ func _physics_process(_delta):
 			var current_agent_position = global_position
 			var next_agent_position = navigation_agent_2d.get_next_path_position()
 			velocity = current_agent_position.direction_to(next_agent_position) * speed + knockback_received
-			if position.distance_to(player_pos) < 200:
-				current_state = state.attack
 		state.attack:
 			velocity = (player_pos - position)
 			velocity = velocity.normalized() * speed
@@ -98,4 +96,6 @@ func _on_wake_up():
 	await get_tree().create_timer(randf_range(1,15)).timeout
 	awake = true
 	
-	
+
+func _on_navigation_agent_2d_target_reached():
+	current_state = state.attack
