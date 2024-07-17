@@ -116,7 +116,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ww83b"]
-radius = 35.0143
+radius = 16.4924
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y3npq"]
 radius = 28.0179
@@ -161,7 +161,7 @@ position_smoothing_speed = 8.0
 rotation_smoothing_speed = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0, 48)
 shape = SubResource("CircleShape2D_ww83b")
 
 [node name="DashTimer" type="Timer" parent="."]
