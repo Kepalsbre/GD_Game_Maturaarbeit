@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvAbility" load_steps=3 format=3 uid="uid://cdk3jcs7ud7cg"]
+
+[ext_resource type="Script" path="res://inventory/inventory_ability.gd" id="1_eexdi"]
+[ext_resource type="Texture2D" uid="uid://bb3rjyci4hmdd" path="res://art/abilities/knockback_ability.png" id="2_8a1co"]
+
+[resource]
+script = ExtResource("1_eexdi")
+name = "Pushback"
+texture = ExtResource("2_8a1co")

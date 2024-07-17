@@ -4,6 +4,9 @@ extends CharacterBody2D
 @onready var health_component = $HealthComponent
 @onready var sword = $Sword
 @export var speed: int = 800
+
+@export var inv: Inv
+
 var dash_speed: int:
 	get:
 		return speed + 2200
@@ -18,7 +21,6 @@ func knock_back(knockforce, knock_pos):
 	knockback_received = (global_position - knock_pos) 
 	knockback_received = knockback_received.normalized() * speed * knockforce
 	knock_frames = 10
-	
 
 
 func _process(_delta):
@@ -39,7 +41,7 @@ func _physics_process(_delta):
 		sword.attack_started()
 	if Input.is_action_just_released("primary_mouse"):
 		sword.attack_stopped()
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("e"):
 		sword.lvlup()
 	
 	
