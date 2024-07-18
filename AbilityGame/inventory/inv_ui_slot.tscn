@@ -1,13 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1dlqsnhss0oa"]
+[gd_scene load_steps=4 format=3 uid="uid://d1dlqsnhss0oa"]
 
 [ext_resource type="Texture2D" uid="uid://cytyyv0qaefsq" path="res://art/inventory/inventory_slot.png" id="1_3umu3"]
+[ext_resource type="Script" path="res://inventory/inv_ui_slot.gd" id="1_yn08r"]
+[ext_resource type="Texture2D" uid="uid://c5xg0o8u11es2" path="res://art/inventory/inventory_slotlogo_hide.png" id="3_iae2i"]
 
 [node name="InvUiSlot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
 offset_bottom = 32.0
+script = ExtResource("1_yn08r")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="slot" type="Sprite2D" parent="."]
 texture = ExtResource("1_3umu3")
 centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="slothide" type="Sprite2D" parent="CenterContainer/Panel"]
+texture = ExtResource("3_iae2i")
+
+[node name="ability_display" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Button" type="Button" parent="CenterContainer/Panel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[connection signal="button_down" from="CenterContainer/Panel/Button" to="." method="_on_button_button_down"]
