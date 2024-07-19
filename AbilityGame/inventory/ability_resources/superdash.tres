@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvAbility" load_steps=3 format=3 uid="uid://bgqj8a0io8wyb"]
+
+[ext_resource type="Script" path="res://inventory/inventory_ability.gd" id="1_rfo8q"]
+[ext_resource type="Texture2D" uid="uid://cmqxd1dlpwwpi" path="res://art/abilities/SuperdashV2.png" id="2_mnt7n"]
+
+[resource]
+script = ExtResource("1_rfo8q")
+name = "Superdash"
+texture = ExtResource("2_mnt7n")
+uses = 2
