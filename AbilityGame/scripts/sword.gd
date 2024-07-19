@@ -59,9 +59,9 @@ func attack_stopped():
 	
 func _on_hitbox_component_area_entered(area):
 	if area is HitboxComponent:
-		var hitbox : HitboxComponent = area
+		
 		var attack = Attack.new()
 		attack.attack_damage = damage
 		attack.knockback_force = knockback
 		attack.attack_position = global_position
-		hitbox.damage(attack)
+		area.damage(attack)

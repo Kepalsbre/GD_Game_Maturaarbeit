@@ -5,7 +5,12 @@ extends CharacterBody2D
 @onready var sword = $Sword
 @export var speed: int = 800
 
-@export var inv: Inv
+@onready var slot_1 = $EquippedAbilities/Slot1
+@onready var slot_2 = $EquippedAbilities/Slot2
+@onready var slot_3 = $EquippedAbilities/Slot3
+@onready var slot_4 = $EquippedAbilities/Slot4
+
+
 
 var dash_speed: int:
 	get:
@@ -41,8 +46,21 @@ func _physics_process(_delta):
 		sword.attack_started()
 	if Input.is_action_just_released("primary_mouse"):
 		sword.attack_stopped()
-	if Input.is_action_just_pressed("e"):
-		sword.lvlup()
+	# if Input.is_action_just_pressed("e"):
+		# sword.lvlup()
+	if Input.is_action_just_pressed("secondary_mouse"):
+		if slot_1.get_child_count() != 0:
+			slot_1.get_child(0).execute()
+	elif Input.is_action_just_pressed("shift"):
+		if slot_2.get_child_count() != 0:
+			slot_2.get_child(0).execute()
+	elif Input.is_action_just_pressed("e"):
+		if slot_3.get_child_count() != 0:
+			slot_3.get_child(0).execute()
+	elif Input.is_action_just_pressed("q"):
+		if slot_4.get_child_count() != 0:
+			slot_4.get_child(0).execute()
+	
 	
 	
 	

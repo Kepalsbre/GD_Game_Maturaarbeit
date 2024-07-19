@@ -6,7 +6,6 @@ var step := 1
 var selec1 :InvAbility
 var num1 :int
 
-
 var is_open = false
 
 func _ready():
@@ -14,8 +13,8 @@ func _ready():
 	close()
 
 func update_slots():
-	for i in range(min(Global.inv.abilities.size(), slots.size())):
-		slots[i].update(Global.inv.abilities[i], i)
+	for i in range(min(Global.inv.size(), slots.size())):
+		slots[i].update(Global.inv[i], i)
 		
 		
 func _process(_delta):
@@ -24,6 +23,7 @@ func _process(_delta):
 			close()
 		else:
 			open()
+
 
 func close():
 	visible = false
@@ -35,18 +35,18 @@ func open():
 
 func on_select(slotnum: int):
 	print(slotnum)
-	print(Global.inv.abilities[slotnum])
+	print(Global.inv[slotnum])
 	
 	if step == 1:
-		if Global.inv.abilities[slotnum]:  # check if ability in slot
-			selec1 = Global.inv.abilities[slotnum]
+		if Global.inv[slotnum]:  # check if ability in slot
+			selec1 = Global.inv[slotnum]
 			num1 = slotnum
 			slots[slotnum].blink()
 			step += 1  # go to next step when ability in slot
 			
 			
 	else:
-		Global.inv.abilities[num1] = Global.inv.abilities[slotnum]  # 1st selected ability into new selected
-		Global.inv.abilities[slotnum] = selec1  # new selected is the 1st selected
+		Global.inv[num1] = Global.inv[slotnum]  # 1st selected ability into new selected
+		Global.inv[slotnum] = selec1  # new selected is the 1st selected
 		step = 1
 		update_slots()

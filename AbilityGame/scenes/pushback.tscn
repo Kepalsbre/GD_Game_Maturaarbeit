@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://v1k5n2p4aqm"]
+
+[ext_resource type="Script" path="res://scripts/pushback.gd" id="1_4hllh"]
+[ext_resource type="Texture2D" uid="uid://myky55wf6w83" path="res://art/abilities/knockback_ability_ingame.png" id="1_m8n3y"]
+[ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="2_rg1b0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_agfli"]
+radius = 16.0
+
+[node name="Pushback" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_4hllh")
+
+[node name="KnockImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_m8n3y")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("2_rg1b0")
+
+[node name="collision" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_agfli")
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
