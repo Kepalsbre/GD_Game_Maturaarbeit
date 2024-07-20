@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://14w1yhbvtxgk"]
+[gd_scene load_steps=26 format=3 uid="uid://14w1yhbvtxgk"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kbxrs"]
 [ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player/player_normal.png" id="2_jscfx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="5_156dx"]
 [ext_resource type="PackedScene" uid="uid://dgtjr83q81pyl" path="res://scenes/sword.tscn" id="6_vqgxr"]
 [ext_resource type="Script" path="res://compo/hp_bar_component.gd" id="7_iug8f"]
+[ext_resource type="Script" path="res://inventory/sloteq.gd" id="9_cfpf0"]
 [ext_resource type="PackedScene" uid="uid://xab8jthf0ptd" path="res://inventory/inv_ui.tscn" id="9_qogml"]
 [ext_resource type="PackedScene" uid="uid://v1k5n2p4aqm" path="res://scenes/pushback.tscn" id="9_sqhrd"]
 
@@ -222,11 +223,18 @@ scale = Vector2(4, 4)
 [node name="EquippedAbilities" type="Node2D" parent="."]
 
 [node name="Slot1" type="Node2D" parent="EquippedAbilities"]
+script = ExtResource("9_cfpf0")
+
+[node name="Pushback" parent="EquippedAbilities/Slot1" instance=ExtResource("9_sqhrd")]
 
 [node name="Slot2" type="Node2D" parent="EquippedAbilities"]
+script = ExtResource("9_cfpf0")
+slot_number = 2
 
 [node name="Slot3" type="Node2D" parent="EquippedAbilities"]
-
-[node name="Pushback" parent="EquippedAbilities/Slot3" instance=ExtResource("9_sqhrd")]
+script = ExtResource("9_cfpf0")
+slot_number = 3
 
 [node name="Slot4" type="Node2D" parent="EquippedAbilities"]
+script = ExtResource("9_cfpf0")
+slot_number = 4

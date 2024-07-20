@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var slot_2 = $EquippedAbilities/Slot2
 @onready var slot_3 = $EquippedAbilities/Slot3
 @onready var slot_4 = $EquippedAbilities/Slot4
+@onready var equipped_abilities = $EquippedAbilities
 
 
 
