@@ -8,5 +8,6 @@ var inv: Array = preload("res://inventory/playerinv.tres").abilities
 
 
 var ability_dict = {
-	"Pushback" : preload("res://scenes/pushback.tscn")
+	"Pushback" : preload("res://scenes/pushback.tscn"),
+	"Superdash" : preload("res://scenes/superdash.tscn")
 }

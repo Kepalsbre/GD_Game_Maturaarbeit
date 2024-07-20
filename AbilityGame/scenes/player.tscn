@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://14w1yhbvtxgk"]
+[gd_scene load_steps=25 format=3 uid="uid://14w1yhbvtxgk"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kbxrs"]
 [ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player/player_normal.png" id="2_jscfx"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://compo/hp_bar_component.gd" id="7_iug8f"]
 [ext_resource type="Script" path="res://inventory/sloteq.gd" id="9_cfpf0"]
 [ext_resource type="PackedScene" uid="uid://xab8jthf0ptd" path="res://inventory/inv_ui.tscn" id="9_qogml"]
-[ext_resource type="PackedScene" uid="uid://v1k5n2p4aqm" path="res://scenes/pushback.tscn" id="9_sqhrd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpbdo"]
 atlas = ExtResource("3_h0ifn")
@@ -218,14 +217,11 @@ offset_left = 290.0
 offset_top = -255.0
 offset_right = 460.0
 offset_bottom = -85.0
-scale = Vector2(4, 4)
 
 [node name="EquippedAbilities" type="Node2D" parent="."]
 
 [node name="Slot1" type="Node2D" parent="EquippedAbilities"]
 script = ExtResource("9_cfpf0")
-
-[node name="Pushback" parent="EquippedAbilities/Slot1" instance=ExtResource("9_sqhrd")]
 
 [node name="Slot2" type="Node2D" parent="EquippedAbilities"]
 script = ExtResource("9_cfpf0")

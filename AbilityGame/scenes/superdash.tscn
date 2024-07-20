@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://crtvxnxoac20a"]
+
+[ext_resource type="Texture2D" uid="uid://c5434wb4x2m01" path="res://art/abilities/superdash_ability_ingame.png" id="1_8hfcp"]
+[ext_resource type="Script" path="res://scripts/superdash.gd" id="1_ukmyj"]
+[ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="2_c1s0x"]
+[ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player/player_normal.png" id="4_k7sej"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kqcg"]
+atlas = ExtResource("1_8hfcp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_727ll"]
+atlas = ExtResource("1_8hfcp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbf40"]
+atlas = ExtResource("1_8hfcp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvbd3"]
+atlas = ExtResource("1_8hfcp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6pvw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kqcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_727ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbf40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvbd3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oek5g"]
+radius = 18.0011
+
+[node name="Superdash" type="Node2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_ukmyj")
+
+[node name="DashAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 6)
+sprite_frames = SubResource("SpriteFrames_o6pvw")
+frame_progress = 0.380399
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("2_c1s0x")
+
+[node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_oek5g")
+
+[node name="DashParticles" type="CPUParticles2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+texture_filter = 1
+scale = Vector2(1, 1)
+emitting = false
+amount = 12
+lifetime = 0.3
+texture = ExtResource("4_k7sej")
+gravity = Vector2(0, 0)
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

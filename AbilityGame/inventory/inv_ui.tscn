@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://xab8jthf0ptd"]
+[gd_scene load_steps=6 format=3 uid="uid://xab8jthf0ptd"]
 
 [ext_resource type="Script" path="res://inventory/inv_ui.gd" id="1_owl5n"]
 [ext_resource type="Texture2D" uid="uid://dqrswfo37h5hb" path="res://art/inventory/inventory_background.png" id="2_ykka6"]
 [ext_resource type="PackedScene" uid="uid://d1dlqsnhss0oa" path="res://inventory/inv_ui_slot.tscn" id="3_em5w7"]
 [ext_resource type="Texture2D" uid="uid://b4jgem824u34l" path="res://art/inventory/inventory_equip_slot.png" id="4_xlni7"]
+[ext_resource type="FontFile" uid="uid://dthdwesvq0dpa" path="res://art/joystix monospace.otf" id="5_1vk0l"]
 
 [node name="InvUI" type="Control"]
 custom_minimum_size = Vector2(170, 170)
@@ -21,6 +22,7 @@ script = ExtResource("1_owl5n")
 layout_mode = 0
 offset_right = 170.0
 offset_bottom = 170.0
+scale = Vector2(4, 4)
 texture = ExtResource("2_ykka6")
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
@@ -89,3 +91,30 @@ slot_texture = ExtResource("4_xlni7")
 [node name="InvUiSlotEq4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_em5w7")]
 layout_mode = 2
 slot_texture = ExtResource("4_xlni7")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -189.0
+offset_right = 95.0
+offset_bottom = -178.0
+scale = Vector2(16, 16)
+texture = ExtResource("2_ykka6")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 108.0
+offset_top = -175.0
+offset_right = 2428.0
+offset_bottom = 560.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("5_1vk0l")
+theme_override_font_sizes/font_size = 125
+text = "Perform a faster dash that damages foes on its way."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

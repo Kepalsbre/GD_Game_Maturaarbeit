@@ -21,7 +21,8 @@ func _process(_delta):
 
 func damage(attack: Attack):
 	if get_parent().name == "Player":
-		if get_parent().is_dashing:
-			attack.attack_damage /= 2
-	
+		if get_parent().invincible:
+			attack.attack_damage = 0
+		elif get_parent().is_dashing:
+				attack.attack_damage /= 2
 	health -= attack.attack_damage

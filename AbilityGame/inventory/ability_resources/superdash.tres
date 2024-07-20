@@ -8,3 +8,4 @@ script = ExtResource("1_rfo8q")
 name = "Superdash"
 texture = ExtResource("2_mnt7n")
 uses = 2
+desc = "Perform a faster dash that damages foes on its way"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg5tvfyfkmnw"
-path="res://.godot/imported/superdash.png-ee40304bac7753eaa287d3088caa9209.ctex"
+uid="uid://c5434wb4x2m01"
+path="res://.godot/imported/superdash_ability_ingame.png-5f1e4f8145a9ef4223c826e31c4074f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/abilities/superdash.png"
-dest_files=["res://.godot/imported/superdash.png-ee40304bac7753eaa287d3088caa9209.ctex"]
+source_file="res://art/abilities/superdash_ability_ingame.png"
+dest_files=["res://.godot/imported/superdash_ability_ingame.png-5f1e4f8145a9ef4223c826e31c4074f9.ctex"]
 
 [params]
 

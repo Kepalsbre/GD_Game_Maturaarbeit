@@ -1,6 +1,7 @@
 extends Control
 
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
+@onready var description = $Description
 
 var step := 1
 var selec1 :InvAbility
@@ -15,6 +16,7 @@ func _ready():
 func update_slots():
 	for i in range(min(Global.inv.size(), slots.size())):
 		slots[i].update(Global.inv[i], i)
+	description.text = ""
 		
 		
 func update_equipped():
@@ -45,14 +47,12 @@ func open():
 	is_open = true
 
 func on_select(slotnum: int):
-	print(slotnum)
-	print(Global.inv[slotnum])
-	
 	if step == 1:
 		if Global.inv[slotnum]:  # check if ability in slot
 			selec1 = Global.inv[slotnum]
 			num1 = slotnum
 			slots[slotnum].blink()
+			description.text = Global.inv[slotnum].desc + " (" + str(Global.inv[slotnum].uses) + " uses per battle)"
 			step += 1  # go to next step when ability in slot
 			
 			

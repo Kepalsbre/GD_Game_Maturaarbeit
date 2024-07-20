@@ -10,17 +10,23 @@ extends CharacterBody2D
 @onready var slot_3 = $EquippedAbilities/Slot3
 @onready var slot_4 = $EquippedAbilities/Slot4
 @onready var equipped_abilities = $EquippedAbilities
+@onready var hitbox_collision = $HitboxComponent/CollisionShape2D
 
 
+@onready var dash_timer = $DashTimer
+@onready var dash_timeout = $DashTimer/DashTimeout
 
-var dash_speed: int:
-	get:
-		return speed + 2200
+
+var invincible = false
 var is_dashing := false
 var dash_velocity: Vector2
+var dash_speed : float
+var looking_at := 0  # 0 = right, 1 = rightdown, 2 = down, 3 = leftdown, 4 = left, 5 = leftup , 6 = up, 7 = rightup
+
 
 var knock_frames := 0
 var knockback_received := Vector2.ZERO
+
 
 
 func knock_back(knockforce, knock_pos):
@@ -32,17 +38,22 @@ func knock_back(knockforce, knock_pos):
 func _process(_delta):
 	label.text = str(health_component.health) + "/" + str(health_component.max_health)
 
+func start_dash(dashing_speed):
+		is_dashing = true
+		dash_velocity = velocity
+		dash_timer.start()
+		$DashParticles.emitting = true
+		dash_speed = dashing_speed
+		
+
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO # speed when pressing nothing
 	
 	# Inputs
 	velocity = Input.get_vector("left","right","up","down")
-	if Input.is_action_just_pressed("space") and not is_dashing and velocity.length() > 0 and $DashTimer/DashTimeout.is_stopped():
-		is_dashing = true
-		dash_velocity = velocity
-		$DashTimer.start()
-		$DashParticles.emitting = true
+	if Input.is_action_just_pressed("space") and not is_dashing and velocity.length() > 0 and dash_timeout.is_stopped():
+		start_dash(speed + 2200)
 	if Input.is_action_pressed("primary_mouse") and not sword.animation_player.is_playing():
 		sword.attack_started()
 	if Input.is_action_just_released("primary_mouse"):
@@ -64,12 +75,12 @@ func _physics_process(_delta):
 	
 	
 	
-	
 	# set velocity final
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 	else:
 		$WalkAnimations.stop()
+	
 	
 	# change walking animation for each direction
 	if velocity.x != 0 and velocity.y != 0:
@@ -77,33 +88,41 @@ func _physics_process(_delta):
 			$WalkAnimations.animation = "normal_dr_ul"
 			if velocity.x < 0:
 				$WalkAnimations.play_backwards()
+				looking_at = 5
 			else:
 				$WalkAnimations.play()
+				looking_at = 1
 		else:
 			$WalkAnimations.animation = "normal_dl_ur"
 			if velocity.x > 0:
 				$WalkAnimations.play_backwards()
+				looking_at = 7
 			else:
 				$WalkAnimations.play()
+				looking_at = 3
 	elif velocity.x != 0:
 		$WalkAnimations.animation = "normal_right_left"
 		if velocity.x < 0:
 			$WalkAnimations.play_backwards()
+			looking_at = 4
 		else:
 			$WalkAnimations.play()
+			looking_at = 0
 	elif velocity.y != 0:
 		$WalkAnimations.animation = "normal_up_down"
 		if velocity.y < 0:
-				$WalkAnimations.play_backwards()
+			$WalkAnimations.play_backwards()
+			looking_at = 6
 		else:
 			$WalkAnimations.play()
+			looking_at = 2
 	
 	# dash when dashing
 	if is_dashing:
 		velocity = dash_velocity.normalized() * dash_speed # apply dash
-		if $DashTimer.is_stopped(): 
+		if dash_timer.is_stopped(): 
 			is_dashing = false # stop dash
-			$DashTimer/DashTimeout.start() # start dash timeout
+			dash_timeout.start() # start dash timeout
 			$DashParticles.emitting = false
 	
 	if knock_frames != 0:
@@ -113,6 +132,7 @@ func _physics_process(_delta):
 		knockback_received = Vector2.ZERO
 	Global.player_pos = global_position
 	move_and_slide()
+
 
 
 

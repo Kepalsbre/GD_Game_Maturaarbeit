@@ -1,5 +1,6 @@
 extends Panel
 
+
 @onready var slot = $slot
 @export var slot_texture: Texture2D = preload("res://art/inventory/inventory_slot.png")
 @onready var ability_display = $CenterContainer/Panel/ability_display
@@ -12,7 +13,6 @@ signal selected
 func _ready():
 	slot.texture = slot_texture
 	selected.connect(get_parent().get_parent().get_parent().on_select)
-	
 func update(ability: InvAbility, slotnumber):
 	if !ability:
 		ability_display.visible = false

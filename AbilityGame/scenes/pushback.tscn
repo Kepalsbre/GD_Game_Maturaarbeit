@@ -19,7 +19,7 @@ collision_layer = 8
 collision_mask = 2
 script = ExtResource("2_rg1b0")
 
-[node name="collision" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_agfli")
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
