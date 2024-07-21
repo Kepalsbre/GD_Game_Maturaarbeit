@@ -26,6 +26,9 @@ func _on_hitbox_component_area_entered(area):
 		area.damage(attack)
 		queue_free()
 
+func fly_random():
+	target_pos = Vector2((randi_range(-20, 20) * 10000), (randi_range(-20, 20) * 10000))
+
 
 func _on_lifetime_timeout():
 	queue_free()

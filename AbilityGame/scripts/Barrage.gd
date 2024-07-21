@@ -41,7 +41,7 @@ func _physics_process(delta):
 			rocket.target_pos = Global.nearest_enemy.global_position
 	elif rockets.get_child_count() != 0 and not is_instance_valid(Global.nearest_enemy):
 		for rocket in rockets.get_children():
-			rocket.queue_free()
+			rocket.fly_random()
 
 func execute():
 	if !executing:
