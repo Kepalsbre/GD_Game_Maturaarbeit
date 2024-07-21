@@ -7,4 +7,4 @@
 
 [resource]
 script = ExtResource("1_dpcts")
-abilities = Array[Resource("res://inventory/inventory_ability.gd")]([ExtResource("1_x1oyv"), ExtResource("2_rh530"), ExtResource("3_hyef5"), null, null, null, null, null, null, null, null, null, null, null])
+abilities = Array[Resource("res://inventory/inventory_ability.gd")]([ExtResource("1_x1oyv"), ExtResource("2_rh530"), ExtResource("3_hyef5"), null, null, null, null, null, null, null, null, null, null, null, null, null])
