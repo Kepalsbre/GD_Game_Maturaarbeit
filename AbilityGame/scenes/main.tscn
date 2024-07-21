@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpmpj0rn60cnp"]
+[gd_scene load_steps=5 format=3 uid="uid://dpmpj0rn60cnp"]
 
 [ext_resource type="PackedScene" uid="uid://dymvai80iri3" path="res://scenes/levels/level_1.tscn" id="1_o2y6u"]
 [ext_resource type="PackedScene" uid="uid://14w1yhbvtxgk" path="res://scenes/player.tscn" id="1_rhsj6"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_wwjlx"]
 [ext_resource type="PackedScene" uid="uid://14r6tbaldkb3" path="res://scenes/spinner_enemy.tscn" id="3_ak5ec"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_wwjlx")
 
 [node name="Map" type="Node2D" parent="."]
 

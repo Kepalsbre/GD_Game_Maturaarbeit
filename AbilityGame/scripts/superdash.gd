@@ -16,7 +16,7 @@ func _ready():
 	collision.disabled = true
 	
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if executing:
 		if player.dash_timer.is_stopped():
 			dash_animation.visible = false

@@ -8,4 +8,4 @@ script = ExtResource("1_eexdi")
 name = "Pushback"
 texture = ExtResource("2_8a1co")
 uses = 2
-desc = "Unleash a big ring that knocks foes away"
+desc = "Unleash a big wave that knocks foes away"

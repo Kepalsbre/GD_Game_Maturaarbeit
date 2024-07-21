@@ -21,13 +21,17 @@ func update_slots():
 		
 func update_equipped():
 	var player = get_parent()
-	for slot in player.equipped_abilities.get_children():
-		if Global.inv[slot.slot_number + 11] and slot.get_child_count() == 0:
-			var inst_ability = Global.ability_dict[Global.inv[slot.slot_number + 11].name].instantiate()
+	for slot in player.equipped_abilities.get_children():  # check each equipped slot
+		if Global.inv[slot.slot_number + 11] and slot.get_child_count() == 0:  # if ability in inventory at slot and no ability equipped in slot
+			var inst_ability = Global.ability_dict[Global.inv[slot.slot_number + 11].name].instantiate() 
 			slot.add_child(inst_ability)
 		elif !Global.inv[slot.slot_number + 11] and slot.get_child_count() != 0:
 			slot.get_child(0).queue_free()
 			
+		elif Global.inv[slot.slot_number + 11] and slot.get_child_count() != 0:
+			slot.get_child(0).queue_free()
+			var inst_ability = Global.ability_dict[Global.inv[slot.slot_number + 11].name].instantiate() 
+			slot.add_child(inst_ability)
 
 		
 func _process(_delta):

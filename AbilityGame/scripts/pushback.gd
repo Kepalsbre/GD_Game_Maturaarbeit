@@ -11,7 +11,7 @@ func _ready():
 	knock_image.visible = false
 	collision.disabled = true
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if executing:
 		
 		if exeframes == 10:

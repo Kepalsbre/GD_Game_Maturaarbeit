@@ -64,7 +64,6 @@ shape = SubResource("CircleShape2D_oek5g")
 [node name="DashParticles" type="CPUParticles2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
 texture_filter = 1
-scale = Vector2(1, 1)
 emitting = false
 amount = 12
 lifetime = 0.3
