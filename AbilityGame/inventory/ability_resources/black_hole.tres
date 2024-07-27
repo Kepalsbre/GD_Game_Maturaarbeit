@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvAbility" load_steps=3 format=3 uid="uid://logcucnafrx7"]
+
+[ext_resource type="Script" path="res://inventory/inventory_ability.gd" id="1_tg647"]
+[ext_resource type="Texture2D" uid="uid://ccu1ik262wjea" path="res://art/abilities/black_hole_ability.png" id="2_eix6o"]
+
+[resource]
+script = ExtResource("1_tg647")
+name = "Black Hole"
+texture = ExtResource("2_eix6o")
+uses = 1
+desc = "write here"

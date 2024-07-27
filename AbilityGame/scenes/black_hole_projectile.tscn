@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://dyhkudqeyf33d"]
+
+[ext_resource type="Texture2D" uid="uid://b6jvl1c6vbfky" path="res://art/abilities/black_hole_ingame.png" id="1_nbbwi"]
+[ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="2_6gcah"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxd8o"]
+atlas = ExtResource("1_nbbwi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k87u4"]
+atlas = ExtResource("1_nbbwi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dthf"]
+atlas = ExtResource("1_nbbwi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwqcg"]
+atlas = ExtResource("1_nbbwi")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwlx5"]
+atlas = ExtResource("1_nbbwi")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk0l7"]
+atlas = ExtResource("1_nbbwi")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dni8f"]
+atlas = ExtResource("1_nbbwi")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nlxdl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxd8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k87u4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dthf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwqcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwlx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk0l7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dni8f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_egv1y"]
+radius = 15.0
+
+[node name="BlackHoleProjectile" type="Node2D"]
+
+[node name="HoleImage" type="AnimatedSprite2D" parent="."]
+position = Vector2(35, 0)
+sprite_frames = SubResource("SpriteFrames_nlxdl")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("2_6gcah")
+
+[node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(35, 0)
+shape = SubResource("CircleShape2D_egv1y")

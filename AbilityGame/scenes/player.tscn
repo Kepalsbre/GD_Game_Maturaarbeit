@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://14w1yhbvtxgk"]
+[gd_scene load_steps=26 format=3 uid="uid://14w1yhbvtxgk"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kbxrs"]
 [ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player/player_normal.png" id="2_jscfx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="5_156dx"]
 [ext_resource type="PackedScene" uid="uid://dgtjr83q81pyl" path="res://scenes/sword.tscn" id="6_vqgxr"]
 [ext_resource type="Script" path="res://compo/hp_bar_component.gd" id="7_iug8f"]
+[ext_resource type="PackedScene" uid="uid://ci3cd15ouoisi" path="res://scenes/player_ui.tscn" id="8_w2e36"]
 [ext_resource type="Script" path="res://inventory/sloteq.gd" id="9_cfpf0"]
 [ext_resource type="PackedScene" uid="uid://xab8jthf0ptd" path="res://inventory/inv_ui.tscn" id="9_qogml"]
 
@@ -214,9 +215,11 @@ vertical_alignment = 1
 
 [node name="InvUI" parent="." instance=ExtResource("9_qogml")]
 offset_left = 290.0
-offset_top = -255.0
+offset_top = -285.0
 offset_right = 460.0
-offset_bottom = -85.0
+offset_bottom = -115.0
+
+[node name="PlayerUI" parent="." instance=ExtResource("8_w2e36")]
 
 [node name="EquippedAbilities" type="Node2D" parent="."]
 

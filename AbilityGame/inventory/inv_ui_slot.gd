@@ -13,6 +13,7 @@ signal selected
 func _ready():
 	slot.texture = slot_texture
 	selected.connect(get_parent().get_parent().get_parent().on_select)
+
 func update(ability: InvAbility, slotnumber):
 	if !ability:
 		ability_display.visible = false

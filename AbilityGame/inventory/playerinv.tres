@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=5 format=3 uid="uid://sxbyc07i2n87"]
+[gd_resource type="Resource" script_class="Inv" load_steps=6 format=3 uid="uid://sxbyc07i2n87"]
 
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="1_dpcts"]
 [ext_resource type="Resource" uid="uid://cdk3jcs7ud7cg" path="res://inventory/ability_resources/pushback.tres" id="1_x1oyv"]
 [ext_resource type="Resource" uid="uid://bgqj8a0io8wyb" path="res://inventory/ability_resources/superdash.tres" id="2_rh530"]
 [ext_resource type="Resource" uid="uid://fql1j7myv46d" path="res://inventory/ability_resources/barrage.tres" id="3_hyef5"]
+[ext_resource type="Resource" uid="uid://logcucnafrx7" path="res://inventory/ability_resources/black_hole.tres" id="4_mdu2n"]
 
 [resource]
 script = ExtResource("1_dpcts")
-abilities = Array[Resource("res://inventory/inventory_ability.gd")]([ExtResource("1_x1oyv"), ExtResource("2_rh530"), ExtResource("3_hyef5"), null, null, null, null, null, null, null, null, null, null, null, null, null])
+abilities = Array[Resource("res://inventory/inventory_ability.gd")]([ExtResource("1_x1oyv"), ExtResource("2_rh530"), ExtResource("3_hyef5"), ExtResource("4_mdu2n"), null, null, null, null, null, null, null, null, null, null, null, null])

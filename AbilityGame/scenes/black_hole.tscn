@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmk45xjyxqgv4"]
+
+[ext_resource type="Script" path="res://scripts/black_hole.gd" id="1_tv08l"]
+
+[node name="BlackHoleSpawner" type="Node2D"]
+script = ExtResource("1_tv08l")
+damage = null
+knockback = null

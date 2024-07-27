@@ -3,6 +3,7 @@ extends Control
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 @onready var description = $Description
 
+
 var step := 1
 var selec1 :InvAbility
 var num1 :int
@@ -32,15 +33,14 @@ func update_equipped():
 			slot.get_child(0).queue_free()
 			var inst_ability = Global.ability_dict[Global.inv[slot.slot_number + 11].name].instantiate() 
 			slot.add_child(inst_ability)
-
-		
+			
+			
 func _process(_delta):
-	if Input.is_action_just_pressed("i"):
+	if Input.is_action_just_pressed("i") or Input.is_action_just_pressed("esc") and is_open:
 		if is_open:
 			close()
 		else:
 			open()
-
 
 func close():
 	visible = false
@@ -66,4 +66,5 @@ func on_select(slotnum: int):
 		step = 1
 		update_slots()
 		update_equipped()
-		
+
+	

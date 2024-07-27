@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci3cd15ouoisi"]
+
+[ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_2qiig"]
+[ext_resource type="PackedScene" uid="uid://iejrobjxl7f1" path="res://scenes/ui_ability_slot.tscn" id="1_jl5l8"]
+
+[node name="PlayerUI" type="CanvasLayer"]
+script = ExtResource("1_2qiig")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 443.0
+offset_top = 311.0
+offset_right = 629.0
+offset_bottom = 351.0
+theme_override_constants/separation = 50
+
+[node name="UiAbilitySlot" parent="HBoxContainer" instance=ExtResource("1_jl5l8")]
+layout_mode = 2
+control_key_text = "rmb"
+
+[node name="UiAbilitySlot2" parent="HBoxContainer" instance=ExtResource("1_jl5l8")]
+layout_mode = 2
+control_key_text = "shift"
+
+[node name="UiAbilitySlot3" parent="HBoxContainer" instance=ExtResource("1_jl5l8")]
+layout_mode = 2
+control_key_text = "e"
+
+[node name="UiAbilitySlot4" parent="HBoxContainer" instance=ExtResource("1_jl5l8")]
+layout_mode = 2
+control_key_text = "q"
