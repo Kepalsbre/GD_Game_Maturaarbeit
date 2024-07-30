@@ -4,5 +4,7 @@
 
 [node name="BlackHoleSpawner" type="Node2D"]
 script = ExtResource("1_tv08l")
-damage = null
-knockback = null
+
+[node name="Node" type="Node" parent="."]
+
+[node name="BlackHoles" type="Node2D" parent="Node"]

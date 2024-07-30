@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyhkudqeyf33d"]
+[gd_scene load_steps=13 format=3 uid="uid://dyhkudqeyf33d"]
 
 [ext_resource type="Texture2D" uid="uid://b6jvl1c6vbfky" path="res://art/abilities/black_hole_ingame.png" id="1_nbbwi"]
+[ext_resource type="Script" path="res://scripts/black_hole_projectile.gd" id="1_van68"]
 [ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="2_6gcah"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxd8o"]
@@ -34,7 +35,7 @@ region = Rect2(192, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlxdl"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_kxd8o")
 }, {
 "duration": 1.0,
@@ -61,17 +62,26 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_egv1y"]
-radius = 15.0
+radius = 25.0
 
 [node name="BlackHoleProjectile" type="Node2D"]
+position = Vector2(240, 0)
+scale = Vector2(15, 15)
+script = ExtResource("1_van68")
 
 [node name="HoleImage" type="AnimatedSprite2D" parent="."]
-position = Vector2(35, 0)
 sprite_frames = SubResource("SpriteFrames_nlxdl")
+autoplay = "default"
+frame = 5
+frame_progress = 0.992077
 
 [node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("2_6gcah")
 
 [node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(35, 0)
 shape = SubResource("CircleShape2D_egv1y")
+
+[connection signal="frame_changed" from="HoleImage" to="." method="_on_hole_image_frame_changed"]
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

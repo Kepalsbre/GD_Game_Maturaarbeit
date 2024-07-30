@@ -8,4 +8,4 @@ script = ExtResource("1_tg647")
 name = "Black Hole"
 texture = ExtResource("2_eix6o")
 uses = 1
-desc = "write here"
+desc = "Send out an enemy attracting self-destruct orb"
