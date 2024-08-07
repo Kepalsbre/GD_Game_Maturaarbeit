@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpmpj0rn60cnp"]
+[gd_scene load_steps=6 format=3 uid="uid://dpmpj0rn60cnp"]
 
 [ext_resource type="PackedScene" uid="uid://dymvai80iri3" path="res://scenes/levels/level_1.tscn" id="1_o2y6u"]
 [ext_resource type="PackedScene" uid="uid://14w1yhbvtxgk" path="res://scenes/player.tscn" id="1_rhsj6"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_wwjlx"]
 [ext_resource type="PackedScene" uid="uid://14r6tbaldkb3" path="res://scenes/spinner_enemy.tscn" id="3_ak5ec"]
+[ext_resource type="PackedScene" uid="uid://bf6st2h5ud8xf" path="res://scenes/slinger_enemy.tscn" id="4_mo040"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wwjlx")
@@ -59,5 +60,8 @@ position = Vector2(2073, 102)
 
 [node name="SpinnerEnemy10" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(1970, -303)
+
+[node name="SlingerEnemy" parent="Enemies" instance=ExtResource("4_mo040")]
+position = Vector2(98, 555)
 
 [node name="Player" parent="." instance=ExtResource("1_rhsj6")]

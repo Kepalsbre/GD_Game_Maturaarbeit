@@ -1,0 +1,157 @@
+[gd_scene load_steps=22 format=3 uid="uid://bf6st2h5ud8xf"]
+
+[ext_resource type="Texture2D" uid="uid://tvhfyofxvu8y" path="res://art/enemy/slinger_idle.png" id="1_ek2x0"]
+[ext_resource type="Script" path="res://scripts/slinger_enemy.gd" id="1_hawvo"]
+[ext_resource type="Texture2D" uid="uid://dbytoftacmf02" path="res://art/enemy/slinger_attack_animation.png" id="2_uouyk"]
+[ext_resource type="Texture2D" uid="uid://dgvpan2cldxvf" path="res://art/enemy/slinger_follow_animation.png" id="3_kll4i"]
+[ext_resource type="Script" path="res://compo/HealthCompoment.gd" id="4_xajwr"]
+[ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="5_h3inj"]
+[ext_resource type="Script" path="res://compo/hp_bar_component.gd" id="6_ktylt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5bl24"]
+radius = 13.0
+height = 28.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf4ft"]
+atlas = ExtResource("2_uouyk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv2vx"]
+atlas = ExtResource("2_uouyk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q7s1"]
+atlas = ExtResource("2_uouyk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynfwk"]
+atlas = ExtResource("2_uouyk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t0ja"]
+atlas = ExtResource("2_uouyk")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfh08"]
+atlas = ExtResource("3_kll4i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2ct5"]
+atlas = ExtResource("3_kll4i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b1vp"]
+atlas = ExtResource("3_kll4i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na7ls"]
+atlas = ExtResource("3_kll4i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwpgg"]
+atlas = ExtResource("3_kll4i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_513yj"]
+atlas = ExtResource("3_kll4i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m2yj1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf4ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv2vx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q7s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynfwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t0ja")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 35.0,
+"texture": SubResource("AtlasTexture_cfh08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2ct5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b1vp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_na7ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwpgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_513yj")
+}],
+"loop": true,
+"name": &"follow",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rwf1m"]
+radius = 13.0
+height = 34.0
+
+[node name="SlingerEnemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_hawvo")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(6, 6)
+shape = SubResource("CapsuleShape2D_5bl24")
+
+[node name="IdleImage" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("1_ek2x0")
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_m2yj1")
+animation = &"follow"
+frame_progress = 0.278758
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+scale = Vector2(6, 6)
+collision_layer = 2
+script = ExtResource("5_h3inj")
+health_component = NodePath("../HealthComponent")
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxComponent"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rwf1m")
+
+[node name="HpBarComponent" type="ProgressBar" parent="." node_paths=PackedStringArray("health_component")]
+offset_right = 4.0
+offset_bottom = 27.0
+script = ExtResource("6_ktylt")
+health_component = NodePath("../HealthComponent")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_xajwr")
+max_health = 120.0
+
+[node name="OffsetTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 15.0
+target_desired_distance = 300.0
+
+[connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
