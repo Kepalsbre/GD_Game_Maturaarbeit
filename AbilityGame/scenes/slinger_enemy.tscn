@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bf6st2h5ud8xf"]
+[gd_scene load_steps=26 format=3 uid="uid://bf6st2h5ud8xf"]
 
 [ext_resource type="Texture2D" uid="uid://tvhfyofxvu8y" path="res://art/enemy/slinger_idle.png" id="1_ek2x0"]
 [ext_resource type="Script" path="res://scripts/slinger_enemy.gd" id="1_hawvo"]
@@ -7,10 +7,10 @@
 [ext_resource type="Script" path="res://compo/HealthCompoment.gd" id="4_xajwr"]
 [ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="5_h3inj"]
 [ext_resource type="Script" path="res://compo/hp_bar_component.gd" id="6_ktylt"]
+[ext_resource type="Texture2D" uid="uid://b16su4dw1t7bd" path="res://art/enemy/enemy_projectile.png" id="8_e6lxc"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5bl24"]
-radius = 13.0
-height = 28.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmq6b"]
+radius = 11.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hf4ft"]
 atlas = ExtResource("2_uouyk")
@@ -106,6 +106,106 @@ animations = [{
 radius = 13.0
 height = 34.0
 
+[sub_resource type="Animation" id="Animation_adfby"]
+resource_name = "shoot"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyProjectileImage:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 48.1013]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyProjectileImage:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(5, 5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyProjectileImage:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.784314)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_f76mh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyProjectileImage:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyProjectileImage:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyProjectileImage:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eq5lk"]
+_data = {
+"RESET": SubResource("Animation_f76mh"),
+"shoot": SubResource("Animation_adfby")
+}
+
 [node name="SlingerEnemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 4
@@ -114,7 +214,7 @@ script = ExtResource("1_hawvo")
 [node name="Collision" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 scale = Vector2(6, 6)
-shape = SubResource("CapsuleShape2D_5bl24")
+shape = SubResource("CircleShape2D_qmq6b")
 
 [node name="IdleImage" type="Sprite2D" parent="."]
 scale = Vector2(6, 6)
@@ -139,12 +239,16 @@ shape = SubResource("CapsuleShape2D_rwf1m")
 [node name="HpBarComponent" type="ProgressBar" parent="." node_paths=PackedStringArray("health_component")]
 offset_right = 4.0
 offset_bottom = 27.0
+show_percentage = false
 script = ExtResource("6_ktylt")
 health_component = NodePath("../HealthComponent")
+pos_x = -48
+pos_y = 85
+scale_factor = 1.0
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_xajwr")
-max_health = 120.0
+max_health = 150.0
 
 [node name="OffsetTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -152,6 +256,16 @@ wait_time = 3.0
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 15.0
 target_desired_distance = 300.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eq5lk")
+}
+
+[node name="EnemyProjectileImage" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(80, 0)
+texture = ExtResource("8_e6lxc")
 
 [connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
