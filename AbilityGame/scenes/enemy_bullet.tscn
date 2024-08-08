@@ -11,6 +11,7 @@ radius = 4.0
 script = ExtResource("1_fda7g")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 8
 script = ExtResource("2_bpdiw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
