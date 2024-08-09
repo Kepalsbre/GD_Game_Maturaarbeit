@@ -7,22 +7,21 @@
 [ext_resource type="FontFile" uid="uid://dthdwesvq0dpa" path="res://art/joystix monospace.otf" id="5_1vk0l"]
 
 [node name="InvUI" type="Control"]
-custom_minimum_size = Vector2(170, 170)
+custom_minimum_size = Vector2(176, 176)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -470.0
-offset_bottom = -190.0
+offset_right = -464.0
+offset_bottom = -184.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_owl5n")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_right = 170.0
-offset_bottom = 170.0
-scale = Vector2(4, 4)
+offset_right = 176.0
+offset_bottom = 176.0
 texture = ExtResource("2_ykka6")
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
@@ -94,11 +93,11 @@ slot_texture = ExtResource("4_xlni7")
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 60.0
-offset_top = -189.0
-offset_right = 95.0
-offset_bottom = -178.0
-scale = Vector2(16, 16)
+offset_left = 8.0
+offset_top = -56.0
+offset_right = 48.0
+offset_bottom = -44.0
+scale = Vector2(4, 4)
 texture = ExtResource("2_ykka6")
 patch_margin_left = 4
 patch_margin_top = 4
@@ -107,12 +106,13 @@ patch_margin_bottom = 4
 
 [node name="Description" type="Label" parent="."]
 layout_mode = 0
-offset_left = 88.0
-offset_top = -160.0
-offset_right = 592.0
-offset_bottom = -40.0
+offset_left = 16.0
+offset_top = -48.0
+offset_right = 2896.0
+offset_bottom = 624.0
+scale = Vector2(0.05, 0.05)
 theme_override_fonts/font = ExtResource("5_1vk0l")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 120
 text = "Perform a faster dash that damages foes on its way."
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -21,7 +21,7 @@ func update_slots():
 		
 		
 func update_equipped():
-	var player = get_parent()
+	var player = get_parent().get_parent()
 	for slot in player.equipped_abilities.get_children():  # check each equipped slot
 		if Global.inv[slot.slot_number + 11] and slot.get_child_count() == 0:  # if ability in inventory at slot and no ability equipped in slot
 			var inst_ability = Global.ability_dict[Global.inv[slot.slot_number + 11].name].instantiate() 

@@ -2,7 +2,7 @@ extends Node2D
 
 var damage := 10.0
 var knockback := 0.0
-var speed := 1400
+var speed := 1350
 var velocity := Vector2.ZERO
 
 func _on_hitbox_component_area_entered(area):

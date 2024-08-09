@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://14w1yhbvtxgk"]
+[gd_scene load_steps=27 format=3 uid="uid://14w1yhbvtxgk"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kbxrs"]
 [ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player/player_normal.png" id="2_jscfx"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ci3cd15ouoisi" path="res://scenes/player_ui.tscn" id="8_w2e36"]
 [ext_resource type="Script" path="res://inventory/sloteq.gd" id="9_cfpf0"]
 [ext_resource type="PackedScene" uid="uid://xab8jthf0ptd" path="res://inventory/inv_ui.tscn" id="9_qogml"]
+[ext_resource type="FontFile" uid="uid://dthdwesvq0dpa" path="res://art/joystix monospace.otf" id="10_j5joy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpbdo"]
 atlas = ExtResource("3_h0ifn")
@@ -160,7 +161,8 @@ texture = ExtResource("2_jscfx")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 zoom = Vector2(0.3, 0.3)
-position_smoothing_speed = 8.0
+process_callback = 0
+position_smoothing_enabled = true
 rotation_smoothing_speed = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -185,21 +187,39 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_y3npq")
 
-[node name="HpBarComponent" type="ProgressBar" parent="." node_paths=PackedStringArray("health_component")]
-offset_top = -27.0
-offset_right = 4.0
+[node name="PlayerUI" parent="." instance=ExtResource("8_w2e36")]
+
+[node name="InvUI" parent="PlayerUI" instance=ExtResource("9_qogml")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -88.0
+offset_right = 88.0
+offset_bottom = 88.0
+
+[node name="HpBarComponent" type="ProgressBar" parent="PlayerUI" node_paths=PackedStringArray("health_component")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 66.0
+grow_vertical = 0
+pivot_offset = Vector2(30, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 show_percentage = false
 script = ExtResource("7_iug8f")
-health_component = NodePath("../HealthComponent")
-lenght = 450
-height = 50
-pos_x = -1020
-pos_y = 510
-scale_factor = 1.0
+health_component = NodePath("../../HealthComponent")
+lenght = 300
+height = 30
+use_position = false
+pos_x = 0
+pos_y = 0
 fill_color = "#2fba00"
 
-[node name="Label" type="Label" parent="HpBarComponent"]
+[node name="Label" type="Label" parent="PlayerUI/HpBarComponent"]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = 15
@@ -208,18 +228,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("10_j5joy")
+theme_override_font_sizes/font_size = 20
 text = "HP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InvUI" parent="." instance=ExtResource("9_qogml")]
-offset_left = 290.0
-offset_top = -285.0
-offset_right = 460.0
-offset_bottom = -115.0
-
-[node name="PlayerUI" parent="." instance=ExtResource("8_w2e36")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="EquippedAbilities" type="Node2D" parent="."]
 
