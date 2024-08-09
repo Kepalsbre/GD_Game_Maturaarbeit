@@ -18,7 +18,7 @@ enum state {idle, seek, attack}
 
 
 var player_pos
-var speed : int = randi_range(500, 580)
+var speed : int = randi_range(400, 480)
 var offset : Vector2
 var knockback_received := Vector2.ZERO
 var awake := false
