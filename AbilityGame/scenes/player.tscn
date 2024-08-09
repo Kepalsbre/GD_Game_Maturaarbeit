@@ -162,7 +162,7 @@ texture = ExtResource("2_jscfx")
 [node name="PlayerCamera" type="Camera2D" parent="."]
 zoom = Vector2(0.3, 0.3)
 process_callback = 0
-position_smoothing_enabled = true
+position_smoothing_speed = 8.0
 rotation_smoothing_speed = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -199,6 +199,8 @@ offset_left = -88.0
 offset_top = -88.0
 offset_right = 88.0
 offset_bottom = 88.0
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(88, 0)
 
 [node name="HpBarComponent" type="ProgressBar" parent="PlayerUI" node_paths=PackedStringArray("health_component")]
 anchors_preset = 2

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://borppq2pjlcu6"]
+
+[ext_resource type="Script" path="res://scripts/rock_throw.gd" id="1_pc364"]
+
+[node name="RockThrow" type="Node2D"]
+script = ExtResource("1_pc364")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Rocks" type="Node2D" parent="Node"]

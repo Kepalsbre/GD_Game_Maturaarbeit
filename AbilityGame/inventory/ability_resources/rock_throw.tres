@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvAbility" load_steps=3 format=3 uid="uid://cua8ak3750wxg"]
+
+[ext_resource type="Script" path="res://inventory/inventory_ability.gd" id="1_wdkok"]
+[ext_resource type="Texture2D" uid="uid://bc05k4gkhew3e" path="res://art/abilities/rock_throw_ability.png" id="2_gpryu"]
+
+[resource]
+script = ExtResource("1_wdkok")
+name = "Rock Throw"
+texture = ExtResource("2_gpryu")
+uses = 5
+desc = "Throw a rock"
