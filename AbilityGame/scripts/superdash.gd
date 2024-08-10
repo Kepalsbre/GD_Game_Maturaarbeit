@@ -46,5 +46,6 @@ func execute():
 		player.hitbox_collision.disabled = true
 		dash_particles.emitting = true
 		executing = true
+		$AudioStreamPlayer2D.play()
 		
 

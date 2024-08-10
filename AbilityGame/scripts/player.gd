@@ -54,6 +54,7 @@ func _physics_process(_delta):
 	velocity = Input.get_vector("left","right","up","down")
 	if Input.is_action_just_pressed("space") and not is_dashing and velocity.length() > 0 and dash_timeout.is_stopped():
 		start_dash(speed + 2200)
+		$DashSound.play()
 	if Input.is_action_pressed("primary_mouse") and not sword.animation_player.is_playing():
 		sword.attack_started()
 	if Input.is_action_just_released("primary_mouse"):

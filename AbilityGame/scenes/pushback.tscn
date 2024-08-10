@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://v1k5n2p4aqm"]
+[gd_scene load_steps=6 format=3 uid="uid://v1k5n2p4aqm"]
 
 [ext_resource type="Script" path="res://scripts/pushback.gd" id="1_4hllh"]
 [ext_resource type="Texture2D" uid="uid://myky55wf6w83" path="res://art/abilities/knockback_ability_ingame.png" id="1_m8n3y"]
 [ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="2_rg1b0"]
+[ext_resource type="AudioStream" uid="uid://ceig1if50xqmx" path="res://audio/ability/pushback.wav" id="4_sq54s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_agfli"]
 radius = 16.0
@@ -21,5 +22,9 @@ script = ExtResource("2_rg1b0")
 
 [node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_agfli")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_sq54s")
+max_polyphony = 3
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

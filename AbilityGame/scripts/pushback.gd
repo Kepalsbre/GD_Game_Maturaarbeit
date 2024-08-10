@@ -38,4 +38,5 @@ func execute():
 		knock_image.visible = true
 		collision.disabled = false
 		executing = true
+		$AudioStreamPlayer2D.play()
 

@@ -7,6 +7,10 @@ var target_pos := Vector2.ZERO
 @export var speed: int = randi_range(1000, 2000)
 var velocity := Vector2.UP
 
+@onready var explosion = $Explosion
+@onready var start = $Start
+
+
 func _ready():
 	$CPUParticles2D.emitting = true
 	
@@ -24,11 +28,21 @@ func _on_hitbox_component_area_entered(area):
 		attack.knockback_force = knockback
 		attack.attack_position = global_position
 		area.damage(attack)
-		queue_free()
+		free_queue()
+		
 
 func fly_random():
 	target_pos = Vector2((randi_range(-20, 20) * 10000), (randi_range(-20, 20) * 10000))
 
 
 func _on_lifetime_timeout():
+	free_queue()
+
+func free_queue():
+	hide()
+	explosion.play()
+	await explosion.finished
+	if start.playing == true:
+		await start.finished
 	queue_free()
+	
