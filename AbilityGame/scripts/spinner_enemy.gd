@@ -32,6 +32,7 @@ func _ready():
 		enemy.wake_up.connect(_on_wake_up)
 	health_component.max_health *= Global.enemy_hp_multiplier
 	health_component.health *= Global.enemy_hp_multiplier
+	navigation_agent_2d.max_speed = speed
 	
 	
 func _physics_process(_delta):
@@ -52,7 +53,11 @@ func _physics_process(_delta):
 			navigation_agent_2d.target_position = player_pos + offset
 			var current_agent_position = global_position
 			var next_agent_position = navigation_agent_2d.get_next_path_position()
-			velocity = current_agent_position.direction_to(next_agent_position) * speed + knockback_received
+			
+			var new_velocity = current_agent_position.direction_to(next_agent_position) * speed + knockback_received
+			navigation_agent_2d.set_velocity(new_velocity)
+			
+			
 		state.attack:
 			velocity = (player_pos - position)
 			velocity = velocity.normalized() * speed
@@ -100,6 +105,7 @@ func _on_wake_up():
 
 func _on_navigation_agent_2d_target_reached():
 	current_state = state.attack
+
 
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):

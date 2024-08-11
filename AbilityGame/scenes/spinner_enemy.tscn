@@ -100,7 +100,9 @@ wait_time = 3.0
 path_desired_distance = 15.0
 target_desired_distance = 200.0
 avoidance_enabled = true
-radius = 20.0
+radius = 35.0
+neighbor_distance = 120.0
+max_neighbors = 12
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]

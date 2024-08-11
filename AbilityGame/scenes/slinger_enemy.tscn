@@ -266,6 +266,12 @@ texture = ExtResource("8_e6lxc")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 15.0
 target_desired_distance = 300.0
+avoidance_enabled = true
+radius = 80.0
+neighbor_distance = 180.0
+max_neighbors = 12
+avoidance_priority = 0.57
 
 [connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

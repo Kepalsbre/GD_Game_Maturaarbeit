@@ -39,7 +39,7 @@ func _ready():
 	health_component.health *= Global.enemy_hp_multiplier
 	hp_bar_component.top_level = true
 	hp_bar_component.visible = false
-
+	navigation_agent_2d.max_speed = speed
 	
 	
 func _process(_delta):
@@ -63,7 +63,10 @@ func _physics_process(delta):
 			navigation_agent_2d.target_position = player_pos + offset
 			var current_agent_position = global_position
 			var next_agent_position = navigation_agent_2d.get_next_path_position()
-			velocity = current_agent_position.direction_to(next_agent_position) * speed + knockback_received
+			
+			var new_velocity = current_agent_position.direction_to(next_agent_position) * speed + knockback_received
+			navigation_agent_2d.set_velocity(new_velocity)
+			
 		state.attack:
 			velocity = Vector2.ZERO
 			if position.distance_to(player_pos) > 1100:
@@ -118,3 +121,7 @@ func shoot():
 	var spawn_pos = enemy_projectile_image.global_position
 	get_parent().get_parent().get_node("EnemyProjectiles").add_child(create_bullet(spawn_pos))
 	
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	velocity = safe_velocity
