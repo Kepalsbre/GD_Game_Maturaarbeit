@@ -2,9 +2,11 @@ extends Node2D
 
 @onready var collision = $HitboxComponent/Collision
 @onready var hole_image = $HoleImage
+@onready var explosion = $Explosion
+
 
 var current_damage := 0.0
-var current_knockback := -2.5
+var current_knockback := -3.5
 var damage :float
 var knockback :float
 var speed :int 
@@ -13,6 +15,7 @@ var velocity :Vector2
 var exeframes := 0
 var hit_count := 0
 var cycles := 0
+var running := true
 
 func _ready():
 	velocity = position.direction_to(get_global_mouse_position())
@@ -21,21 +24,22 @@ func _ready():
 
 
 func _physics_process(delta):
-	global_position += velocity * speed * delta
-	
-	if hit_count > 1:
-		collision.set_deferred("disabled", true)
-		hit_count = 0
+	if running:
+		global_position += velocity * speed * delta
 		
-		if cycles == 6:
-			current_damage = damage
-			current_knockback = knockback
-		if cycles > 6:
-			queue_free()
-		
-	if hit_count == 1:
-		collision.set_deferred("disabled", false)
-		hit_count += 1
+		if hit_count > 1:
+			collision.set_deferred("disabled", true)
+			hit_count = 0
+			
+			if cycles == 6:
+				current_damage = damage
+				current_knockback = knockback
+			if cycles == 7:
+				free_queue()
+			
+		if hit_count == 1:
+			collision.set_deferred("disabled", false)
+			hit_count += 1
 	
 	
 
@@ -56,3 +60,12 @@ func _on_hole_image_frame_changed():
 		cycles += 1
 		exeframes = 0
 		
+func free_queue():
+	running = false
+	hide()
+	collision.set_deferred("disabled", true)
+	$Start.stop()
+	explosion.play()
+	await explosion.finished
+	queue_free()
+	

@@ -20,6 +20,8 @@ enum state {idle, seek, attack}
 const ENEMY_BULLET = preload("res://scenes/enemy_bullet.tscn")
 @onready var enemy_projectile_image = $EnemyProjectileImage
 @onready var hp_bar_component = $HpBarComponent
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
+
 
 
 var player_pos
@@ -125,3 +127,15 @@ func shoot():
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
+
+
+func _on_health_component_killed():
+	hide()
+	$HitboxComponent/Hitbox.set_deferred("disabled", true)
+	$Collision.set_deferred("disabled", true)
+	await audio_stream_player_2d.finished
+	queue_free()
+
+
+func _on_health_component_hitted():
+	audio_stream_player_2d.play()

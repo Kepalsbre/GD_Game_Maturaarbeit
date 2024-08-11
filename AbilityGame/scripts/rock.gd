@@ -27,7 +27,7 @@ func _on_hitbox_component_area_entered(area):
 
 
 func _on_lifetime_timeout():
-	free_queue()
+	queue_free()
 
 func free_queue():
 	hide()

@@ -19,7 +19,34 @@ script = ExtResource("1_wwjlx")
 position = Vector2(1567, 502)
 
 [node name="SpinnerEnemy3" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(1559, -340)
+position = Vector2(418, 2270)
+
+[node name="SpinnerEnemy15" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(3116, 2021)
+
+[node name="SpinnerEnemy17" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(3207, 2456)
+
+[node name="SpinnerEnemy18" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(4564, 2286)
+
+[node name="SpinnerEnemy19" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(4027, 2405)
+
+[node name="SpinnerEnemy4" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(5305, 2298)
+
+[node name="SpinnerEnemy7" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(4389, 1207)
+
+[node name="SpinnerEnemy8" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(4367, -206)
+
+[node name="SpinnerEnemy11" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(3580, 456)
+
+[node name="SpinnerEnemy14" parent="Enemies" instance=ExtResource("3_ak5ec")]
+position = Vector2(2880, -201)
 
 [node name="SpinnerEnemy5" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(1791, 658)
@@ -45,11 +72,17 @@ position = Vector2(1970, -303)
 [node name="SlingerEnemy" parent="Enemies" instance=ExtResource("4_mo040")]
 position = Vector2(181, 1309)
 
+[node name="SlingerEnemy5" parent="Enemies" instance=ExtResource("4_mo040")]
+position = Vector2(2580, 36)
+
+[node name="SlingerEnemy4" parent="Enemies" instance=ExtResource("4_mo040")]
+position = Vector2(4118, 1286)
+
 [node name="SlingerEnemy2" parent="Enemies" instance=ExtResource("4_mo040")]
-position = Vector2(576, 1881)
+position = Vector2(915, 2226)
 
 [node name="SlingerEnemy3" parent="Enemies" instance=ExtResource("4_mo040")]
-position = Vector2(37, 1779)
+position = Vector2(2424, 2249)
 
 [node name="EnemyProjectiles" type="Node2D" parent="."]
 

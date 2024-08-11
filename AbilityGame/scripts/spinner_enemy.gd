@@ -15,6 +15,7 @@ enum state {idle, seek, attack}
 @onready var offset_timer = $OffsetTimer
 @onready var health_component = $HealthComponent
 @onready var navigation_agent_2d = $NavigationAgent2D
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 
 var player_pos
@@ -110,3 +111,16 @@ func _on_navigation_agent_2d_target_reached():
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
+
+
+func _on_health_component_hitted():
+	audio_stream_player_2d.play()
+
+
+func _on_health_component_killed():
+	hide()
+	$HitboxComponent/Hitbox.set_deferred("disabled", true)
+	$Collision.set_deferred("disabled", true)
+	await audio_stream_player_2d.finished
+	queue_free()
+

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuvj05qrij8mr"]
+[gd_scene load_steps=7 format=3 uid="uid://cuvj05qrij8mr"]
 
 [ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="1_chmfs"]
 [ext_resource type="Script" path="res://scripts/rock.gd" id="1_qyuhj"]
 [ext_resource type="Texture2D" uid="uid://cdrjek18m6urb" path="res://art/abilities/rock.png" id="2_yohuo"]
-[ext_resource type="AudioStream" uid="uid://yw0jqa6fecl7" path="res://sounds/ability/explosion.wav" id="4_two5o"]
+[ext_resource type="AudioStream" uid="uid://ceig1if50xqmx" path="res://audio/ability/pushback.wav" id="4_54a8r"]
+[ext_resource type="AudioStream" uid="uid://c8qpwrudy063f" path="res://sounds/ability/rockstone.wav" id="5_wdxds"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxymh"]
 radius = 6.0
@@ -28,11 +29,14 @@ one_shot = true
 autostart = true
 
 [node name="Start" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_54a8r")
+pitch_scale = 2.5
 autoplay = true
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_two5o")
-pitch_scale = 0.28
+stream = ExtResource("5_wdxds")
+volume_db = 4.0
+pitch_scale = 0.75
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

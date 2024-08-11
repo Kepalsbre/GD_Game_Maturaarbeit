@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var black_holes = $Node/BlackHoles
-@export var damage := 45.0
+@export var damage := 50.0
 @export var knockback := 15.0
 var speed := 400
 const BLACK_HOLE_PROJECTILE = preload("res://scenes/black_hole_projectile.tscn")
@@ -17,5 +17,5 @@ func create_hole():
 
 
 func execute():
-	if not black_holes.get_child_count() > 0:
-		black_holes.add_child(create_hole())
+	#if not black_holes.get_child_count() > 0:
+	black_holes.add_child(create_hole())

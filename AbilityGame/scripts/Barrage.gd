@@ -20,7 +20,7 @@ func create_rocket(spawn_pos):
 	new_rocket.position = spawn_pos
 	return new_rocket
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if executing:
 		if exerockets == rocketcount:
 			exerockets = 0

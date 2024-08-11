@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bf6st2h5ud8xf"]
+[gd_scene load_steps=28 format=3 uid="uid://bf6st2h5ud8xf"]
 
 [ext_resource type="Texture2D" uid="uid://tvhfyofxvu8y" path="res://art/enemy/slinger_idle.png" id="1_ek2x0"]
 [ext_resource type="Script" path="res://scripts/slinger_enemy.gd" id="1_hawvo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="5_h3inj"]
 [ext_resource type="Script" path="res://compo/hp_bar_component.gd" id="6_ktylt"]
 [ext_resource type="Texture2D" uid="uid://b16su4dw1t7bd" path="res://art/enemy/enemy_projectile.png" id="8_e6lxc"]
+[ext_resource type="AudioStream" uid="uid://bihlv3hsoos8q" path="res://sounds/enemy/slinger/hit1.wav" id="9_fpoqc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qmq6b"]
 radius = 11.0
@@ -206,6 +207,12 @@ _data = {
 "shoot": SubResource("Animation_adfby")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ty0hc"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("9_fpoqc")
+stream_0/weight = 1.0
+
 [node name="SlingerEnemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 4
@@ -272,6 +279,12 @@ neighbor_distance = 180.0
 max_neighbors = 12
 avoidance_priority = 0.57
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ty0hc")
+volume_db = 3.0
+
+[connection signal="hitted" from="HealthComponent" to="." method="_on_health_component_hitted"]
+[connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 [connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

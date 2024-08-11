@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyhkudqeyf33d"]
+[gd_scene load_steps=15 format=3 uid="uid://dyhkudqeyf33d"]
 
 [ext_resource type="Texture2D" uid="uid://b6jvl1c6vbfky" path="res://art/abilities/black_hole_ingame.png" id="1_nbbwi"]
 [ext_resource type="Script" path="res://scripts/black_hole_projectile.gd" id="1_van68"]
 [ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="2_6gcah"]
+[ext_resource type="AudioStream" uid="uid://bxbe1njg6ygf" path="res://sounds/ability/wavesound.wav" id="4_ubcum"]
+[ext_resource type="AudioStream" uid="uid://chvpm4kwx8qey" path="res://sounds/ability/explosion_hole.wav" id="5_tiury"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxd8o"]
 atlas = ExtResource("1_nbbwi")
@@ -58,7 +60,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_egv1y"]
@@ -72,8 +74,7 @@ script = ExtResource("1_van68")
 [node name="HoleImage" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nlxdl")
 autoplay = "default"
-frame = 5
-frame_progress = 0.992077
+frame_progress = 0.829465
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 8
@@ -82,6 +83,17 @@ script = ExtResource("2_6gcah")
 
 [node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_egv1y")
+
+[node name="Start" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ubcum")
+volume_db = 10.0
+pitch_scale = 1.5
+autoplay = true
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_tiury")
+volume_db = 6.0
+pitch_scale = 1.5
 
 [connection signal="frame_changed" from="HoleImage" to="." method="_on_hole_image_frame_changed"]
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
