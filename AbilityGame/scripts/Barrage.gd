@@ -10,7 +10,7 @@ const ROCKET = preload("res://scenes/rocket.tscn")
 var exerockets := 0
 var executing = false
 
-var waitframes := 5
+var waitframes := 10
 var waitedframes := 0
 
 func create_rocket(spawn_pos):

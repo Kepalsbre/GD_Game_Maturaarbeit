@@ -19,3 +19,4 @@ func create_rock():
 
 func execute():
 	rocks.add_child(create_rock())
+	

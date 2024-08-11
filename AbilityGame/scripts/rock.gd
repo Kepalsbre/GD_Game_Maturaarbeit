@@ -7,6 +7,9 @@ var knockback := 1.0
 var speed := 1200
 var velocity := Vector2.ZERO
 
+@onready var hit = $Hit
+@onready var start = $Start
+
 
 func _physics_process(delta):
 	global_position += velocity * delta * speed
@@ -20,8 +23,18 @@ func _on_hitbox_component_area_entered(area):
 		attack.knockback_force = knockback
 		attack.attack_position = global_position
 		hitbox.damage(attack)
-		queue_free()
+		free_queue()
 
 
 func _on_lifetime_timeout():
+	free_queue()
+
+func free_queue():
+	hide()
+	$HitboxComponent/CollisionShape2D.set_deferred("disabled", true)
+	hit.play()
+	await hit.finished
+	if start.playing == true:
+		await start.finished
 	queue_free()
+	

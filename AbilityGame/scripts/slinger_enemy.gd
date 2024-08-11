@@ -39,6 +39,7 @@ func _ready():
 	health_component.health *= Global.enemy_hp_multiplier
 	hp_bar_component.top_level = true
 	hp_bar_component.visible = false
+
 	
 	
 func _process(_delta):

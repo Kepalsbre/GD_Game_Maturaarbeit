@@ -253,10 +253,6 @@ max_health = 150.0
 [node name="OffsetTimer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 15.0
-target_desired_distance = 300.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_eq5lk")
@@ -266,6 +262,10 @@ libraries = {
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(80, 0)
 texture = ExtResource("8_e6lxc")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 15.0
+target_desired_distance = 300.0
 
 [connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]

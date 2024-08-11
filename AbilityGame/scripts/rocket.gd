@@ -40,6 +40,7 @@ func _on_lifetime_timeout():
 
 func free_queue():
 	hide()
+	$HitboxComponent/CollisionShape2D.set_deferred("disabled", true)
 	explosion.play()
 	await explosion.finished
 	if start.playing == true:

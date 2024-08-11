@@ -33,6 +33,7 @@ func _ready():
 	health_component.max_health *= Global.enemy_hp_multiplier
 	health_component.health *= Global.enemy_hp_multiplier
 	
+	
 func _physics_process(_delta):
 	player_pos = Global.player_pos
 	match current_state:
@@ -99,3 +100,7 @@ func _on_wake_up():
 
 func _on_navigation_agent_2d_target_reached():
 	current_state = state.attack
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	velocity = safe_velocity
