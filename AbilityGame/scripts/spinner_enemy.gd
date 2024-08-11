@@ -32,7 +32,6 @@ func _ready():
 		enemy.wake_up.connect(_on_wake_up)
 	health_component.max_health *= Global.enemy_hp_multiplier
 	health_component.health *= Global.enemy_hp_multiplier
-	navigation_agent_2d.max_speed = speed
 	
 	
 func _physics_process(_delta):
@@ -45,20 +44,15 @@ func _physics_process(_delta):
 				current_state = state.seek
 				idle_image.visible = false
 				walk_animation.visible = true
-				#offset = randoffset()
-				#offset_timer.start()
+				offset = randoffset()
+				offset_timer.start()
 				walk_animation.play()
 				wake_up.emit()
 		state.seek:
 			navigation_agent_2d.target_position = player_pos + offset
 			var current_agent_position = global_position
 			var next_agent_position = navigation_agent_2d.get_next_path_position()
-			
-			var new_velocity = current_agent_position.direction_to(next_agent_position) * speed + knockback_received
-			navigation_agent_2d.set_velocity(new_velocity)
-			
-			
-			
+			velocity = current_agent_position.direction_to(next_agent_position) * speed + knockback_received
 		state.attack:
 			velocity = (player_pos - position)
 			velocity = velocity.normalized() * speed
@@ -73,14 +67,14 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 
-#func randoffset():
-	#var angle = randi_range(0, 360)
-	#var distance = randi_range(30,200)
-	#return Vector2(distance * cos(angle), distance * sin(angle)) # polar to cartesian
-#
-#
-#func _on_offset_timer_timeout():
-	#offset = randoffset()
+func randoffset():
+	var angle = randi_range(0, 360)
+	var distance = randi_range(30,200)
+	return Vector2(distance * cos(angle), distance * sin(angle)) # polar to cartesian
+
+
+func _on_offset_timer_timeout():
+	offset = randoffset()
 
 
 func _on_hitbox_component_area_entered(area):
