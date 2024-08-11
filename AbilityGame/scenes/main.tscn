@@ -17,57 +17,75 @@ script = ExtResource("1_wwjlx")
 
 [node name="SpinnerEnemy2" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(1567, 502)
+damage = 10.0
 
 [node name="SpinnerEnemy3" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(418, 2270)
+damage = 10.0
 
 [node name="SpinnerEnemy15" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(3116, 2021)
+damage = 10.0
 
 [node name="SpinnerEnemy17" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(3207, 2456)
+damage = 10.0
 
 [node name="SpinnerEnemy18" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(4564, 2286)
+damage = 10.0
 
 [node name="SpinnerEnemy19" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(4027, 2405)
+damage = 10.0
 
 [node name="SpinnerEnemy4" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(5305, 2298)
+damage = 10.0
 
 [node name="SpinnerEnemy7" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(4389, 1207)
+damage = 10.0
 
 [node name="SpinnerEnemy8" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(4367, -206)
+damage = 10.0
 
 [node name="SpinnerEnemy11" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(3580, 456)
+damage = 10.0
 
 [node name="SpinnerEnemy14" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(2880, -201)
+damage = 10.0
 
 [node name="SpinnerEnemy5" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(1791, 658)
+damage = 10.0
 
 [node name="SpinnerEnemy6" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(2040, 699)
+damage = 10.0
 
 [node name="SpinnerEnemy13" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(1574, 1519)
+damage = 10.0
 
 [node name="SpinnerEnemy12" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(1804, 994)
+damage = 10.0
 
 [node name="SpinnerEnemy16" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(1380, 1978)
+damage = 10.0
 
 [node name="SpinnerEnemy9" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(2073, 102)
+damage = 10.0
 
 [node name="SpinnerEnemy10" parent="Enemies" instance=ExtResource("3_ak5ec")]
 position = Vector2(1970, -303)
+damage = 10.0
 
 [node name="SlingerEnemy" parent="Enemies" instance=ExtResource("4_mo040")]
 position = Vector2(181, 1309)

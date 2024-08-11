@@ -7,7 +7,7 @@ enum state {idle, seek, attack}
 @export var knockback: float = 1.0:
 	get:
 		return knockback * Global.enemy_knockback_multiplier
-@export var damage: int = 15:
+@export var damage: float = 12.0:
 	get:
 		return damage * Global.enemy_dmg_multiplier
 
