@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b7cnwohvxq3g0"]
+[gd_scene load_steps=29 format=3 uid="uid://b7cnwohvxq3g0"]
 
 [ext_resource type="Texture2D" uid="uid://bdqxicpu72tkf" path="res://art/enemy/razor/razor_idle.png" id="1_2hnmn"]
 [ext_resource type="Script" path="res://scripts/razor_enemy.gd" id="1_frjif"]
@@ -9,9 +9,16 @@
 [ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="6_sv746"]
 [ext_resource type="Script" path="res://compo/HealthCompoment.gd" id="7_rxr7u"]
 [ext_resource type="Script" path="res://compo/hp_bar_component.gd" id="9_iehpl"]
+[ext_resource type="AudioStream" uid="uid://bxfaes00lke54" path="res://sounds/enemy/razor/razor_hit1.wav" id="10_xykw3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6slds"]
+radius = 66.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8elni"]
+radius = 102.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h2yic"]
-radius = 9.0
+radius = 54.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rjal"]
 atlas = ExtResource("5_a1u03")
@@ -100,37 +107,112 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_ry60l"]
 resource_name = "attacj"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyImage/BladesImage:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyImage:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_attack"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxComponent(attack)/Attackbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mjnmo"]
 _data = {
 "attack": SubResource("Animation_ry60l")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6slds"]
-radius = 11.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8elni"]
-radius = 17.0
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5s82v"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("10_xykw3")
+stream_0/weight = 1.0
 
 [node name="RazorEnemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_frjif")
+
+[node name="HitboxComponent(hit)" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("6_sv746")
+health_component = NodePath("../HealthComponent")
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxComponent(hit)"]
+shape = SubResource("CircleShape2D_6slds")
+
+[node name="HitboxComponent(attack)" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("6_sv746")
+
+[node name="Attackbox" type="CollisionShape2D" parent="HitboxComponent(attack)"]
+shape = SubResource("CircleShape2D_8elni")
+disabled = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h2yic")
 
 [node name="IdleImage" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
 texture = ExtResource("1_2hnmn")
 
 [node name="BodyImage" type="Sprite2D" parent="."]
+rotation = 125.664
+scale = Vector2(6, 6)
 texture = ExtResource("2_hofk3")
 
 [node name="BladesImage" type="Sprite2D" parent="BodyImage"]
 texture = ExtResource("3_l72wt")
 
 [node name="EyeImage" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
 texture = ExtResource("4_62hvy")
 
 [node name="ReloadAnimation" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_kb28g")
 frame = 10
 frame_progress = 1.0
@@ -139,22 +221,6 @@ frame_progress = 1.0
 libraries = {
 "": SubResource("AnimationLibrary_mjnmo")
 }
-
-[node name="HitboxComponent(hit)" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("6_sv746")
-health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent(hit)"]
-shape = SubResource("CircleShape2D_6slds")
-
-[node name="HitboxComponent(attack)" type="Area2D" parent="."]
-collision_layer = 0
-script = ExtResource("6_sv746")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent(attack)"]
-shape = SubResource("CircleShape2D_8elni")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("7_rxr7u")
@@ -169,18 +235,26 @@ offset_right = 4.0
 offset_bottom = 27.0
 show_percentage = false
 script = ExtResource("9_iehpl")
-health_component = NodePath("")
-pos_x = -48
+health_component = NodePath("../HealthComponent")
+pos_x = -59
 pos_y = 85
 scale_factor = 1.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 15.0
-target_desired_distance = 440.0
+target_desired_distance = 400.0
 avoidance_enabled = true
-radius = 70.0
+radius = 75.0
 neighbor_distance = 180.0
 max_neighbors = 12
-avoidance_priority = 0.57
+avoidance_priority = 0.9
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_5s82v")
+
+[connection signal="area_entered" from="HitboxComponent(attack)" to="." method="_on_hitbox_componentattack_area_entered"]
+[connection signal="animation_finished" from="ReloadAnimation" to="." method="_on_reload_animation_animation_finished"]
+[connection signal="hitted" from="HealthComponent" to="." method="_on_health_component_hitted"]
+[connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

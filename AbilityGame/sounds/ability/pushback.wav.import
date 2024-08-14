@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ceig1if50xqmx"
-path="res://.godot/imported/pushback.wav-81118494f1acd5b640bd4e49c13c51be.sample"
+path="res://.godot/imported/pushback.wav-9067ba31c879058aa9e2854de6790e7e.sample"
 
 [deps]
 
-source_file="res://audio/ability/pushback.wav"
-dest_files=["res://.godot/imported/pushback.wav-81118494f1acd5b640bd4e49c13c51be.sample"]
+source_file="res://sounds/ability/pushback.wav"
+dest_files=["res://.godot/imported/pushback.wav-9067ba31c879058aa9e2854de6790e7e.sample"]
 
 [params]
 
