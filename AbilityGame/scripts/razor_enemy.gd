@@ -25,6 +25,7 @@ enum state {idle, seek, attack}
 @onready var health_component = $HealthComponent
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
+@onready var spin_sound = $SpinSound
 
 var attack_velocity : Vector2
 
@@ -75,19 +76,18 @@ func _physics_process(delta):
 			
 			var new_velocity = current_agent_position.direction_to(next_agent_position) * speed + knockback_received
 			navigation_agent_2d.set_velocity(new_velocity)
-			if global_position.distance_to(player_pos) < 420:
+			if global_position.distance_to(player_pos) < 450:
 				start_attack()
 				current_state = state.attack
 				
 			
 		state.attack:
-			velocity = attack_velocity.normalized() * (speed + 400)
+			velocity = attack_velocity.normalized() * (speed + 380)
 
 	
 	if knock_frames != 0:
 		knock_frames -= 1
-		if current_state != state.attack:
-			velocity = knockback_received
+		velocity = knockback_received
 	else:
 		knockback_received = Vector2.ZERO
 	move_and_slide()
@@ -115,7 +115,7 @@ func _on_hitbox_component_area_entered(area):
 func knock_back(knockforce, knock_pos):
 	knockback_received = (global_position - knock_pos) 
 	knockback_received = knockback_received.normalized() * (speed / 4) * knockforce
-
+	knockback_received /= 1.5
 	knock_frames = 20 - 10
 	
 	
@@ -162,6 +162,8 @@ func _on_health_component_killed():
 	$"HitboxComponent(hit)"/Hitbox.set_deferred("disabled", true)
 	$Collision.set_deferred("disabled", true)
 	await audio_stream_player_2d.finished
+	if spin_sound.playing:
+		await spin_sound.finished
 	queue_free()
 
 

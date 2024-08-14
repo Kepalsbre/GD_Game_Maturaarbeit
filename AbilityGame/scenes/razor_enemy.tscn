@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b7cnwohvxq3g0"]
+[gd_scene load_steps=31 format=3 uid="uid://b7cnwohvxq3g0"]
 
 [ext_resource type="Texture2D" uid="uid://bdqxicpu72tkf" path="res://art/enemy/razor/razor_idle.png" id="1_2hnmn"]
 [ext_resource type="Script" path="res://scripts/razor_enemy.gd" id="1_frjif"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://compo/HealthCompoment.gd" id="7_rxr7u"]
 [ext_resource type="Script" path="res://compo/hp_bar_component.gd" id="9_iehpl"]
 [ext_resource type="AudioStream" uid="uid://bxfaes00lke54" path="res://sounds/enemy/razor/razor_hit1.wav" id="10_xykw3"]
+[ext_resource type="AudioStream" uid="uid://bmujfy7gfcqc0" path="res://sounds/enemy/razor/cartoon spin.wav" id="11_ldus3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6slds"]
 radius = 66.0
@@ -158,6 +159,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpinSound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mjnmo"]
 _data = {
@@ -168,6 +183,12 @@ _data = {
 random_pitch = 1.5
 streams_count = 1
 stream_0/stream = ExtResource("10_xykw3")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3vm0n"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("11_ldus3")
 stream_0/weight = 1.0
 
 [node name="RazorEnemy" type="CharacterBody2D"]
@@ -200,7 +221,7 @@ scale = Vector2(6, 6)
 texture = ExtResource("1_2hnmn")
 
 [node name="BodyImage" type="Sprite2D" parent="."]
-rotation = 125.664
+rotation = 6.28319
 scale = Vector2(6, 6)
 texture = ExtResource("2_hofk3")
 
@@ -251,6 +272,10 @@ avoidance_priority = 0.9
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_5s82v")
+
+[node name="SpinSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_3vm0n")
+pitch_scale = 1.2
 
 [connection signal="area_entered" from="HitboxComponent(attack)" to="." method="_on_hitbox_componentattack_area_entered"]
 [connection signal="animation_finished" from="ReloadAnimation" to="." method="_on_reload_animation_animation_finished"]

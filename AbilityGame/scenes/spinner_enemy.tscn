@@ -51,6 +51,7 @@ animations = [{
 radius = 28.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c3ttb"]
+random_pitch = 1.5
 streams_count = 1
 stream_0/stream = ExtResource("7_w3o2y")
 stream_0/weight = 1.0
