@@ -256,5 +256,4 @@ stream = SubResource("AudioStreamRandomizer_5s82v")
 [connection signal="animation_finished" from="ReloadAnimation" to="." method="_on_reload_animation_animation_finished"]
 [connection signal="hitted" from="HealthComponent" to="." method="_on_health_component_hitted"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
-[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

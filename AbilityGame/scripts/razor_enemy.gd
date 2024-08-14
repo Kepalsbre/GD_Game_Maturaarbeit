@@ -75,7 +75,10 @@ func _physics_process(delta):
 			
 			var new_velocity = current_agent_position.direction_to(next_agent_position) * speed + knockback_received
 			navigation_agent_2d.set_velocity(new_velocity)
-			
+			if global_position.distance_to(player_pos) < 420:
+				start_attack()
+				current_state = state.attack
+				
 			
 		state.attack:
 			velocity = attack_velocity.normalized() * (speed + 400)
@@ -121,9 +124,7 @@ func _on_wake_up():
 	awake = true
 
 
-func _on_navigation_agent_2d_target_reached():
-	current_state = state.attack
-	start_attack()
+	
 	
 
 func start_attack():
