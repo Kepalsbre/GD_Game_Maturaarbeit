@@ -21,6 +21,7 @@ const ENEMY_BULLET = preload("res://scenes/enemy_bullet.tscn")
 @onready var enemy_projectile_image = $EnemyProjectileImage
 @onready var hp_bar_component = $HpBarComponent
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
+@onready var attack_shot = $AttackShot
 
 
 
@@ -136,6 +137,8 @@ func _on_health_component_killed():
 	$HitboxComponent/Hitbox.set_deferred("disabled", true)
 	$Collision.set_deferred("disabled", true)
 	await audio_stream_player_2d.finished
+	if attack_shot.playing:
+		await attack_shot.finished
 	queue_free()
 
 
