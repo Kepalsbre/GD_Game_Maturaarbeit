@@ -116,7 +116,9 @@ func knock_back(knockforce, knock_pos):
 	knockback_received = (global_position - knock_pos) 
 	knockback_received = knockback_received.normalized() * (speed / 4) * knockforce
 	knockback_received /= 1.5
-	knock_frames = 20 - 10
+	knock_frames = 20 - 9
+	if knockback_received.length() < 260:
+		knock_frames = 0
 	
 	
 func _on_wake_up():

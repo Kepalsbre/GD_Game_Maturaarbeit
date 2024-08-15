@@ -98,7 +98,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bowr2")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_jf6ni")
 }],
 "loop": false,
@@ -211,7 +211,6 @@ script = ExtResource("6_sv746")
 
 [node name="Attackbox" type="CollisionShape2D" parent="HitboxComponent(attack)"]
 shape = SubResource("CircleShape2D_8elni")
-disabled = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h2yic")
@@ -221,11 +220,11 @@ scale = Vector2(6, 6)
 texture = ExtResource("1_2hnmn")
 
 [node name="BodyImage" type="Sprite2D" parent="."]
-rotation = 6.28319
 scale = Vector2(6, 6)
 texture = ExtResource("2_hofk3")
 
 [node name="BladesImage" type="Sprite2D" parent="BodyImage"]
+self_modulate = Color(1, 1, 1, 0)
 texture = ExtResource("3_l72wt")
 
 [node name="EyeImage" type="Sprite2D" parent="."]
@@ -245,7 +244,7 @@ libraries = {
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("7_rxr7u")
-max_health = 180.0
+max_health = 140.0
 
 [node name="OffsetTimer" type="Timer" parent="."]
 wait_time = 3.0
