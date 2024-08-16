@@ -258,3 +258,5 @@ slot_number = 3
 [node name="Slot4" type="Node2D" parent="EquippedAbilities"]
 script = ExtResource("9_cfpf0")
 slot_number = 4
+
+[connection signal="hitted" from="HealthComponent" to="." method="_on_health_component_hitted"]
