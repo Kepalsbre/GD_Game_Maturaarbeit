@@ -139,5 +139,5 @@ func _physics_process(_delta):
 func _on_health_component_hitted():
 	if not invincible:
 		invincible = true
-		await get_tree().create_timer(0.6).timeout
+		await get_tree().create_timer(0.8).timeout
 		invincible = false
