@@ -162,6 +162,7 @@ func _on_health_component_hitted():
 func _on_health_component_killed():
 	hide()
 	$"HitboxComponent(hit)"/Hitbox.set_deferred("disabled", true)
+	$"HitboxComponent(attack)/Attackbox".set_deferred("disabled", true)
 	$Collision.set_deferred("disabled", true)
 	await audio_stream_player_2d.finished
 	if spin_sound.playing:
