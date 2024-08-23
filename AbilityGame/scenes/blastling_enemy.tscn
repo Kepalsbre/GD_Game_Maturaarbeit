@@ -1,0 +1,136 @@
+[gd_scene load_steps=20 format=3 uid="uid://xd50npcxo03m"]
+
+[ext_resource type="Texture2D" uid="uid://qgd8pvy1m2lu" path="res://art/enemy/blastling/cannon_idle.png" id="1_f7alj"]
+[ext_resource type="Texture2D" uid="uid://dbuawbkpx6v3y" path="res://art/enemy/blastling/blastling_idle.png" id="1_yoyak"]
+[ext_resource type="Texture2D" uid="uid://bqynpgjijqmba" path="res://art/enemy/blastling/cannon_shot_animation.png" id="2_wrbu3"]
+[ext_resource type="Script" path="res://compo/HealthCompoment.gd" id="2_x752g"]
+[ext_resource type="Texture2D" uid="uid://k643apqjl3iv" path="res://art/enemy/blastling/blastling_shotready.png" id="4_m8rt8"]
+[ext_resource type="Texture2D" uid="uid://bs263no8f4u0w" path="res://art/enemy/blastling/blastling_follow_animation.png" id="5_75nti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4pev"]
+atlas = ExtResource("2_wrbu3")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxctm"]
+atlas = ExtResource("2_wrbu3")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr8ix"]
+atlas = ExtResource("2_wrbu3")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0amnv"]
+atlas = ExtResource("2_wrbu3")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcr3f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4pev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxctm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr8ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0amnv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqqiv"]
+atlas = ExtResource("5_75nti")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rqae"]
+atlas = ExtResource("5_75nti")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ssqp"]
+atlas = ExtResource("5_75nti")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74ohn"]
+atlas = ExtResource("5_75nti")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od8f1"]
+atlas = ExtResource("5_75nti")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m045e"]
+atlas = ExtResource("5_75nti")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ooxjx"]
+animations = [{
+"frames": [{
+"duration": 35.0,
+"texture": SubResource("AtlasTexture_hqqiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rqae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ssqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74ohn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od8f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m045e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g487p"]
+
+[node name="BlastlingEnemy" type="CharacterBody2D"]
+
+[node name="Canon" type="Node2D" parent="."]
+
+[node name="CanonImage" type="Sprite2D" parent="Canon"]
+position = Vector2(52, 0)
+scale = Vector2(5, 5)
+texture = ExtResource("1_f7alj")
+flip_h = true
+flip_v = true
+
+[node name="ShotAnimation" type="AnimatedSprite2D" parent="Canon"]
+position = Vector2(52, 0)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_xcr3f")
+frame = 2
+frame_progress = 0.586625
+flip_h = true
+flip_v = true
+
+[node name="IdleImage" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("1_yoyak")
+
+[node name="ShotreadyImage" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("4_m8rt8")
+
+[node name="FollowAnimation" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_ooxjx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g487p")
+}
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_x752g")
