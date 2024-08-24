@@ -25,5 +25,13 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="Particles" type="CPUParticles2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+texture_filter = 1
+amount = 12
+lifetime = 0.2
+texture = ExtResource("3_whkm7")
+gravity = Vector2(0, 0)
+
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

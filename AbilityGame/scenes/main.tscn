@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpmpj0rn60cnp"]
+[gd_scene load_steps=8 format=3 uid="uid://dpmpj0rn60cnp"]
 
 [ext_resource type="PackedScene" uid="uid://14w1yhbvtxgk" path="res://scenes/player.tscn" id="1_rhsj6"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_wwjlx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://13x82i8byh7n" path="res://scenes/levels/level_2.tscn" id="3_yifse"]
 [ext_resource type="PackedScene" uid="uid://bf6st2h5ud8xf" path="res://scenes/slinger_enemy.tscn" id="4_mo040"]
 [ext_resource type="PackedScene" uid="uid://b7cnwohvxq3g0" path="res://scenes/razor_enemy.tscn" id="5_r8awr"]
+[ext_resource type="PackedScene" uid="uid://xd50npcxo03m" path="res://scenes/blastling_enemy.tscn" id="6_0xuj5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wwjlx")
@@ -72,6 +73,9 @@ position = Vector2(4849, 2090)
 
 [node name="RazorEnemy3" parent="Enemies" instance=ExtResource("5_r8awr")]
 position = Vector2(1011, 2409)
+
+[node name="BlastlingEnemy" parent="Enemies" instance=ExtResource("6_0xuj5")]
+position = Vector2(1567, 23)
 
 [node name="EnemyProjectiles" type="Node2D" parent="."]
 
