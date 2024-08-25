@@ -19,15 +19,15 @@ func _ready():
 
 func lvlup():
 	current_level += 1
-	if current_level == 3:
+	if current_level == 2:
 		sword_image.texture = lvl2
 		sword_collision.shape.height = 145
 		sword_collision.position = Vector2(82, -82)
-	elif current_level == 6:
+	elif current_level == 3:
 		sword_image.texture = lvl3
 		attack_animation = "laser_attack"
 		animation_player.speed_scale += 0.2
-	elif current_level == 8:
+	elif current_level == 4:
 		sword_image.texture = lvl4
 	else:
 		damage += 5
