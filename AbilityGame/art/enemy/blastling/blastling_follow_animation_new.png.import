@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs263no8f4u0w"
-path="res://.godot/imported/blastling_follow_animation.png-0b5bbddac88faf924a48f6a57b90778a.ctex"
+uid="uid://80q267pxw6v3"
+path="res://.godot/imported/blastling_follow_animation_new.png-3386413e54228705ed83e34b5540cc9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemy/blastling/blastling_follow_animation.png"
-dest_files=["res://.godot/imported/blastling_follow_animation.png-0b5bbddac88faf924a48f6a57b90778a.ctex"]
+source_file="res://art/enemy/blastling/blastling_follow_animation_new.png"
+dest_files=["res://.godot/imported/blastling_follow_animation_new.png-3386413e54228705ed83e34b5540cc9c.ctex"]
 
 [params]
 

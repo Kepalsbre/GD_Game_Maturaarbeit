@@ -25,6 +25,7 @@ enum canon_state {default, spin}
 
 
 const ENEMY_BULLET = preload("res://scenes/enemy_bullet.tscn")
+const SPINNER_ENEMY = preload("res://scenes/spinner_enemy.tscn")
 
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var attack_shot = $AttackShot
@@ -34,13 +35,14 @@ const ENEMY_BULLET = preload("res://scenes/enemy_bullet.tscn")
 
 
 var player_pos
-var speed : int = randi_range(200, 280)
+var speed : int = randi_range(160, 220)
 var offset : Vector2
 var knockback_received := Vector2.ZERO
 var awake := false
 var knock_frames := 0
 var rotation_speed := 7
 var slower = 1.0
+var spawn_direction : Vector2
 
 signal wake_up
 
@@ -69,7 +71,7 @@ func _physics_process(delta):
 				canon.visible = true
 				offset = randoffset()
 				offset_timer.start()
-				wake_up.emit()
+				#wake_up.emit()
 		state.seek:
 			navigation_agent_2d.target_position = player_pos + offset
 			var current_agent_position = global_position
@@ -90,6 +92,7 @@ func _physics_process(delta):
 		velocity = knockback_received
 	else:
 		knockback_received = Vector2.ZERO
+		spawn_direction = Vector2.ZERO
 		
 	if current_state != state.idle:
 		update_canon(delta)
@@ -107,6 +110,7 @@ func _on_offset_timer_timeout():
 
 func knock_back(knockforce, knock_pos):
 	knockback_received = (global_position - knock_pos) 
+	spawn_direction = knockback_received
 	knockback_received = knockback_received.normalized() * (speed / 4) * knockforce
 	knock_frames = 20
 	
@@ -126,7 +130,7 @@ func create_bullet(spawn_pos):
 	new_bullet.position = spawn_pos
 	new_bullet.scale = Vector2(7,7)
 	new_bullet.super_bullet = true
-	new_bullet.speed = 5000
+	new_bullet.speed = 7500
 	return new_bullet
 
 func shoot():
@@ -151,6 +155,21 @@ func _on_health_component_killed():
 
 func _on_health_component_hitted():
 	audio_stream_player_2d.play()
+	var r = randi() % 100
+	if r < 10:
+		for i in range(4):
+				call_deferred("spawn_spinner")
+	elif r < 25 and r >= 10:
+		for i in range(3):
+					call_deferred("spawn_spinner")
+	elif r < 50 and r >= 25:
+		for i in range(2):
+					call_deferred("spawn_spinner")
+	elif r < 100 and r >= 50:
+		for i in range(1):
+					call_deferred("spawn_spinner")
+		
+		
 
 func update_canon(delta):
 	match current_canon_state:
@@ -170,3 +189,16 @@ func update_canon(delta):
 	angle = clamp(angle, canon.rotation - angle_delta, canon.rotation + angle_delta)
 	canon.rotation = lerp_angle(canon.rotation, angle, 0.2)
 
+
+func create_spinner(hit_velocity: Vector2, knock_speed : int):
+	var new_spinner = SPINNER_ENEMY.instantiate()
+	new_spinner.hitbox_disabled = true
+	new_spinner.global_position = global_position
+	new_spinner.current_state = new_spinner.state.spawn
+	new_spinner.spawn_frames = 25
+	new_spinner.spawn_velocity = hit_velocity.normalized() * knock_speed
+	return new_spinner
+
+func spawn_spinner():
+	get_parent().add_child(create_spinner(spawn_direction, 2000))
+	

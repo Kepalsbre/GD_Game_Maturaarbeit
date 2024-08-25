@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-enum state {idle, seek, attack}
+# delete "spawn" if creating new enemy
+enum state {idle, seek, attack, spawn}
 @export var current_state: state = state.idle
 @export var wake_lenght := 800
 @export var knockback: float = 1.2:
@@ -25,6 +26,13 @@ var knockback_received := Vector2.ZERO
 var awake := false
 var knock_frames := 0
 
+# delete if creating new enemy
+var spawn_frames : int
+var spawn_velocity : Vector2
+var hitbox_disabled := false
+@onready var hitbox = $HitboxComponent/Hitbox
+
+
 signal wake_up
 
 func _ready():
@@ -34,6 +42,9 @@ func _ready():
 	health_component.max_health *= Global.enemy_hp_multiplier
 	health_component.health *= Global.enemy_hp_multiplier
 	navigation_agent_2d.max_speed = speed
+	
+	# delete if creating new enemy
+	hitbox.disabled = hitbox_disabled
 	
 	
 func _physics_process(_delta):
@@ -64,7 +75,21 @@ func _physics_process(_delta):
 			velocity = velocity.normalized() * speed
 			if position.distance_to(player_pos) > 200:
 				current_state = state.seek
-	
+		
+		# delete if creating new enemy
+		state.spawn:
+			if idle_image.visible:
+				idle_image.visible = false
+				walk_animation.visible = true
+			spawn_frames -= 1
+			if spawn_frames == 0:
+				offset = randoffset()
+				offset_timer.start()
+				walk_animation.play()
+				hitbox.set_deferred("disabled", false)
+				current_state = state.seek
+			velocity = spawn_velocity
+		
 	if knock_frames != 0:
 		knock_frames -= 1
 		velocity = knockback_received

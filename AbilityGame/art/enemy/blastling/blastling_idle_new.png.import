@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbuawbkpx6v3y"
-path="res://.godot/imported/blastling_idle.png-502fe7678e61419525f8fb957011b9a4.ctex"
+uid="uid://byx3uj3uqjx6a"
+path="res://.godot/imported/blastling_idle_new.png-e87a36750ac984438258bc4389061681.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemy/blastling/blastling_idle.png"
-dest_files=["res://.godot/imported/blastling_idle.png-502fe7678e61419525f8fb957011b9a4.ctex"]
+source_file="res://art/enemy/blastling/blastling_idle_new.png"
+dest_files=["res://.godot/imported/blastling_idle_new.png-e87a36750ac984438258bc4389061681.ctex"]
 
 [params]
 
