@@ -174,7 +174,7 @@ func _on_health_component_hitted():
 func update_canon(delta):
 	match current_canon_state:
 		canon_state.default:
-			if global_position.distance_to(player_pos) < 1000 and not animation_player.is_playing():
+			if global_position.distance_to(player_pos) < 2200 and not animation_player.is_playing():
 				animation_player.play("canon_shot")
 				slower = 1
 			
