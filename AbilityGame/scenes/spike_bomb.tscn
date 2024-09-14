@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://uarhygodfr1s"]
+
+[ext_resource type="Texture2D" uid="uid://cy31m1ylql4vs" path="res://art/abilities/spikebomb_ability_ingame.png" id="1_2prjn"]
+[ext_resource type="Script" path="res://scripts/spike_bomb.gd" id="1_p6wrd"]
+[ext_resource type="Script" path="res://compo/HitboxComponent.gd" id="2_djy40"]
+[ext_resource type="AudioStream" uid="uid://ceig1if50xqmx" path="res://sounds/ability/pushback.wav" id="4_i0p0a"]
+[ext_resource type="AudioStream" uid="uid://dfro8c7sagmam" path="res://sounds/ability/spikebomb_hit.wav" id="5_ndgf6"]
+[ext_resource type="AudioStream" uid="uid://yw0jqa6fecl7" path="res://sounds/ability/explosion.wav" id="6_kywqg"]
+
+[sub_resource type="Gradient" id="Gradient_d40r2"]
+offsets = PackedFloat32Array(0.308176, 0.798742)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_02tp8"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5oi8k"]
+radius = 83.006
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3by08"]
+random_pitch = 1.4
+streams_count = 1
+stream_0/stream = ExtResource("5_ndgf6")
+stream_0/weight = 1.0
+
+[node name="SpikeBomb" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_p6wrd")
+
+[node name="SpikeBombImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_2prjn")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SpikeBombImage"]
+position = Vector2(4, -16)
+emitting = false
+amount = 15
+speed_scale = 2.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 9.71
+initial_velocity_max = 9.71
+angular_velocity_min = 55.92
+angular_velocity_max = 173.88
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_d40r2")
+
+[node name="HitHitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("2_djy40")
+
+[node name="BombCollision" type="CollisionShape2D" parent="HitHitbox"]
+shape = SubResource("CircleShape2D_02tp8")
+
+[node name="ExplosionCollision" type="CollisionShape2D" parent="HitHitbox"]
+shape = SubResource("CircleShape2D_5oi8k")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[node name="Start" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_i0p0a")
+pitch_scale = 1.8
+autoplay = true
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_3by08")
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_kywqg")
+pitch_scale = 0.5
+
+[connection signal="area_entered" from="HitHitbox" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8yf4eiunwt7n"]
+
+[ext_resource type="Script" path="res://scripts/SpikeBombSpawner.gd" id="1_yj7vk"]
+
+[node name="SpikeBombSpawner" type="Node2D"]
+script = ExtResource("1_yj7vk")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="SpikeBombs" type="Node2D" parent="Node"]

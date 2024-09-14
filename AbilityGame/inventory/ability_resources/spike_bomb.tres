@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvAbility" load_steps=3 format=3 uid="uid://xodw7cnclcjd"]
+
+[ext_resource type="Script" path="res://inventory/inventory_ability.gd" id="1_podhy"]
+[ext_resource type="Texture2D" uid="uid://ckrdkki7orany" path="res://art/abilities/spikebomb_ability.png" id="2_lcmg8"]
+
+[resource]
+script = ExtResource("1_podhy")
+name = "Spikebomb"
+texture = ExtResource("2_lcmg8")
+uses = 3
+desc = "Throw a bomb that explodes after piercing 3 enemies"

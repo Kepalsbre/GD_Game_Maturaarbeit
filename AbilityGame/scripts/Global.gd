@@ -13,5 +13,6 @@ var ability_dict = {
 	"Superdash" : preload("res://scenes/superdash.tscn"),
 	"Barrage" : preload("res://scenes/barrage.tscn"),
 	"Black Hole" : preload("res://scenes/black_hole.tscn"),
-	"Rock Throw" : preload("res://scenes/rock_throw.tscn")
+	"Rock Throw" : preload("res://scenes/rock_throw.tscn"),
+	"Spikebomb" : preload("res://scenes/spike_bomb_spawner.tscn")
 }

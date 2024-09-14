@@ -71,7 +71,7 @@ func _physics_process(delta):
 				canon.visible = true
 				offset = randoffset()
 				offset_timer.start()
-				#wake_up.emit()
+				wake_up.emit()
 		state.seek:
 			navigation_agent_2d.target_position = player_pos + offset
 			var current_agent_position = global_position
