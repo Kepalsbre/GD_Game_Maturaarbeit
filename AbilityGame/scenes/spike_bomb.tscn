@@ -8,8 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://yw0jqa6fecl7" path="res://sounds/ability/explosion.wav" id="6_kywqg"]
 
 [sub_resource type="Gradient" id="Gradient_d40r2"]
-offsets = PackedFloat32Array(0.308176, 0.798742)
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+offsets = PackedFloat32Array(0.201258, 0.72956, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_02tp8"]
 radius = 15.0
@@ -34,12 +34,13 @@ texture = ExtResource("1_2prjn")
 position = Vector2(4, -16)
 emitting = false
 amount = 15
+lifetime = 0.8
 speed_scale = 2.0
 direction = Vector2(0, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 9.71
-initial_velocity_max = 9.71
+initial_velocity_min = 45.0
+initial_velocity_max = 55.0
 angular_velocity_min = 55.92
 angular_velocity_max = 173.88
 scale_amount_min = 10.0
