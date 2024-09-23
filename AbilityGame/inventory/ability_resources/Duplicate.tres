@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvAbility" load_steps=3 format=3 uid="uid://dtbqwjkdjrsdk"]
+
+[ext_resource type="Script" path="res://inventory/inventory_ability.gd" id="1_dmdvf"]
+[ext_resource type="Texture2D" uid="uid://dgx1xk160rqiy" path="res://art/abilities/duplicate_ability.png" id="2_lfj7s"]
+
+[resource]
+script = ExtResource("1_dmdvf")
+name = "Duplicate"
+texture = ExtResource("2_lfj7s")
+uses = 1
+desc = "Create 4 duplicates that fight with you for 10 sec"

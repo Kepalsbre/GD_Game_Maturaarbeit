@@ -1,0 +1,155 @@
+[gd_scene load_steps=18 format=3 uid="uid://b3llt0o7mnhdh"]
+
+[ext_resource type="PackedScene" uid="uid://dgtjr83q81pyl" path="res://scenes/sword.tscn" id="1_5rv6f"]
+[ext_resource type="Script" path="res://scripts/player_duplicate.gd" id="1_kkd8p"]
+[ext_resource type="Texture2D" uid="uid://8ybi3uupkem0" path="res://art/player/player_walk_animations.png" id="2_7y0q6"]
+[ext_resource type="Texture2D" uid="uid://4g5hed32boof" path="res://art/abilities/Player_duplicate.png" id="3_xcqrd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpbdo"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u8uw"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw534"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flhsi"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov5it"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssx2y"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3gka"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kflid"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyi4t"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4g41"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io0t1"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxifw"]
+atlas = ExtResource("2_7y0q6")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n6ype"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpbdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u8uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw534")
+}],
+"loop": true,
+"name": &"normal_dl_ur",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flhsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov5it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssx2y")
+}],
+"loop": true,
+"name": &"normal_dr_ul",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3gka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kflid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyi4t")
+}],
+"loop": true,
+"name": &"normal_right_left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4g41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io0t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxifw")
+}],
+"loop": true,
+"name": &"normal_up_down",
+"speed": 10.0
+}]
+
+[node name="PlayerDuplicate" type="Node2D"]
+modulate = Color(1, 1, 1, 0.501961)
+script = ExtResource("1_kkd8p")
+
+[node name="Sword" parent="." instance=ExtResource("1_5rv6f")]
+
+[node name="DashParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 62)
+emitting = false
+amount = 40
+lifetime = 3.6
+speed_scale = 5.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+angular_velocity_min = 2.0
+angular_velocity_max = 14.0
+scale_amount_min = 3.0
+scale_amount_max = 16.0
+color = Color(0.752941, 0.752941, 0.752941, 1)
+
+[node name="WalkAnimations" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, -2)
+sprite_frames = SubResource("SpriteFrames_n6ype")
+animation = &"normal_up_down"
+
+[node name="PlayerImage" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, 2)
+scale = Vector2(4, 4)
+texture = ExtResource("3_xcqrd")
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.35
+one_shot = true
+
+[node name="DashTimeout" type="Timer" parent="DashTimer"]
+wait_time = 1.5
+one_shot = true
