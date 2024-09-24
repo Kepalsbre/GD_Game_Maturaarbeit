@@ -20,6 +20,7 @@ func execute():
 		for i in range(4):
 			duplicates.add_child(player_duplicate(i))
 		active_time.start()
+		$DuplicateSound.play()
 		executing = true
 
 
@@ -27,4 +28,6 @@ func _on_active_time_timeout():
 	for child in duplicates.get_children():
 		child.op = -1
 		child.move_frames = 13
+	$DuplicateBackSound.play()
 	executing = false
+

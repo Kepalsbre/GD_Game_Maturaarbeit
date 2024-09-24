@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1bchtabbtmdi"]
+[gd_scene load_steps=4 format=3 uid="uid://c1bchtabbtmdi"]
 
 [ext_resource type="Script" path="res://scripts/Duplicate.gd" id="1_c7vpi"]
+[ext_resource type="AudioStream" uid="uid://dbb7e4c1i0muq" path="res://sounds/ability/duplication.wav" id="2_srw38"]
+[ext_resource type="AudioStream" uid="uid://hs3cifupr47j" path="res://sounds/ability/duplicate_back.wav" id="3_uxkwn"]
 
 [node name="Duplicate" type="Node2D"]
 script = ExtResource("1_c7vpi")
@@ -10,5 +12,11 @@ wait_time = 10.0
 one_shot = true
 
 [node name="Duplicates" type="Node2D" parent="."]
+
+[node name="DuplicateSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_srw38")
+
+[node name="DuplicateBackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_uxkwn")
 
 [connection signal="timeout" from="ActiveTime" to="." method="_on_active_time_timeout"]

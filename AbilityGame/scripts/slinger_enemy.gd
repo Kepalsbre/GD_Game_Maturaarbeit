@@ -133,6 +133,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 
 func _on_health_component_killed():
+	animation_player.stop()
 	hide()
 	$HitboxComponent/Hitbox.set_deferred("disabled", true)
 	$Collision.set_deferred("disabled", true)

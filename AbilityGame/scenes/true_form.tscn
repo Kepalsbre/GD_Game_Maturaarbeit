@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://3cbn78nkh7rk"]
+[gd_scene load_steps=4 format=3 uid="uid://3cbn78nkh7rk"]
 
 [ext_resource type="Script" path="res://scripts/true_form.gd" id="1_gjgde"]
+[ext_resource type="AudioStream" uid="uid://bcqfa1dw3fofv" path="res://sounds/ability/sword_transform_1.wav" id="2_2ilht"]
+[ext_resource type="AudioStream" uid="uid://c8w4hnmxd4lkh" path="res://sounds/ability/sword_backtransform.wav" id="3_xp83n"]
 
 [node name="TrueForm" type="Node2D"]
 script = ExtResource("1_gjgde")
@@ -8,5 +10,11 @@ script = ExtResource("1_gjgde")
 [node name="ActiveTime" type="Timer" parent="."]
 wait_time = 8.0
 one_shot = true
+
+[node name="TransformSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_2ilht")
+
+[node name="BacktransformSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xp83n")
 
 [connection signal="timeout" from="ActiveTime" to="." method="_on_active_time_timeout"]
