@@ -15,5 +15,6 @@ var ability_dict = {
 	"Black Hole" : preload("res://scenes/black_hole.tscn"),
 	"Rock Throw" : preload("res://scenes/rock_throw.tscn"),
 	"Spikebomb" : preload("res://scenes/spike_bomb_spawner.tscn"),
-	"Duplicate" : preload("res://scenes/duplicate.tscn")
+	"Duplicate" : preload("res://scenes/duplicate.tscn"),
+	"True Form" : preload("res://scenes/true_form.tscn")
 }

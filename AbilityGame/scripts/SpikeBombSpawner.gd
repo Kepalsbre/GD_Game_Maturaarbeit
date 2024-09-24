@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var spike_bombs = $Node/SpikeBombs
-var explosion_damage = 30.0
+var explosion_damage = 35.0
 var damage := 25.0
 @export var knockback := 10.0
 var speed := 800

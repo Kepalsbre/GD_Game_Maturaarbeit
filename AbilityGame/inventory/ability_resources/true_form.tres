@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvAbility" load_steps=3 format=3 uid="uid://xxjfs1qkvqxj"]
+
+[ext_resource type="Script" path="res://inventory/inventory_ability.gd" id="1_c8bfd"]
+[ext_resource type="Texture2D" uid="uid://mq1s3k40v714" path="res://art/abilities/true_form_ability.png" id="2_8mxy4"]
+
+[resource]
+script = ExtResource("1_c8bfd")
+name = "True Form"
+texture = ExtResource("2_8mxy4")
+uses = 1
+desc = "Your sword reveals its true form for 8 sec"

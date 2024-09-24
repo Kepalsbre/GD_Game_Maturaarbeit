@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=9 format=3 uid="uid://sxbyc07i2n87"]
+[gd_resource type="Resource" script_class="Inv" load_steps=10 format=3 uid="uid://sxbyc07i2n87"]
 
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="1_dpcts"]
 [ext_resource type="Resource" uid="uid://cdk3jcs7ud7cg" path="res://inventory/ability_resources/pushback.tres" id="1_x1oyv"]
@@ -8,7 +8,8 @@
 [ext_resource type="Resource" uid="uid://cua8ak3750wxg" path="res://inventory/ability_resources/rock_throw.tres" id="5_udbfa"]
 [ext_resource type="Resource" uid="uid://xodw7cnclcjd" path="res://inventory/ability_resources/spike_bomb.tres" id="6_7072d"]
 [ext_resource type="Resource" uid="uid://dtbqwjkdjrsdk" path="res://inventory/ability_resources/Duplicate.tres" id="7_ogxva"]
+[ext_resource type="Resource" uid="uid://xxjfs1qkvqxj" path="res://inventory/ability_resources/true_form.tres" id="8_bbvav"]
 
 [resource]
 script = ExtResource("1_dpcts")
-abilities = Array[Resource("res://inventory/inventory_ability.gd")]([ExtResource("1_x1oyv"), ExtResource("2_rh530"), ExtResource("3_hyef5"), ExtResource("4_mdu2n"), ExtResource("5_udbfa"), ExtResource("6_7072d"), ExtResource("7_ogxva"), null, null, null, null, null, null, null, null, null])
+abilities = Array[Resource("res://inventory/inventory_ability.gd")]([ExtResource("1_x1oyv"), ExtResource("2_rh530"), ExtResource("3_hyef5"), ExtResource("4_mdu2n"), ExtResource("5_udbfa"), ExtResource("6_7072d"), ExtResource("7_ogxva"), ExtResource("8_bbvav"), null, null, null, null, null, null, null, null])

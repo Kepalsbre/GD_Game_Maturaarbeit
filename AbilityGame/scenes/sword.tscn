@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgtjr83q81pyl"]
+[gd_scene load_steps=10 format=3 uid="uid://dgtjr83q81pyl"]
 
 [ext_resource type="Script" path="res://scripts/sword.gd" id="1_and6q"]
 [ext_resource type="Texture2D" uid="uid://41bfjjquqy7b" path="res://art/sword/sword_1.png" id="2_0q0lm"]
@@ -91,11 +91,46 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_txvtd"]
+resource_name = "true_form"
+length = 0.35
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwordImage:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.22173, 2.79253]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"current_loop_ended"
+}, {
+"args": [],
+"method": &"current_loop_ended"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ae42"]
 _data = {
 "RESET": SubResource("Animation_4gggg"),
 "attack": SubResource("Animation_xjfg6"),
-"laser_attack": SubResource("Animation_yahf3")
+"laser_attack": SubResource("Animation_yahf3"),
+"true_form": SubResource("Animation_txvtd")
 }
 
 [node name="Sword" type="Node2D"]
