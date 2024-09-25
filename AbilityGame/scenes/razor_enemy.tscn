@@ -16,7 +16,7 @@
 radius = 66.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8elni"]
-radius = 102.0
+radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h2yic"]
 radius = 54.0
@@ -224,7 +224,6 @@ scale = Vector2(6, 6)
 texture = ExtResource("2_hofk3")
 
 [node name="BladesImage" type="Sprite2D" parent="BodyImage"]
-self_modulate = Color(1, 1, 1, 0)
 texture = ExtResource("3_l72wt")
 
 [node name="EyeImage" type="Sprite2D" parent="."]
