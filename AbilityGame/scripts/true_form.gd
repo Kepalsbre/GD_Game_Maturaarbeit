@@ -14,10 +14,10 @@ func execute():
 
 
 func _on_active_time_timeout():
-	player_sword.enable_true_form(false)
 	$BacktransformSound.play()
+	player_sword.enable_true_form(false)
 	executing = false
 
-# backtransform when battle ended
-func stop():
-	_on_active_time_timeout()
+# backtransform when out of inventory
+func _exit_tree():
+	player_sword.enable_true_form(false)
