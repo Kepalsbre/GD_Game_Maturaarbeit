@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvAbility" load_steps=3 format=3 uid="uid://bxoowb0nlrpe5"]
+
+[ext_resource type="Script" path="res://inventory/inventory_ability.gd" id="1_gaknk"]
+[ext_resource type="Texture2D" uid="uid://46xq0l1mpayb" path="res://art/abilities/shotgun_ability.png" id="2_3uyw1"]
+
+[resource]
+script = ExtResource("1_gaknk")
+name = "Shotgun"
+texture = ExtResource("2_3uyw1")
+uses = 2
+desc = "Pull out a shotgun and shoot a shell"
