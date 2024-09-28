@@ -88,7 +88,7 @@ func enable_true_form(on):
 		attack_animation = "attack"
 		scale = Vector2(1,1)
 		
-		if current_level == 3:
+		if current_level >= 3:
 			sword_image.texture = lvl3
 			attack_animation = "laser_attack"
 			animation_player.speed_scale = 1.2

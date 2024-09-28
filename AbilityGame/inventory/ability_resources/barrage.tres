@@ -7,5 +7,5 @@
 script = ExtResource("1_v4sqv")
 name = "Barrage"
 texture = ExtResource("2_yh20q")
-uses = 1
+uses = 2
 desc = "Fire 15 rockets that aim for the nearest target to you"

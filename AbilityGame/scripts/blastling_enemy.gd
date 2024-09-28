@@ -159,13 +159,13 @@ func _on_health_component_hitted():
 	if r < 10:
 		for i in range(4):
 				call_deferred("spawn_spinner")
-	elif r < 25 and r >= 10:
+	elif r < 20 and r >= 10:
 		for i in range(3):
 					call_deferred("spawn_spinner")
-	elif r < 50 and r >= 25:
+	elif r < 40 and r >= 20:
 		for i in range(2):
 					call_deferred("spawn_spinner")
-	elif r < 100 and r >= 50:
+	elif r < 100 and r >= 40:
 		for i in range(1):
 					call_deferred("spawn_spinner")
 		

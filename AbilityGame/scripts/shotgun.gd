@@ -1,9 +1,10 @@
 extends Node2D
 
 @onready var shotgun_image = $ShotgunImage
+@onready var shot = $Shot
 
 @onready var bullets = $Node/Bullets
-@export var damage := 6.0
+@export var damage := 7.0
 @export var knockback := 3.0
 @onready var marker_2d_flipped = $ShotgunImage/Marker2DFlipped
 @onready var marker_2d = $ShotgunImage/Marker2D
@@ -38,11 +39,17 @@ func _process(delta):
 	
 
 func execute():
-	shotgun_image.self_modulate = Color(1,1,1,1)
-	for g in range(2):
-		for i in range(bullet_count):
-			bullets.add_child(create_bullet(i))
-		await get_tree().create_timer(0.1).timeout
-	shotgun_image.self_modulate = Color(1,1,1,0.39)
+	if not executing:
+		executing = true
+		shotgun_image.self_modulate = Color(1,1,1,1)
+		for g in range(2):
+			shot.play()
+			for i in range(bullet_count):
+				bullets.add_child(create_bullet(i))
+			await get_tree().create_timer(0.12).timeout
+		await shot.finished
+		shotgun_image.self_modulate = Color(1,1,1,0)
+		executing = false
+		
 			
 	
