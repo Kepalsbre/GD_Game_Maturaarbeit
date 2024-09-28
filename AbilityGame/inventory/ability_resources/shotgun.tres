@@ -7,5 +7,5 @@
 script = ExtResource("1_gaknk")
 name = "Shotgun"
 texture = ExtResource("2_3uyw1")
-uses = 2
-desc = "Pull out a shotgun and shoot a shell"
+uses = 3
+desc = "Shoot with shotgun"

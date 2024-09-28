@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://btt0g6y8fi2dg" path="res://art/abilities/shotgun_ability_with_outline_2.png" id="2_o3nte"]
 
 [node name="Shotgun" type="Node2D"]
+scale = Vector2(-1, 1)
 script = ExtResource("1_a3eue")
 
 [node name="Node" type="Node" parent="."]
@@ -11,15 +12,9 @@ script = ExtResource("1_a3eue")
 [node name="Bullets" type="Node2D" parent="Node"]
 
 [node name="ShotgunImage" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(40, 0)
+position = Vector2(36, 18)
 scale = Vector2(3, 3)
 texture = ExtResource("2_o3nte")
-flip_v = true
 
-[node name="Marker2DFlipped" type="Marker2D" parent="ShotgunImage"]
-position = Vector2(15.6667, 6)
-
-[node name="Marker2D" type="Marker2D" parent="ShotgunImage"]
-position = Vector2(15.6667, -6)
-scale = Vector2(0.333333, 0.333333)
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(83, 0)
