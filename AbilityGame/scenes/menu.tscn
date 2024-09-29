@@ -1,0 +1,156 @@
+[gd_scene load_steps=11 format=3 uid="uid://dsom2r3nievx4"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_1kgr8"]
+[ext_resource type="Texture2D" uid="uid://bej10s3ll6y6w" path="res://art/menu_screen.png" id="1_dktc8"]
+[ext_resource type="FontFile" uid="uid://dthdwesvq0dpa" path="res://art/joystix monospace.otf" id="1_m8evv"]
+[ext_resource type="AudioStream" uid="uid://cgqjgjvb3fyh2" path="res://music/Menutheme.ogg" id="4_iuq3f"]
+[ext_resource type="AudioStream" uid="uid://cb4u1a2hm2fq3" path="res://sounds/ability/button_hover_sound.wav" id="5_q0tq5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g7c5y"]
+texture = ExtResource("1_dktc8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsfig"]
+bg_color = Color(0.0823529, 0.623529, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(-3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_updke"]
+bg_color = Color(0, 0.564706, 0.615686, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(-3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a07lr"]
+bg_color = Color(0.733333, 0.184314, 0.207843, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(-3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b8vgy"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1kgr8")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.72549, 0.72549, 0.72549, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g7c5y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -55.0
+offset_right = 85.5
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_m8evv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsfig")
+theme_override_styles/hover = SubResource("StyleBoxFlat_updke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
+text = "Start"
+
+[node name="Difficulty" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_m8evv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsfig")
+theme_override_styles/hover = SubResource("StyleBoxFlat_updke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
+text = "Difficulty"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_m8evv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsfig")
+theme_override_styles/hover = SubResource("StyleBoxFlat_updke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
+text = "options"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_m8evv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsfig")
+theme_override_styles/hover = SubResource("StyleBoxFlat_updke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -116.0
+offset_right = 116.0
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("1_m8evv")
+theme_override_font_sizes/font_size = 20
+text = "One Wheel Blud"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_iuq3f")
+volume_db = -5.0
+autoplay = true
+
+[node name="Buttonhover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_q0tq5")
+
+[connection signal="mouse_entered" from="VBoxContainer/Start" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Difficulty" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Difficulty" to="." method="_on_difficulty_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Options" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Exit" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

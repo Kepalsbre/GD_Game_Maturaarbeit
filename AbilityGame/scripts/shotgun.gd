@@ -4,7 +4,7 @@ extends Node2D
 @onready var shot = $Shot
 
 @onready var bullets = $Node/Bullets
-@export var damage := 7.0
+@export var damage := 7.5
 @export var knockback := 1.0
 @onready var marker_2d_flipped = $ShotgunImage/Marker2DFlipped
 @onready var marker_2d = $ShotgunImage/Marker2D
@@ -15,6 +15,8 @@ const SHOTGUN_BULLET = preload("res://scenes/shotgun_bullet.tscn")
 
 var current_marker : Marker2D
 
+func _ready():
+	shotgun_image.self_modulate = Color(1,1,1,0)
 
 func create_bullet(i):
 	var new_bullet = SHOTGUN_BULLET.instantiate()
@@ -29,13 +31,14 @@ func create_bullet(i):
 
 
 func _process(delta):
-	look_at(get_global_mouse_position())
-	if global_position.x > get_global_mouse_position().x:
-		shotgun_image.flip_v = true
-		current_marker = marker_2d_flipped
-	else:
-		shotgun_image.flip_v = false
-		current_marker = marker_2d
+	if not executing:
+		look_at(get_global_mouse_position())
+		if global_position.x > get_global_mouse_position().x:
+			shotgun_image.flip_v = true
+			current_marker = marker_2d_flipped
+		else:
+			shotgun_image.flip_v = false
+			current_marker = marker_2d
 	
 
 func execute():

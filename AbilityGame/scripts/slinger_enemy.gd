@@ -104,7 +104,7 @@ func knock_back(knockforce, knock_pos):
 	knock_frames = 20
 	
 func _on_wake_up():
-	await get_tree().create_timer(randf_range(1,15)).timeout
+	await get_tree().create_timer(randf_range(7,14)).timeout
 	awake = true
 	
 func _on_navigation_agent_2d_target_reached():
