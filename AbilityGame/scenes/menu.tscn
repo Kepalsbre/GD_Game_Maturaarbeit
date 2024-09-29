@@ -57,7 +57,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g7c5y")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ButtonsMain" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -72,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 
-[node name="Start" type="Button" parent="VBoxContainer"]
+[node name="Start" type="Button" parent="ButtonsMain"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_m8evv")
@@ -83,7 +84,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
 text = "Start"
 
-[node name="Difficulty" type="Button" parent="VBoxContainer"]
+[node name="Difficulty" type="Button" parent="ButtonsMain"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_m8evv")
@@ -94,7 +95,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
 text = "Difficulty"
 
-[node name="Options" type="Button" parent="VBoxContainer"]
+[node name="Options" type="Button" parent="ButtonsMain"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_m8evv")
@@ -105,7 +106,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
 text = "options"
 
-[node name="Exit" type="Button" parent="VBoxContainer"]
+[node name="Exit" type="Button" parent="ButtonsMain"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_m8evv")
@@ -116,7 +117,87 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
 text = "Exit"
 
-[node name="Label" type="Label" parent="."]
+[node name="ButtonsOptions" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -55.0
+offset_right = 85.5
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonsOptions"]
+layout_mode = 2
+
+[node name="MasterAudio" type="Label" parent="ButtonsOptions/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_m8evv")
+text = "Master Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioSlider" type="HSlider" parent="ButtonsOptions/VBoxContainer"]
+layout_mode = 2
+max_value = 2.0
+step = 0.001
+value = 1.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ButtonsOptions"]
+layout_mode = 2
+
+[node name="MusicAudio" type="Label" parent="ButtonsOptions/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_m8evv")
+text = "Music Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="ButtonsOptions/VBoxContainer2"]
+layout_mode = 2
+max_value = 2.0
+step = 0.001
+value = 1.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="ButtonsOptions"]
+layout_mode = 2
+
+[node name="SFXAudio" type="Label" parent="ButtonsOptions/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_m8evv")
+text = "SFX Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="ButtonsOptions/VBoxContainer3"]
+layout_mode = 2
+max_value = 2.0
+step = 0.001
+value = 1.0
+
+[node name="CheckBox" type="CheckBox" parent="ButtonsOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_m8evv")
+text = "Fullscreen"
+alignment = 1
+
+[node name="Back" type="Button" parent="ButtonsOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_m8evv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsfig")
+theme_override_styles/hover = SubResource("StyleBoxFlat_updke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
+text = "Back"
+
+[node name="GameLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -142,15 +223,23 @@ vertical_alignment = 1
 stream = ExtResource("4_iuq3f")
 volume_db = -5.0
 autoplay = true
+bus = &"Music"
 
 [node name="Buttonhover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_q0tq5")
+bus = &"sfx"
 
-[connection signal="mouse_entered" from="VBoxContainer/Start" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="mouse_entered" from="VBoxContainer/Difficulty" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/Difficulty" to="." method="_on_difficulty_pressed"]
-[connection signal="mouse_entered" from="VBoxContainer/Options" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="mouse_entered" from="VBoxContainer/Exit" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="ButtonsMain/Start" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonsMain/Start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="ButtonsMain/Difficulty" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonsMain/Difficulty" to="." method="_on_difficulty_pressed"]
+[connection signal="mouse_entered" from="ButtonsMain/Options" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonsMain/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="ButtonsMain/Exit" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonsMain/Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="ButtonsOptions/VBoxContainer/AudioSlider" to="." method="_on_audio_slider_value_changed"]
+[connection signal="value_changed" from="ButtonsOptions/VBoxContainer2/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="ButtonsOptions/VBoxContainer3/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="ButtonsOptions/CheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="mouse_entered" from="ButtonsOptions/Back" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonsOptions/Back" to="." method="_on_options_back_pressed"]

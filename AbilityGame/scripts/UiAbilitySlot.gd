@@ -20,4 +20,3 @@ func update(ability: InvAbility):
 		eqipped_ability_image.visible = true
 		uses_counter.visible = true
 
-		

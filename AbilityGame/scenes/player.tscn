@@ -149,6 +149,7 @@ color = Color(0.752941, 0.752941, 0.752941, 1)
 
 [node name="DashSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_pgrd4")
+bus = &"sfx"
 
 [node name="WalkAnimations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -13,8 +13,10 @@ one_shot = true
 
 [node name="TransformSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_2ilht")
+bus = &"sfx"
 
 [node name="BacktransformSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_xp83n")
+bus = &"sfx"
 
 [connection signal="timeout" from="ActiveTime" to="." method="_on_active_time_timeout"]

@@ -15,8 +15,10 @@ one_shot = true
 
 [node name="DuplicateSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_srw38")
+bus = &"sfx"
 
 [node name="DuplicateBackSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_uxkwn")
+bus = &"sfx"
 
 [connection signal="timeout" from="ActiveTime" to="." method="_on_active_time_timeout"]

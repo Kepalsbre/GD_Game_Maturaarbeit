@@ -26,3 +26,4 @@ scale = Vector2(0.333333, 0.333333)
 
 [node name="Shot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_hauab")
+bus = &"sfx"

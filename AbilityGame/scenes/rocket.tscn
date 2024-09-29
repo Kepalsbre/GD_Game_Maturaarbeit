@@ -59,9 +59,11 @@ autostart = true
 [node name="Start" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_hw03x")
 autoplay = true
+bus = &"sfx"
 
 [node name="Explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_lmk3n")
+bus = &"sfx"
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
