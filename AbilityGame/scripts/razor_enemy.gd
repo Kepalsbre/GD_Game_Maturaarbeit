@@ -54,7 +54,7 @@ func _ready():
 	navigation_agent_2d.max_speed = speed
 	
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	player_pos = Global.player_pos
 	match current_state:
 		state.idle:

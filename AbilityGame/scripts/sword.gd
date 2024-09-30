@@ -93,3 +93,4 @@ func enable_true_form(on):
 			attack_animation = "laser_attack"
 			animation_player.speed_scale = 1.2
 	animation_player.stop()
+	animation_player.play()

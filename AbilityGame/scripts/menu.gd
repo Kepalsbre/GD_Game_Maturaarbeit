@@ -7,6 +7,11 @@ extends Control
 @onready var buttons_options = $ButtonsOptions
 @onready var game_label = $GameLabel
 
+@onready var audio_slider = $ButtonsOptions/VBoxContainer/AudioSlider
+@onready var music_slider = $ButtonsOptions/VBoxContainer2/MusicSlider
+@onready var sfx_slider = $ButtonsOptions/VBoxContainer3/SFXSlider
+
+
 var difficulty_text = "normal"
 var game_title := "one-wheel circuit"
 var bus_index_master : int
@@ -27,11 +32,12 @@ func _ready():
 	bus_index_master = AudioServer.get_bus_index("Master")
 	bus_index_music = AudioServer.get_bus_index("Music")
 	bus_index_sounds = AudioServer.get_bus_index("sfx")
+	
+	music_slider.value = Global.music_value
+	sfx_slider.value = Global.sfx_value
+	audio_slider.value = Global.master_value
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_start_pressed():
@@ -68,22 +74,27 @@ func _on_options_back_pressed():
 
 
 func _on_fullscreen_check_box_toggled(toggled_on):
-	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+	if not toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		Global.is_fullscreen = toggled_on
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		Global.is_fullscreen = toggled_on
 
 
 func _on_audio_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(bus_index_master, linear_to_db(value))
+	Global.master_value = value
 
 
 func _on_music_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(bus_index_music, linear_to_db(value))
+	Global.music_value = value
 
 
 func _on_sfx_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(bus_index_sounds, linear_to_db(value))
+	Global.sfx_value = value
 
 
 func _on_difficulty_back_pressed():

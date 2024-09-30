@@ -1,0 +1,202 @@
+[gd_scene load_steps=9 format=3 uid="uid://787gaf6lpnlc"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_rtg2d"]
+[ext_resource type="FontFile" uid="uid://dthdwesvq0dpa" path="res://art/joystix monospace.otf" id="2_i26ov"]
+[ext_resource type="AudioStream" uid="uid://cb4u1a2hm2fq3" path="res://sounds/ability/button_hover_sound.wav" id="3_etwdm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmpf6"]
+bg_color = Color(0.0823529, 0.623529, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(-3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s20g7"]
+bg_color = Color(0, 0.564706, 0.615686, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(-3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mujkv"]
+bg_color = Color(0.733333, 0.184314, 0.207843, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(-3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nnnn1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iribc"]
+bg_color = Color(0.317647, 0.364706, 0.490196, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rtg2d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonsOptions" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -120.5
+offset_right = 85.5
+offset_bottom = 162.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Resume" type="Button" parent="CanvasLayer/ButtonsOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_i26ov")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xmpf6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s20g7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mujkv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nnnn1")
+text = "resume"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ButtonsOptions"]
+layout_mode = 2
+
+[node name="MasterAudio" type="Label" parent="CanvasLayer/ButtonsOptions/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i26ov")
+text = "Master Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioSlider" type="HSlider" parent="CanvasLayer/ButtonsOptions/VBoxContainer"]
+layout_mode = 2
+max_value = 2.0
+step = 0.001
+value = 1.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/ButtonsOptions"]
+layout_mode = 2
+
+[node name="MusicAudio" type="Label" parent="CanvasLayer/ButtonsOptions/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i26ov")
+text = "Music Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/ButtonsOptions/VBoxContainer2"]
+layout_mode = 2
+max_value = 2.0
+step = 0.001
+value = 1.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/ButtonsOptions"]
+layout_mode = 2
+
+[node name="SFXAudio" type="Label" parent="CanvasLayer/ButtonsOptions/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i26ov")
+text = "SFX Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/ButtonsOptions/VBoxContainer3"]
+layout_mode = 2
+max_value = 2.0
+step = 0.001
+value = 1.0
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/ButtonsOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i26ov")
+text = "Fullscreen"
+alignment = 1
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/ButtonsOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_i26ov")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xmpf6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s20g7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mujkv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nnnn1")
+text = "Main menu"
+
+[node name="Quit" type="Button" parent="CanvasLayer/ButtonsOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_i26ov")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xmpf6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s20g7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mujkv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nnnn1")
+text = "Quit Game"
+
+[node name="GameLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -159.0
+offset_right = 64.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_i26ov")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_iribc")
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttonhover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_etwdm")
+bus = &"sfx"
+
+[connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/Resume" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/ButtonsOptions/Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/VBoxContainer/AudioSlider" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="CanvasLayer/ButtonsOptions/VBoxContainer/AudioSlider" to="." method="_on_audio_slider_value_changed"]
+[connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/VBoxContainer2/MusicSlider" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="CanvasLayer/ButtonsOptions/VBoxContainer2/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/VBoxContainer3/SFXSlider" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="CanvasLayer/ButtonsOptions/VBoxContainer3/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/CheckBox" to="." method="_on_button_mouse_entered"]
+[connection signal="toggled" from="CanvasLayer/ButtonsOptions/CheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/MainMenu" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/ButtonsOptions/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/Quit" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/ButtonsOptions/Quit" to="." method="_on_quit_pressed"]

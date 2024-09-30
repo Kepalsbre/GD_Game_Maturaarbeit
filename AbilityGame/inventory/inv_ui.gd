@@ -2,6 +2,7 @@ extends Control
 
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 @onready var description = $Description
+const PAUSE_MENU = preload("res://scenes/pause_menu.tscn")
 
 
 var step := 1
@@ -41,6 +42,8 @@ func _process(_delta):
 			close()
 		else:
 			open()
+	elif Input.is_action_just_pressed("esc") and not is_open:
+		get_tree().root.add_child(PAUSE_MENU.instantiate())
 
 func close():
 	visible = false

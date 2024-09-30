@@ -7,6 +7,11 @@ var enemy_knockback_multiplier := 1.0
 var enemy_dmg_multiplier := 1.0
 var inv: Array = preload("res://inventory/playerinv.tres").abilities
 
+var is_fullscreen := false
+var sfx_value := 1.0
+var music_value := 1.0
+var master_value := 1.0
+
 
 var ability_dict = {
 	"Pushback" : preload("res://scenes/pushback.tscn"),

@@ -30,7 +30,7 @@ var knock_frames := 0
 var spawn_frames : int
 var spawn_velocity : Vector2
 var hitbox_disabled := false
-@onready var hitbox = $HitboxComponent/Hitbox
+@onready var hitbox_box = $HitboxComponent/Hitbox
 
 
 signal wake_up
@@ -44,7 +44,7 @@ func _ready():
 	navigation_agent_2d.max_speed = speed
 	
 	# delete if creating new enemy
-	hitbox.disabled = hitbox_disabled
+	hitbox_box.disabled = hitbox_disabled
 	
 	
 func _physics_process(_delta):
@@ -86,7 +86,7 @@ func _physics_process(_delta):
 				offset = randoffset()
 				offset_timer.start()
 				walk_animation.play()
-				hitbox.set_deferred("disabled", false)
+				hitbox_box.set_deferred("disabled", false)
 				current_state = state.seek
 			velocity = spawn_velocity
 		
