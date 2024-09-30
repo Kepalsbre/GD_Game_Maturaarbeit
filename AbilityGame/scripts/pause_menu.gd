@@ -28,7 +28,7 @@ func _ready():
 	bus_index_sounds = AudioServer.get_bus_index("sfx")
 	
 	check_box.button_pressed = Global.is_fullscreen
-	print("heolsaü")
+	refresh_audio()
 	get_tree().paused = true
 
 
@@ -53,6 +53,10 @@ func _on_resume_pressed():
 func _on_button_mouse_entered():
 	$Buttonhover.play()
 
+func refresh_audio():
+	AudioServer.set_bus_volume_db(bus_index_master, linear_to_db(Global.master_value))
+	AudioServer.set_bus_volume_db(bus_index_music, linear_to_db(Global.music_value))
+	AudioServer.set_bus_volume_db(bus_index_sounds, linear_to_db(Global.sfx_value))
 
 
 func _on_audio_slider_value_changed(value):

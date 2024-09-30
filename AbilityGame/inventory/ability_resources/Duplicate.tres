@@ -8,4 +8,4 @@ script = ExtResource("1_dmdvf")
 name = "Duplicate"
 texture = ExtResource("2_lfj7s")
 uses = 1
-desc = "Create 4 duplicates that fight with you for 10 sec"
+desc = "Create 4 duplicates that fight with you for 9 sec"
