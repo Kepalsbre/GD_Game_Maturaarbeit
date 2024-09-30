@@ -1,10 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsom2r3nievx4"]
+[gd_scene load_steps=32 format=3 uid="uid://dsom2r3nievx4"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_1kgr8"]
 [ext_resource type="Texture2D" uid="uid://bej10s3ll6y6w" path="res://art/menu_screen.png" id="1_dktc8"]
 [ext_resource type="FontFile" uid="uid://dthdwesvq0dpa" path="res://art/joystix monospace.otf" id="1_m8evv"]
 [ext_resource type="AudioStream" uid="uid://cgqjgjvb3fyh2" path="res://music/Menutheme.ogg" id="4_iuq3f"]
+[ext_resource type="Texture2D" uid="uid://5hxkdyo7lmrk" path="res://art/difficulty/easy.png" id="4_jif63"]
+[ext_resource type="Texture2D" uid="uid://dlcok38nd4l7c" path="res://art/difficulty/normal.png" id="5_lk2cl"]
 [ext_resource type="AudioStream" uid="uid://cb4u1a2hm2fq3" path="res://sounds/ability/button_hover_sound.wav" id="5_q0tq5"]
+[ext_resource type="Texture2D" uid="uid://jrewn6rmiknq" path="res://art/difficulty/hard.png" id="6_0e0q8"]
+[ext_resource type="Texture2D" uid="uid://3mw5s361bqtd" path="res://art/difficulty/spinner_easy_animation.png" id="7_501t5"]
+[ext_resource type="Texture2D" uid="uid://dvgwk2ue5l6h1" path="res://art/difficulty/spinner_hard_animation.png" id="8_qde2j"]
+[ext_resource type="Texture2D" uid="uid://baeow4hqksk75" path="res://art/enemy/enemy_spinner.png" id="9_ttvm4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g7c5y"]
 texture = ExtResource("1_dktc8")
@@ -37,6 +43,118 @@ shadow_size = 3
 shadow_offset = Vector2(-3, 3)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b8vgy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6abh"]
+bg_color = Color(0.164706, 0.164706, 0.164706, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27qrv"]
+atlas = ExtResource("7_501t5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vl5j"]
+atlas = ExtResource("7_501t5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f8om"]
+atlas = ExtResource("7_501t5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i24d"]
+atlas = ExtResource("7_501t5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwhc2"]
+atlas = ExtResource("8_qde2j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb6j4"]
+atlas = ExtResource("8_qde2j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p25aj"]
+atlas = ExtResource("8_qde2j")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiwvx"]
+atlas = ExtResource("8_qde2j")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yeah"]
+atlas = ExtResource("9_ttvm4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r07hi"]
+atlas = ExtResource("9_ttvm4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohwwn"]
+atlas = ExtResource("9_ttvm4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci68g"]
+atlas = ExtResource("9_ttvm4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p2omc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27qrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vl5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f8om")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6i24d")
+}],
+"loop": true,
+"name": &"easy",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwhc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb6j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p25aj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiwvx")
+}],
+"loop": true,
+"name": &"hard",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yeah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r07hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohwwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci68g")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 12.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouwty"]
+bg_color = Color(0.317647, 0.364706, 0.490196, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -118,6 +236,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
 text = "Exit"
 
 [node name="ButtonsOptions" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -197,6 +316,143 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
 text = "Back"
 
+[node name="ButtonsDifficulty" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 51.5
+offset_right = 86.0
+offset_bottom = 156.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonsDifficulty"]
+layout_mode = 2
+alignment = 1
+
+[node name="MusicAudio" type="Label" parent="ButtonsDifficulty/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_m8evv")
+text = "Select here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonsDifficulty/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Easy" type="Button" parent="ButtonsDifficulty/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_m8evv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsfig")
+theme_override_styles/hover = SubResource("StyleBoxFlat_updke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
+icon = ExtResource("4_jif63")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Normal" type="Button" parent="ButtonsDifficulty/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_m8evv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsfig")
+theme_override_styles/hover = SubResource("StyleBoxFlat_updke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
+icon = ExtResource("5_lk2cl")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Hard" type="Button" parent="ButtonsDifficulty/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_m8evv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsfig")
+theme_override_styles/hover = SubResource("StyleBoxFlat_updke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
+icon = ExtResource("6_0e0q8")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Back" type="Button" parent="ButtonsDifficulty"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_m8evv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsfig")
+theme_override_styles/hover = SubResource("StyleBoxFlat_updke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a07lr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
+text = "Back"
+
+[node name="DifficultyLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -62.0
+offset_right = 215.0
+offset_bottom = 53.0
+grow_vertical = 2
+tooltip_text = "hp = health points
+dmg = damage
+kb = knockback"
+mouse_filter = 0
+theme_override_fonts/font = ExtResource("1_m8evv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_w6abh")
+text = "Normal
+
+Enemy HP: 
+Enemy dmg:
+Enemy KB:"
+vertical_alignment = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DifficultyAnimation" type="AnimatedSprite2D" parent="Control"]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_p2omc")
+animation = &"normal"
+
+[node name="MenuTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_iuq3f")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
+
+[node name="Buttonhover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_q0tq5")
+bus = &"sfx"
+
 [node name="GameLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -215,19 +471,10 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("1_m8evv")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ouwty")
 text = "One Wheel Blud"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="MenuTheme" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_iuq3f")
-volume_db = -5.0
-autoplay = true
-bus = &"Music"
-
-[node name="Buttonhover" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_q0tq5")
-bus = &"sfx"
 
 [connection signal="mouse_entered" from="ButtonsMain/Start" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ButtonsMain/Start" to="." method="_on_start_pressed"]
@@ -243,3 +490,11 @@ bus = &"sfx"
 [connection signal="toggled" from="ButtonsOptions/CheckBox" to="." method="_on_fullscreen_check_box_toggled"]
 [connection signal="mouse_entered" from="ButtonsOptions/Back" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ButtonsOptions/Back" to="." method="_on_options_back_pressed"]
+[connection signal="mouse_entered" from="ButtonsDifficulty/VBoxContainer/HBoxContainer/Easy" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonsDifficulty/VBoxContainer/HBoxContainer/Easy" to="." method="_on_easy_pressed"]
+[connection signal="mouse_entered" from="ButtonsDifficulty/VBoxContainer/HBoxContainer/Normal" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonsDifficulty/VBoxContainer/HBoxContainer/Normal" to="." method="_on_normal_pressed"]
+[connection signal="mouse_entered" from="ButtonsDifficulty/VBoxContainer/HBoxContainer/Hard" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonsDifficulty/VBoxContainer/HBoxContainer/Hard" to="." method="_on_hard_pressed"]
+[connection signal="mouse_entered" from="ButtonsDifficulty/Back" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonsDifficulty/Back" to="." method="_on_difficulty_back_pressed"]

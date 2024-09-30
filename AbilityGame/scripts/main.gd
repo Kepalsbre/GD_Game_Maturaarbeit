@@ -15,6 +15,5 @@ func update_nearest_enemy():
 		Global.nearest_enemy = enemy_list.front()
 	
 
-
 func sort_closest(a,b):
 	return a.global_position.distance_to(Global.player_pos) < b.global_position.distance_to(Global.player_pos)

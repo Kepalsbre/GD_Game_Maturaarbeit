@@ -2,9 +2,9 @@ extends Node
 
 var nearest_enemy
 var player_pos := Vector2.ZERO
-var enemy_hp_multiplier := 1 
-var enemy_knockback_multiplier := 1 
-var enemy_dmg_multiplier := 1 
+var enemy_hp_multiplier := 1.0
+var enemy_knockback_multiplier := 1.0
+var enemy_dmg_multiplier := 1.0
 var inv: Array = preload("res://inventory/playerinv.tres").abilities
 
 
