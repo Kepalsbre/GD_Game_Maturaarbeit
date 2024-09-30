@@ -10,9 +10,12 @@ config_version=5
 
 [application]
 
-config/name="AbilityGame"
+config/name="one-wheel circuit"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+boot_splash/bg_color=Color(0.145098, 0.172549, 0.247059, 1)
+boot_splash/image="res://art/player/player_normal.png"
+boot_splash/use_filter=false
 
 [autoload]
 
