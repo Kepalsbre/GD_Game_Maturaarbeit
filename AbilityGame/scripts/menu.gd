@@ -36,6 +36,7 @@ func _ready():
 	music_slider.value = Global.music_value
 	sfx_slider.value = Global.sfx_value
 	audio_slider.value = Global.master_value
+	$ButtonsOptions/CheckBox.button_pressed = Global.is_fullscreen
 
 
 
