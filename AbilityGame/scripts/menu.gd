@@ -43,7 +43,7 @@ func _ready():
 
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
-
+	
 
 func _on_options_pressed():
 	buttons_main.visible = false

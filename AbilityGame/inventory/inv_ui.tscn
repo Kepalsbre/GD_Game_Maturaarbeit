@@ -113,7 +113,6 @@ offset_bottom = 624.0
 scale = Vector2(0.05, 0.05)
 theme_override_fonts/font = ExtResource("5_1vk0l")
 theme_override_font_sizes/font_size = 120
-text = "Perform a faster dash that damages foes on its way."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
