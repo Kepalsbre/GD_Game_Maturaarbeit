@@ -60,7 +60,6 @@ stream_0/weight = 1.0
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_eb7c4")
-wake_lenght = 600
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jbwei")
@@ -116,9 +115,15 @@ stream = SubResource("AudioStreamRandomizer_c3ttb")
 volume_db = 7.0
 bus = &"sfx"
 
+[node name="SpawnInTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
 [connection signal="hitted" from="HealthComponent" to="." method="_on_health_component_hitted"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="timeout" from="OffsetTimer" to="." method="_on_offset_timer_timeout"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="SpawnInTimer" to="." method="_on_spawn_in_timer_timeout"]

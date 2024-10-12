@@ -1,81 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpmpj0rn60cnp"]
+[gd_scene load_steps=3 format=3 uid="uid://dpmpj0rn60cnp"]
 
 [ext_resource type="PackedScene" uid="uid://14w1yhbvtxgk" path="res://scenes/player.tscn" id="1_rhsj6"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_wwjlx"]
-[ext_resource type="PackedScene" uid="uid://14r6tbaldkb3" path="res://scenes/spinner_enemy.tscn" id="3_ak5ec"]
-[ext_resource type="PackedScene" uid="uid://13x82i8byh7n" path="res://scenes/levels/level_2.tscn" id="3_yifse"]
-[ext_resource type="PackedScene" uid="uid://bf6st2h5ud8xf" path="res://scenes/slinger_enemy.tscn" id="4_mo040"]
-[ext_resource type="PackedScene" uid="uid://b7cnwohvxq3g0" path="res://scenes/razor_enemy.tscn" id="5_r8awr"]
-[ext_resource type="PackedScene" uid="uid://xd50npcxo03m" path="res://scenes/blastling_enemy.tscn" id="6_0xuj5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wwjlx")
 
 [node name="Map" type="Node2D" parent="."]
 
-[node name="Level2" parent="Map" instance=ExtResource("3_yifse")]
-
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="SpinnerEnemy3" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(418, 2270)
-
-[node name="SpinnerEnemy15" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(3116, 2021)
-
-[node name="SpinnerEnemy17" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(3207, 2456)
-
-[node name="SpinnerEnemy18" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(4564, 2286)
-
-[node name="SpinnerEnemy19" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(4027, 2405)
-
-[node name="SpinnerEnemy4" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(5305, 2298)
-
-[node name="SpinnerEnemy7" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(4389, 1207)
-
-[node name="SpinnerEnemy14" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(5249, -211)
-
-[node name="SpinnerEnemy5" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(2547, 1295)
-
-[node name="SpinnerEnemy13" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(1574, 1519)
-
-[node name="SpinnerEnemy16" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(1380, 1978)
-
-[node name="SpinnerEnemy9" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(4894, 235)
-
-[node name="SpinnerEnemy10" parent="Enemies" instance=ExtResource("3_ak5ec")]
-position = Vector2(4215, 63)
-
-[node name="SlingerEnemy5" parent="Enemies" instance=ExtResource("4_mo040")]
-position = Vector2(3822, -226)
-
-[node name="SlingerEnemy4" parent="Enemies" instance=ExtResource("4_mo040")]
-position = Vector2(4118, 1286)
-
-[node name="SlingerEnemy3" parent="Enemies" instance=ExtResource("4_mo040")]
-position = Vector2(2424, 2249)
-
-[node name="RazorEnemy" parent="Enemies" instance=ExtResource("5_r8awr")]
-position = Vector2(2913, -71)
-
-[node name="RazorEnemy2" parent="Enemies" instance=ExtResource("5_r8awr")]
-position = Vector2(4849, 2090)
-
-[node name="RazorEnemy3" parent="Enemies" instance=ExtResource("5_r8awr")]
-position = Vector2(1011, 2409)
-
-[node name="BlastlingEnemy" parent="Enemies" instance=ExtResource("6_0xuj5")]
-position = Vector2(1567, 23)
 
 [node name="EnemyProjectiles" type="Node2D" parent="."]
 

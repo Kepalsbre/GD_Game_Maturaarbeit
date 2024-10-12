@@ -3,7 +3,7 @@ extends CharacterBody2D
 # delete "spawn" if creating new enemy
 enum state {idle, seek, attack, spawn}
 @export var current_state: state = state.idle
-@export var wake_lenght := 800
+@export var wake_lenght := 450
 @export var knockback: float = 1.2:
 	get:
 		return knockback * Global.enemy_knockback_multiplier
@@ -17,8 +17,10 @@ enum state {idle, seek, attack, spawn}
 @onready var health_component = $HealthComponent
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
+@onready var spawn_in_timer = $SpawnInTimer
 
-
+var can_detect = false
+var waking_up = false
 var player_pos
 var speed : int = randi_range(400, 480)
 var offset : Vector2
@@ -51,7 +53,7 @@ func _physics_process(_delta):
 	player_pos = Global.player_pos
 	match current_state:
 		state.idle:
-			if global_position.distance_to(player_pos) < wake_lenght \
+			if can_detect and global_position.distance_to(player_pos) < wake_lenght \
 			or health_component.max_health != health_component.health \
 			or awake:
 				current_state = state.seek
@@ -125,8 +127,10 @@ func knock_back(knockforce, knock_pos):
 	
 	
 func _on_wake_up():
-	await get_tree().create_timer(randf_range(7,14)).timeout
-	awake = true
+	if not waking_up:
+		waking_up = true
+		await get_tree().create_timer(randf_range(7,21)).timeout
+		awake = true
 	
 
 func _on_navigation_agent_2d_target_reached():
@@ -149,3 +153,8 @@ func _on_health_component_killed():
 	await audio_stream_player_2d.finished
 	queue_free()
 
+
+
+func _on_spawn_in_timer_timeout():
+	spawn_in_timer.queue_free()
+	can_detect = true

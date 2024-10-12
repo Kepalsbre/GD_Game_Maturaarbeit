@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var label = $PlayerUI/HpBarComponent/Label
 @onready var health_component = $HealthComponent
 @onready var sword = $Sword
-@export var speed: int = 800
+var speed: int = 800
 
 @onready var slot_1 = $EquippedAbilities/Slot1
 @onready var slot_2 = $EquippedAbilities/Slot2

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://2xn5esg3gdjw"]
+
+[ext_resource type="Script" path="res://scripts/EnemySpawn.gd" id="1_71whb"]
+
+[node name="EnemySpawn" type="Marker2D"]
+gizmo_extents = 400.0
+script = ExtResource("1_71whb")
+metadata/type = "Player"

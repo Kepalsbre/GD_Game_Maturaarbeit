@@ -29,11 +29,12 @@ const SPINNER_ENEMY = preload("res://scenes/spinner_enemy.tscn")
 
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var attack_shot = $AttackShot
+@onready var spawn_in_timer = $SpawnInTimer
 
 
 
-
-
+var can_detect = false
+var waking_up = false
 var player_pos
 var speed : int = randi_range(160, 220)
 var offset : Vector2
@@ -61,7 +62,7 @@ func _physics_process(delta):
 	player_pos = Global.player_pos
 	match current_state:
 		state.idle:
-			if global_position.distance_to(player_pos) < wake_lenght \
+			if can_detect and global_position.distance_to(player_pos) < wake_lenght \
 			or health_component.max_health != health_component.health \
 			or awake:
 				follow_animation.play("default")
@@ -115,8 +116,10 @@ func knock_back(knockforce, knock_pos):
 	knock_frames = 20
 	
 func _on_wake_up():
-	await get_tree().create_timer(randf_range(7,14)).timeout
-	awake = true
+	if not waking_up:
+		waking_up = true
+		await get_tree().create_timer(randf_range(12, 32)).timeout
+		awake = true
 	
 func _on_navigation_agent_2d_target_reached():
 	current_state = state.attack
@@ -175,7 +178,7 @@ func _on_health_component_hitted():
 func update_canon(delta):
 	match current_canon_state:
 		canon_state.default:
-			if global_position.distance_to(player_pos) < 2200 and not animation_player.is_playing():
+			if global_position.distance_to(player_pos) < 1500 and not animation_player.is_playing():
 				animation_player.play("canon_shot")
 				slower = 1
 			
@@ -203,3 +206,8 @@ func create_spinner(hit_velocity: Vector2, knock_speed : int):
 func spawn_spinner():
 	get_parent().add_child(create_spinner(spawn_direction, 2000))
 	
+
+
+func _on_spawn_in_timer_timeout():
+	spawn_in_timer.queue_free()
+	can_detect = true

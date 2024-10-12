@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dymvai80iri3"]
+[gd_scene load_steps=4 format=3 uid="uid://dymvai80iri3"]
 
 [ext_resource type="TileSet" uid="uid://bsjh8f1id8pvd" path="res://art/world/level_1.tres" id="1_q2gwi"]
+[ext_resource type="PackedScene" uid="uid://2xn5esg3gdjw" path="res://scenes/enemy_spawn.tscn" id="2_w8wir"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6exkb"]
 vertices = PackedVector2Array(2224, 2224, 1104, 1616, 1360, 1104, 2224, -432, 1104, 1200, 688, 1104, 688, 1200, -432, 2224, 688, 1616, 1360, 688, 848, 336, 848, -80, 688, 688, 432, 336, -432, -432, 432, -80)
@@ -28,3 +29,58 @@ layer_0/tile_data = PackedInt32Array(-131073, 327680, 2, -196608, 131072, 4, -19
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_6exkb")
+
+[node name="PlayerSpawns" type="Node2D" parent="."]
+
+[node name="PlayerSpawn" type="Marker2D" parent="PlayerSpawns"]
+position = Vector2(-391, -394)
+gizmo_extents = 120.0
+
+[node name="PlayerSpawn2" type="Marker2D" parent="PlayerSpawns"]
+position = Vector2(2159, -377)
+gizmo_extents = 120.0
+
+[node name="PlayerSpawn3" type="Marker2D" parent="PlayerSpawns"]
+position = Vector2(-378, 2165)
+gizmo_extents = 120.0
+
+[node name="PlayerSpawn4" type="Marker2D" parent="PlayerSpawns"]
+position = Vector2(2167, 2167)
+gizmo_extents = 120.0
+
+[node name="EnemySpawns" type="Node2D" parent="."]
+
+[node name="EnemySpawnS" parent="EnemySpawns" instance=ExtResource("2_w8wir")]
+position = Vector2(943, -208)
+gizmo_extents = 230.0
+
+[node name="EnemySpawnS2" parent="EnemySpawns" instance=ExtResource("2_w8wir")]
+position = Vector2(1021, 362)
+gizmo_extents = 230.0
+
+[node name="EnemySpawnS3" parent="EnemySpawns" instance=ExtResource("2_w8wir")]
+position = Vector2(909, 1908)
+gizmo_extents = 230.0
+
+[node name="EnemySpawnS4" parent="EnemySpawns" instance=ExtResource("2_w8wir")]
+position = Vector2(472, 1225)
+gizmo_extents = 230.0
+
+[node name="EnemySpawnS5" parent="EnemySpawns" instance=ExtResource("2_w8wir")]
+position = Vector2(1437, 1212)
+gizmo_extents = 230.0
+
+[node name="EnemySpawnM" parent="EnemySpawns" instance=ExtResource("2_w8wir")]
+position = Vector2(-2, 838)
+gizmo_extents = 230.0
+EnemyType = 1
+
+[node name="EnemySpawnM2" parent="EnemySpawns" instance=ExtResource("2_w8wir")]
+position = Vector2(1799, 869)
+gizmo_extents = 230.0
+EnemyType = 1
+
+[node name="EnemySpawnL" parent="EnemySpawns" instance=ExtResource("2_w8wir")]
+position = Vector2(393, 575)
+gizmo_extents = 230.0
+EnemyType = 2
