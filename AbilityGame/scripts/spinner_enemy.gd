@@ -3,7 +3,7 @@ extends CharacterBody2D
 # delete "spawn" if creating new enemy
 enum state {idle, seek, attack, spawn}
 @export var current_state: state = state.idle
-@export var wake_lenght := 450
+@export var wake_lenght := 500
 @export var knockback: float = 1.2:
 	get:
 		return knockback * Global.enemy_knockback_multiplier
@@ -129,7 +129,7 @@ func knock_back(knockforce, knock_pos):
 func _on_wake_up():
 	if not waking_up:
 		waking_up = true
-		await get_tree().create_timer(randf_range(7,21)).timeout
+		await get_tree().create_timer(randf_range(7,15)).timeout
 		awake = true
 	
 

@@ -4,7 +4,7 @@ enum state {idle, seek, attack}
 enum canon_state {default, spin}
 @export var current_canon_state : canon_state = canon_state.default
 @export var current_state: state = state.idle
-@export var wake_lenght := 400
+@export var wake_lenght := 420
 
 @export var knockback: float = 1.0:
 	get:

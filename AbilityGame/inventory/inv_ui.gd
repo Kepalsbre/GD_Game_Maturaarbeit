@@ -37,12 +37,15 @@ func update_equipped():
 			
 			
 func _process(_delta):
-	if Input.is_action_just_pressed("i") or Input.is_action_just_pressed("esc") and is_open:
-		if is_open:
-			close()
-		else:
-			open()
-	elif Input.is_action_just_pressed("esc") and not is_open:
+	if not Global.combat:
+		if Input.is_action_just_pressed("i") or Input.is_action_just_pressed("esc") and is_open:
+			if is_open:
+				update_slots()
+				close()
+			else:
+				update_slots()
+				open()
+	if Input.is_action_just_pressed("esc") and not is_open:
 		get_tree().root.add_child(PAUSE_MENU.instantiate())
 
 func close():

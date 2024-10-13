@@ -4,42 +4,107 @@ extends Node2D
 @onready var map = $Map
 @onready var enemy_projectiles = $EnemyProjectiles
 @onready var player = $Player
+@onready var audio_stream_player = $AudioStreamPlayer
+@onready var inv_ui = player.get_node("PlayerUI").get_node("InvUI")
 
 const spinner_scene := preload("res://scenes/spinner_enemy.tscn")
 const slinger_scene := preload("res://scenes/slinger_enemy.tscn")
 const razor_scene := preload("res://scenes/razor_enemy.tscn")
 const blastling_scene := preload("res://scenes/blastling_enemy.tscn")
+const LOOTBOX = preload("res://scenes/lootbox.tscn")
 
-var enemies_dict := {"S" : 40, "M" : 10, "L" : 4}
+const SWORD_UPGRADE_ICON = preload("res://art/abilities/sword_upgrade_icon.png")
 
+
+var enemies_dict := {"S" : 1, "M" : 0, "L" : 0}
+
+var lootbox_spawn_pos : Vector2
+var lootbox_can_spawn := false
+var next_loot 
+var sword_upgrade_count := 0
 
 var levels := [preload("res://scenes/levels/level_1.tscn")]
 var current_level : PackedScene = levels[0]
 
 func _ready():
 	create_level(current_level)
-	
+	clear_inventory()
 	
 	
 	
 
 func _process(_delta):
 	update_nearest_enemy()
-
+	
+	if enemies.get_child_count() <= 2 and not enemies.get_child_count() == 0:
+		lootbox_spawn_pos = enemies.get_child(0).global_position
+	
+	if enemies.get_child_count() == 0:
+		Global.combat = false
+		if lootbox_can_spawn:
+			lootbox_can_spawn = false
+			await get_tree().create_timer(0.5).timeout
+			spawn_box()
+			audio_stream_player.pitch_scale = [0.5, 0.6,0.7, 0.75, 0.8, 1, 1.15].pick_random()
+			audio_stream_player.stream = load("res://music/combatwin.ogg")
+			audio_stream_player.play()
+	
 
 
 func create_level(level_scene : PackedScene):
 	var new_level := level_scene.instantiate()
-	clear()
+	clear_stuff()
 	map.add_child(new_level)
 	var player_positions : Array = new_level.get_node("PlayerSpawns").get_children()
 	var enemy_positions : Array = new_level.get_node("EnemySpawns").get_children()
 	player.position = player_positions.pick_random().global_position
 	create_enemies(enemy_positions)
+	Global.combat = true
+	lootbox_can_spawn = true
+	inv_ui.close()
+	create_new_loot()
+
+
+
+func receive_loot():
+	match typeof(next_loot):
+		TYPE_STRING:
+			player.get_node("Sword").lvlup()
+		TYPE_OBJECT:
+			for i in range(Global.inv.size()):
+				if Global.inv[i] == null:
+					Global.inv[i] = next_loot
+					inv_ui.update_slots()
+					break
 	
+
+func create_new_loot():
+	var r = randi() % 100
+	if r < 5 and sword_upgrade_count < 2:
+		next_loot = "upgrade"
+		sword_upgrade_count += 1
+	else:
+		next_loot = Global.ability_list.pick_random()
+	
+
+func spawn_box():
+	var new_box = LOOTBOX.instantiate()
+	new_box.global_position = lootbox_spawn_pos
+	match typeof(next_loot):
+		TYPE_STRING:
+			new_box.loot_image_load = SWORD_UPGRADE_ICON
+		TYPE_OBJECT:
+			new_box.loot_image_load = next_loot.texture
+	add_child(new_box)
+	move_child(new_box, -2)
+	new_box.looted.connect(receive_loot)
 	
 	
 
+func clear_inventory():
+	for i in range(Global.inv.size()):
+		Global.inv[i] = null
+	inv_ui.update_slots()
 
 func update_nearest_enemy():
 	if enemies.get_child_count() != 0:
@@ -50,11 +115,13 @@ func update_nearest_enemy():
 func sort_closest(a,b):
 	return a.global_position.distance_to(Global.player_pos) < b.global_position.distance_to(Global.player_pos)
 
-func clear():
+func clear_stuff():
 	for n in map.get_children():
 		n.free()
 	for e in enemies.get_children():
 		e.free()
+	if has_node("Lootbox"):
+		get_node("Lootbox").queue_free()
 
 func sort_enemy_positions(enemy_position_list):
 	var s_pos := []
@@ -92,7 +159,7 @@ func create_packs(enemy_count : int, possible_groups : Array, group_count : int)
 	# if enemies remain to be assigned
 	while enemies_left > 0:
 		for i in range(len(packs)):
-			if enemies_left > 0 and packs[i] > 0:
+			if enemies_left > 0 and packs[i] >= 0:
 				var add_enemy = min(possible_groups[-1] - packs[i], enemies_left)
 				packs[i] += add_enemy
 				enemies_left -= add_enemy
@@ -107,7 +174,6 @@ func spawn(enemy : PackedScene, spawn_pos : Vector2):
 
 func spawn_enemies(packs: Array, positions : Array, spawning_enemy : Array, distance : int):
 	while len(packs) > 0:
-		print("hel")
 		var random_group = packs.pick_random()
 		packs.erase(random_group)
 		var random_position = positions.pick_random()
@@ -138,7 +204,7 @@ func create_enemies(enemy_positions):
 	create_packs(enemies_dict["L"], [1,2], len(enemy_pos_sorted[2]))]
 	print(enemy_packs)
 	
-	spawn_enemies(enemy_packs[0], enemy_pos_sorted[0], [spinner_scene], 50)
+	spawn_enemies(enemy_packs[0], enemy_pos_sorted[0], [spinner_scene], 60)
 	spawn_enemies(enemy_packs[1], enemy_pos_sorted[1], [slinger_scene, razor_scene], 100)
 	spawn_enemies(enemy_packs[2], enemy_pos_sorted[2], [blastling_scene], 120)
 	

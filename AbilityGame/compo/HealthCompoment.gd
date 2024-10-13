@@ -14,16 +14,17 @@ func _process(_delta):
 	
 	if health > max_health:
 		health = max_health
-	# kill if health is below 0
-	if health <= 0:
-		killed.emit()
 
 func damage(attack: Attack):
-	if get_parent().name == "Player":
-		if get_parent().invincible:
-			attack.attack_damage = 0
-		elif get_parent().is_dashing:
-				attack.attack_damage /= 2
-	health -= attack.attack_damage
-	if attack.knockback_force > 0:
-		hitted.emit()
+	if health > 0:
+		if get_parent().name == "Player":
+			if get_parent().invincible:
+				attack.attack_damage = 0
+			elif get_parent().is_dashing:
+					attack.attack_damage /= 2
+		health -= attack.attack_damage
+		if attack.knockback_force > 0:
+			hitted.emit()
+		# kill if health is below 0
+		if health <= 0:
+			killed.emit()

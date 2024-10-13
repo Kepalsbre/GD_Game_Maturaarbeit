@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Inv" load_steps=3 format=3 uid="uid://sxbyc07i2n87"]
 
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="1_dpcts"]
-[ext_resource type="Resource" uid="uid://cdk3jcs7ud7cg" path="res://inventory/ability_resources/pushback.tres" id="1_x1oyv"]
+[ext_resource type="Resource" uid="uid://fql1j7myv46d" path="res://inventory/ability_resources/barrage.tres" id="1_vtuxx"]
 
 [resource]
 script = ExtResource("1_dpcts")
-abilities = Array[Resource("res://inventory/inventory_ability.gd")]([ExtResource("1_x1oyv"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+abilities = Array[Resource("res://inventory/inventory_ability.gd")]([ExtResource("1_vtuxx"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

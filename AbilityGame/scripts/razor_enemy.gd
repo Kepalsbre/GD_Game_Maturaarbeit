@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 enum state {idle, seek, attack}
 @export var current_state: state = state.idle
-@export var wake_lenght := 400
+@export var wake_lenght := 450
 @export var knockback: float = 3:
 	get:
 		return knockback * Global.enemy_knockback_multiplier
