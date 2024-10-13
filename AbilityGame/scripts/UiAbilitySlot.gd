@@ -9,14 +9,14 @@ func _ready():
 	uses_counter.visible = false
 	$control_key.text = control_key_text
 
-func update(ability: InvAbility):
+func update(ability: InvAbility, i):
 	if !ability:
 		eqipped_ability_image.visible = false
 		uses_counter.visible = false
 		
 	else:
 		eqipped_ability_image.texture = ability.texture
-		uses_counter.text = str(ability.uses)
+		uses_counter.text = str(Global.ability_uses_list[i])
 		eqipped_ability_image.visible = true
 		uses_counter.visible = true
 

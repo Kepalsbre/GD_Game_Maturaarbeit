@@ -6,6 +6,7 @@ var damage := 25.0
 @export var knockback := 10.0
 var speed := 800
 const SPIKE_BOMB = preload("res://scenes/spike_bomb.tscn")
+var executing := false
 
 
 func create_spikebomb():
@@ -20,5 +21,6 @@ func create_spikebomb():
 
 
 func execute():
-	#if not black_holes.get_child_count() > 0:
+	executing = true
 	spike_bombs.add_child(create_spikebomb())
+	set_deferred("executing", false)

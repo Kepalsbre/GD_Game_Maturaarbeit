@@ -1,8 +1,16 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=3 format=3 uid="uid://sxbyc07i2n87"]
+[gd_resource type="Resource" script_class="Inv" load_steps=11 format=3 uid="uid://sxbyc07i2n87"]
 
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="1_dpcts"]
 [ext_resource type="Resource" uid="uid://fql1j7myv46d" path="res://inventory/ability_resources/barrage.tres" id="1_vtuxx"]
+[ext_resource type="Resource" uid="uid://logcucnafrx7" path="res://inventory/ability_resources/black_hole.tres" id="2_evsya"]
+[ext_resource type="Resource" uid="uid://dtbqwjkdjrsdk" path="res://inventory/ability_resources/Duplicate.tres" id="3_1lv6w"]
+[ext_resource type="Resource" uid="uid://cdk3jcs7ud7cg" path="res://inventory/ability_resources/pushback.tres" id="4_j00u4"]
+[ext_resource type="Resource" uid="uid://cua8ak3750wxg" path="res://inventory/ability_resources/rock_throw.tres" id="5_rykj0"]
+[ext_resource type="Resource" uid="uid://bxoowb0nlrpe5" path="res://inventory/ability_resources/shotgun.tres" id="6_m2e1e"]
+[ext_resource type="Resource" uid="uid://xodw7cnclcjd" path="res://inventory/ability_resources/spike_bomb.tres" id="7_u7as2"]
+[ext_resource type="Resource" uid="uid://bgqj8a0io8wyb" path="res://inventory/ability_resources/superdash.tres" id="8_ikqgn"]
+[ext_resource type="Resource" uid="uid://xxjfs1qkvqxj" path="res://inventory/ability_resources/true_form.tres" id="9_ioeol"]
 
 [resource]
 script = ExtResource("1_dpcts")
-abilities = Array[Resource("res://inventory/inventory_ability.gd")]([ExtResource("1_vtuxx"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+abilities = Array[Resource("res://inventory/inventory_ability.gd")]([ExtResource("1_vtuxx"), ExtResource("2_evsya"), ExtResource("3_1lv6w"), ExtResource("4_j00u4"), ExtResource("5_rykj0"), ExtResource("6_m2e1e"), ExtResource("7_u7as2"), ExtResource("8_ikqgn"), ExtResource("9_ioeol"), null, null, null, null, null, null, null])

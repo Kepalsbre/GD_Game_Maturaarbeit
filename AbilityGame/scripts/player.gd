@@ -15,7 +15,7 @@ var speed: int = 800
 
 @onready var dash_timer = $DashTimer
 @onready var dash_timeout = $DashTimer/DashTimeout
-
+const LOSE_MENU = preload("res://scenes/lose_menu.tscn")
 
 var invincible = false
 var is_dashing := false
@@ -46,6 +46,12 @@ func start_dash(dashing_speed):
 		dash_speed = dashing_speed
 		
 
+func refresh_ability_uses():
+	for slot in equipped_abilities.get_children():
+		var ab = Global.inv[slot.slot_number + 11]
+		if ab:
+			Global.ability_uses_list[slot.slot_number -1] = ab.uses
+
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO # speed when pressing nothing
@@ -63,16 +69,28 @@ func _physics_process(_delta):
 		sword.lvlup()
 	if Input.is_action_just_pressed("secondary_mouse"):
 		if slot_1.get_child_count() != 0:
-			slot_1.get_child(0).execute()
+			if slot_1.get_child(0).executing == false and Global.ability_uses_list[0] > 0:
+				slot_1.get_child(0).execute()
+				if slot_1.get_child(0).executing == true:
+					Global.ability_uses_list[0] -= 1
 	elif Input.is_action_just_pressed("shift"):
 		if slot_2.get_child_count() != 0:
-			slot_2.get_child(0).execute()
+			if slot_2.get_child(0).executing == false and Global.ability_uses_list[1] > 0:
+				slot_2.get_child(0).execute()
+				if slot_2.get_child(0).executing == true:
+					Global.ability_uses_list[1] -= 1
 	elif Input.is_action_just_pressed("e"):
 		if slot_3.get_child_count() != 0:
-			slot_3.get_child(0).execute()
+			if slot_3.get_child(0).executing == false and Global.ability_uses_list[2] > 0:
+				slot_3.get_child(0).execute()
+				if slot_3.get_child(0).executing == true:
+					Global.ability_uses_list[2] -= 1
 	elif Input.is_action_just_pressed("q"):
 		if slot_4.get_child_count() != 0:
-			slot_4.get_child(0).execute()
+			if slot_4.get_child(0).executing == false and Global.ability_uses_list[3] > 0:
+				slot_4.get_child(0).execute()
+				if slot_4.get_child(0).executing == true:
+					Global.ability_uses_list[3] -= 1
 	
 	
 	
@@ -134,6 +152,8 @@ func _physics_process(_delta):
 	Global.player_pos = global_position
 	move_and_slide()
 
+func heal(amount :int):
+	health_component.health += amount
 
 
 func _on_health_component_hitted():
@@ -141,3 +161,8 @@ func _on_health_component_hitted():
 		invincible = true
 		await get_tree().create_timer(0.8).timeout
 		invincible = false
+
+
+func _on_health_component_killed():
+	label.text = str(health_component.health) + "/" + str(health_component.max_health)
+	get_tree().root.add_child(LOSE_MENU.instantiate())

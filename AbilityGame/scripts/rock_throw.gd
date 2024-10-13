@@ -5,7 +5,7 @@ extends Node2D
 @export var knockback := 3.0
 
 const ROCK = preload("res://scenes/rock.tscn")
-
+var executing := false
 
 func create_rock():
 	var new_rock = ROCK.instantiate()
@@ -18,5 +18,7 @@ func create_rock():
 
 
 func execute():
+	executing = true
 	rocks.add_child(create_rock())
+	set_deferred("executing", false)
 	

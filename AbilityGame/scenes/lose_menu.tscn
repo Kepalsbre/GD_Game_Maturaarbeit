@@ -1,0 +1,127 @@
+[gd_scene load_steps=9 format=3 uid="uid://b35f1vh7uyrh2"]
+
+[ext_resource type="Script" path="res://scripts/lose_menu.gd" id="1_6w2sy"]
+[ext_resource type="FontFile" uid="uid://dthdwesvq0dpa" path="res://art/joystix monospace.otf" id="2_wwqj4"]
+[ext_resource type="AudioStream" uid="uid://cb4u1a2hm2fq3" path="res://sounds/ability/button_hover_sound.wav" id="3_r5gg0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f03fh"]
+bg_color = Color(0.0823529, 0.623529, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(-3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hege"]
+bg_color = Color(0, 0.564706, 0.615686, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(-3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fm5od"]
+bg_color = Color(0.733333, 0.184314, 0.207843, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(-3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ow6ui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6whqx"]
+bg_color = Color(0.317647, 0.364706, 0.490196, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="LoseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6w2sy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonsOptions" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -40.0
+offset_right = 86.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/ButtonsOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_wwqj4")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_f03fh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4hege")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fm5od")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ow6ui")
+text = "Main menu"
+
+[node name="Quit" type="Button" parent="CanvasLayer/ButtonsOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_wwqj4")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_f03fh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4hege")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fm5od")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ow6ui")
+text = "Quit Game"
+
+[node name="GameLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -125.0
+offset_right = 74.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_wwqj4")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_6whqx")
+text = "You Lost!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttonhover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_r5gg0")
+bus = &"sfx"
+
+[connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/MainMenu" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/ButtonsOptions/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/Quit" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/ButtonsOptions/Quit" to="." method="_on_quit_pressed"]

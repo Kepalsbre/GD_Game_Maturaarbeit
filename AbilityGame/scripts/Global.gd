@@ -14,6 +14,8 @@ var master_value := 1.0
 
 var combat := false
 
+var ability_uses_list := [0,0,0,0]
+
 var ability_list := [preload("res://inventory/ability_resources/barrage.tres"),
 preload("res://inventory/ability_resources/black_hole.tres"),
 preload("res://inventory/ability_resources/Duplicate.tres"),

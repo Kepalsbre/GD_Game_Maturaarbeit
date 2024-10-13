@@ -6,6 +6,10 @@ extends Node2D
 @onready var player = $Player
 @onready var audio_stream_player = $AudioStreamPlayer
 @onready var inv_ui = player.get_node("PlayerUI").get_node("InvUI")
+@onready var continue_button = $ContinueUI/Continue
+@onready var instructions = $ContinueUI/Instructions
+
+
 
 const spinner_scene := preload("res://scenes/spinner_enemy.tscn")
 const slinger_scene := preload("res://scenes/slinger_enemy.tscn")
@@ -14,23 +18,32 @@ const blastling_scene := preload("res://scenes/blastling_enemy.tscn")
 const LOOTBOX = preload("res://scenes/lootbox.tscn")
 
 const SWORD_UPGRADE_ICON = preload("res://art/abilities/sword_upgrade_icon.png")
+const WIN_MENU = preload("res://scenes/win_menu.tscn")
 
-
-var enemies_dict := {"S" : 1, "M" : 0, "L" : 0}
+var enemies_dict := {"S" : 5, "M" : 0, "L" : 0}
 
 var lootbox_spawn_pos : Vector2
 var lootbox_can_spawn := false
 var next_loot 
 var sword_upgrade_count := 0
 
-var levels := [preload("res://scenes/levels/level_1.tscn")]
-var current_level : PackedScene = levels[0]
+var levels := [preload("res://scenes/levels/level_1.tscn"),
+preload("res://scenes/levels/level_2.tscn"),
+preload("res://scenes/levels/level_3.tscn"),
+preload("res://scenes/levels/level_4.tscn"),
+preload("res://scenes/levels/level_5.tscn")]
+var levels_temp : Array
+var next_level : PackedScene
+
+
 
 func _ready():
-	create_level(current_level)
+	Global.ability_uses_list = [0,0,0,0]
+	levels_temp = levels.duplicate()
+	next_level = levels_temp[0]
+	
+	create_level(next_level)
 	clear_inventory()
-	
-	
 	
 
 func _process(_delta):
@@ -41,17 +54,31 @@ func _process(_delta):
 	
 	if enemies.get_child_count() == 0:
 		Global.combat = false
-		if lootbox_can_spawn:
+		if len(levels_temp) == 0:
+			audio_stream_player.process_mode = Node.PROCESS_MODE_ALWAYS
+			audio_stream_player.stream = load("res://music/combatwin.ogg")
+			audio_stream_player.pitch_scale = 0.9
+			audio_stream_player.play()
+			get_tree().root.add_child(WIN_MENU.instantiate())
+		elif lootbox_can_spawn:
 			lootbox_can_spawn = false
 			await get_tree().create_timer(0.5).timeout
 			spawn_box()
 			audio_stream_player.pitch_scale = [0.5, 0.6,0.7, 0.75, 0.8, 1, 1.15].pick_random()
 			audio_stream_player.stream = load("res://music/combatwin.ogg")
 			audio_stream_player.play()
+			instructions.visible = true
+			player.heal(35)
 	
 
 
 func create_level(level_scene : PackedScene):
+	levels_temp.erase(level_scene)
+	
+	
+	continue_button.visible = false
+	instructions.visible = false
+	
 	var new_level := level_scene.instantiate()
 	clear_stuff()
 	map.add_child(new_level)
@@ -63,6 +90,10 @@ func create_level(level_scene : PackedScene):
 	lootbox_can_spawn = true
 	inv_ui.close()
 	create_new_loot()
+	player.refresh_ability_uses()
+	
+	if len(levels_temp) != 0:
+		next_level = levels_temp.pick_random()
 
 
 
@@ -76,11 +107,12 @@ func receive_loot():
 					Global.inv[i] = next_loot
 					inv_ui.update_slots()
 					break
+	continue_button.visible = true
 	
 
 func create_new_loot():
 	var r = randi() % 100
-	if r < 5 and sword_upgrade_count < 2:
+	if r < 25 and sword_upgrade_count < 2:
 		next_loot = "upgrade"
 		sword_upgrade_count += 1
 	else:
@@ -209,7 +241,8 @@ func create_enemies(enemy_positions):
 	spawn_enemies(enemy_packs[2], enemy_pos_sorted[2], [blastling_scene], 120)
 	
 	
-	
-	
-	
+
+func _on_continue_pressed():
+	audio_stream_player.stop()
+	create_level(next_level)
 	

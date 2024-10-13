@@ -129,7 +129,7 @@ func knock_back(knockforce, knock_pos):
 func _on_wake_up():
 	if not waking_up:
 		waking_up = true
-		await get_tree().create_timer(randf_range(7,15)).timeout
+		await get_tree().create_timer(randf_range(4,12)).timeout
 		awake = true
 	
 

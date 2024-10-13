@@ -261,3 +261,4 @@ script = ExtResource("9_cfpf0")
 slot_number = 4
 
 [connection signal="hitted" from="HealthComponent" to="." method="_on_health_component_hitted"]
+[connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]

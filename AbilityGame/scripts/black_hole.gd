@@ -5,6 +5,7 @@ extends Node2D
 @export var knockback := 15.0
 var speed := 400
 const BLACK_HOLE_PROJECTILE = preload("res://scenes/black_hole_projectile.tscn")
+var executing := false
 
 
 func create_hole():
@@ -17,5 +18,6 @@ func create_hole():
 
 
 func execute():
-	#if not black_holes.get_child_count() > 0:
+	executing = true
 	black_holes.add_child(create_hole())
+	set_deferred("executing", false)
