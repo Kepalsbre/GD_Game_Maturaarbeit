@@ -65,8 +65,8 @@ func _physics_process(_delta):
 		sword.attack_started()
 	if Input.is_action_just_released("primary_mouse"):
 		sword.attack_stopped()
-	if Input.is_action_just_pressed("scroll_up"):
-		sword.lvlup()
+	#if Input.is_action_just_pressed("scroll_up"):
+		#sword.lvlup()
 	if Input.is_action_just_pressed("secondary_mouse"):
 		if slot_1.get_child_count() != 0:
 			if slot_1.get_child(0).executing == false and Global.ability_uses_list[0] > 0:

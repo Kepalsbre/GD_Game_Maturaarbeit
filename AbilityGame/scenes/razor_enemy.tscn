@@ -224,6 +224,7 @@ scale = Vector2(6, 6)
 texture = ExtResource("2_hofk3")
 
 [node name="BladesImage" type="Sprite2D" parent="BodyImage"]
+self_modulate = Color(1, 1, 1, 0)
 texture = ExtResource("3_l72wt")
 
 [node name="EyeImage" type="Sprite2D" parent="."]

@@ -66,7 +66,7 @@ position = Vector2(249, 1714)
 gizmo_extents = 230.0
 
 [node name="EnemySpawnS5" parent="EnemySpawns" instance=ExtResource("2_m86t4")]
-position = Vector2(1754, 2032)
+position = Vector2(1693, 2032)
 gizmo_extents = 230.0
 
 [node name="EnemySpawnS6" parent="EnemySpawns" instance=ExtResource("2_m86t4")]
@@ -85,6 +85,10 @@ gizmo_extents = 230.0
 position = Vector2(1662, 750)
 gizmo_extents = 230.0
 
+[node name="EnemySpawnS10" parent="EnemySpawns" instance=ExtResource("2_m86t4")]
+position = Vector2(1628, 241)
+gizmo_extents = 230.0
+
 [node name="EnemySpawnM" parent="EnemySpawns" instance=ExtResource("2_m86t4")]
 position = Vector2(-141, 1220)
 gizmo_extents = 230.0
@@ -101,7 +105,7 @@ gizmo_extents = 230.0
 EnemyType = 1
 
 [node name="EnemySpawnM3" parent="EnemySpawns" instance=ExtResource("2_m86t4")]
-position = Vector2(1746, 1385)
+position = Vector2(1675, 1321)
 gizmo_extents = 230.0
 EnemyType = 1
 
@@ -132,5 +136,10 @@ EnemyType = 2
 
 [node name="EnemySpawnL2" parent="EnemySpawns" instance=ExtResource("2_m86t4")]
 position = Vector2(-5, -262)
+gizmo_extents = 230.0
+EnemyType = 2
+
+[node name="EnemySpawnL3" parent="EnemySpawns" instance=ExtResource("2_m86t4")]
+position = Vector2(1948, 1652)
 gizmo_extents = 230.0
 EnemyType = 2

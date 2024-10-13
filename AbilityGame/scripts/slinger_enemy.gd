@@ -108,7 +108,7 @@ func knock_back(knockforce, knock_pos):
 func _on_wake_up():
 	if not waking_up:
 		waking_up = true
-		await get_tree().create_timer(randf_range(7,17)).timeout
+		await get_tree().create_timer(randf_range(5,12)).timeout
 		awake = true
 	
 func _on_navigation_agent_2d_target_reached():
