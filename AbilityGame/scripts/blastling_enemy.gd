@@ -47,15 +47,21 @@ var spawn_direction : Vector2
 
 signal wake_up
 
+
+func connect_wakeups():
+	await await get_tree().create_timer(1).timeout
+	for enemy in get_parent().get_children():
+		enemy.wake_up.connect(_on_wake_up)
+
+
 func _ready():
 	canon.visible = false
 	follow_animation.visible = false
 	
-	for enemy in get_parent().get_children():
-		enemy.wake_up.connect(_on_wake_up)
 	health_component.max_health *= Global.enemy_hp_multiplier
 	health_component.health *= Global.enemy_hp_multiplier
 	navigation_agent_2d.max_speed = speed
+	connect_wakeups()
 	
 
 func _physics_process(delta):
@@ -118,7 +124,7 @@ func knock_back(knockforce, knock_pos):
 func _on_wake_up():
 	if not waking_up:
 		waking_up = true
-		await get_tree().create_timer(randf_range(9, 17)).timeout
+		await get_tree().create_timer(randf_range(9, 14)).timeout
 		awake = true
 	
 func _on_navigation_agent_2d_target_reached():

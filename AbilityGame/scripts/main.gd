@@ -21,6 +21,7 @@ const SWORD_UPGRADE_ICON = preload("res://art/abilities/sword_upgrade_icon.png")
 const WIN_MENU = preload("res://scenes/win_menu.tscn")
 
 var enemies_dict := {"S" : 5, "M" : 0, "L" : 0}
+var stage := 1
 
 var lootbox_spawn_pos : Vector2
 var lootbox_can_spawn := false
@@ -33,7 +34,8 @@ preload("res://scenes/levels/level_3.tscn"),
 preload("res://scenes/levels/level_4.tscn"),
 preload("res://scenes/levels/level_5.tscn"),
 preload("res://scenes/levels/level_6.tscn"),
-preload("res://scenes/levels/level_7.tscn")]
+preload("res://scenes/levels/level_7.tscn"),
+preload("res://scenes/levels/level_8.tscn")]
 var levels_temp : Array
 var next_level : PackedScene
 
@@ -72,11 +74,48 @@ func _process(_delta):
 			instructions.visible = true
 			player.heal(35)
 	
+func choose_enemies():
+	match stage:
+		1:
+			enemies_dict["S"] = 10
+			enemies_dict["M"] = 1
+			enemies_dict["L"] = 0
+		2:
+			enemies_dict["S"] = 14
+			enemies_dict["M"] = 3
+			enemies_dict["L"] = 0
+		3:
+			enemies_dict["S"] = 16
+			enemies_dict["M"] = 5
+			enemies_dict["L"] = 0
+		4:
+			enemies_dict["S"] = 18
+			enemies_dict["M"] = 7
+			enemies_dict["L"] = 0
+		5:
+			enemies_dict["S"] = 22
+			enemies_dict["M"] = 8
+			enemies_dict["L"] = 1
+		6:
+			enemies_dict["S"] = 24
+			enemies_dict["M"] = 9
+			enemies_dict["L"] = 1
+		7:
+			enemies_dict["S"] = 26
+			enemies_dict["M"] = 11
+			enemies_dict["L"] = 2
+		8:
+			enemies_dict["S"] = 30
+			enemies_dict["M"] = 13
+			enemies_dict["L"] = 2
+	stage += 1
+		
 
 
 func create_level(level_scene : PackedScene):
 	levels_temp.erase(level_scene)
 	
+	choose_enemies()
 	
 	continue_button.visible = false
 	instructions.visible = false
@@ -231,12 +270,12 @@ func spawn_enemies(packs: Array, positions : Array, spawning_enemy : Array, dist
 
 func create_enemies(enemy_positions):
 	var enemy_pos_sorted : Array = sort_enemy_positions(enemy_positions)
-	print(enemy_pos_sorted)
+	#print(enemy_pos_sorted)
 	
 	var enemy_packs = [create_packs(enemies_dict["S"], [1,2,3,4], len(enemy_pos_sorted[0])),
 	create_packs(enemies_dict["M"], [1,2,3], len(enemy_pos_sorted[1])),
 	create_packs(enemies_dict["L"], [1,2], len(enemy_pos_sorted[2]))]
-	print(enemy_packs)
+	#print(enemy_packs)
 	
 	spawn_enemies(enemy_packs[0], enemy_pos_sorted[0], [spinner_scene], 60)
 	spawn_enemies(enemy_packs[1], enemy_pos_sorted[1], [slinger_scene, razor_scene], 100)

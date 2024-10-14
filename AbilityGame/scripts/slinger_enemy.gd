@@ -36,16 +36,20 @@ var knock_frames := 0
 
 signal wake_up
 
-func _ready():
-	animations.visible = false
+
+func connect_wakeups():
+	await await get_tree().create_timer(1).timeout
 	for enemy in get_parent().get_children():
 		enemy.wake_up.connect(_on_wake_up)
+
+func _ready():
+	animations.visible = false
 	health_component.max_health *= Global.enemy_hp_multiplier
 	health_component.health *= Global.enemy_hp_multiplier
 	hp_bar_component.top_level = true
 	hp_bar_component.visible = false
 	navigation_agent_2d.max_speed = speed
-	
+	connect_wakeups()
 	
 func _process(_delta):
 	hp_bar_component.position = global_position + Vector2(-61, 85)
@@ -108,7 +112,7 @@ func knock_back(knockforce, knock_pos):
 func _on_wake_up():
 	if not waking_up:
 		waking_up = true
-		await get_tree().create_timer(randf_range(5,12)).timeout
+		await get_tree().create_timer(randf_range(4,8)).timeout
 		awake = true
 	
 func _on_navigation_agent_2d_target_reached():

@@ -37,10 +37,14 @@ var hitbox_disabled := false
 
 signal wake_up
 
-func _ready():
-	walk_animation.visible = false
+func connect_wakeups():
+	await await get_tree().create_timer(1).timeout
 	for enemy in get_parent().get_children():
 		enemy.wake_up.connect(_on_wake_up)
+
+func _ready():
+	connect_wakeups()
+	walk_animation.visible = false
 	health_component.max_health *= Global.enemy_hp_multiplier
 	health_component.health *= Global.enemy_hp_multiplier
 	navigation_agent_2d.max_speed = speed
@@ -129,7 +133,7 @@ func knock_back(knockforce, knock_pos):
 func _on_wake_up():
 	if not waking_up:
 		waking_up = true
-		await get_tree().create_timer(randf_range(3,8)).timeout
+		await get_tree().create_timer(randf_range(2,5)).timeout
 		awake = true
 	
 

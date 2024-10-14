@@ -41,6 +41,11 @@ var knock_frames := 0
 
 signal wake_up
 
+func connect_wakeups():
+	await await get_tree().create_timer(1).timeout
+	for enemy in get_parent().get_children():
+		enemy.wake_up.connect(_on_wake_up)
+
 func _ready():
 	# disable unneeded stuff
 	body_image.visible = false
@@ -49,12 +54,10 @@ func _ready():
 	reload_animation.visible = false
 	attackbox.disabled = true
 
-	
-	for enemy in get_parent().get_children():
-		enemy.wake_up.connect(_on_wake_up)
 	health_component.max_health *= Global.enemy_hp_multiplier
 	health_component.health *= Global.enemy_hp_multiplier
 	navigation_agent_2d.max_speed = speed
+	connect_wakeups()
 	
 	
 func _physics_process(_delta):
@@ -127,7 +130,7 @@ func knock_back(knockforce, knock_pos):
 func _on_wake_up():
 	if not waking_up:
 		waking_up = true
-		await get_tree().create_timer(randf_range(5,12)).timeout
+		await get_tree().create_timer(randf_range(4,8)).timeout
 		awake = true
 
 
