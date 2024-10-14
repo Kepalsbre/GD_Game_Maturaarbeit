@@ -66,7 +66,9 @@ func _process(_delta):
 			get_tree().root.add_child(WIN_MENU.instantiate())
 		elif lootbox_can_spawn:
 			lootbox_can_spawn = false
+			Global.ability_uses_list = [0,0,0,0]
 			await get_tree().create_timer(0.5).timeout
+			Global.ability_uses_list
 			spawn_box()
 			audio_stream_player.pitch_scale = [0.5, 0.6,0.7, 0.75, 0.8, 1, 1.15].pick_random()
 			audio_stream_player.stream = load("res://music/combatwin.ogg")

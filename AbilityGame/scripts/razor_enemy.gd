@@ -42,7 +42,7 @@ var knock_frames := 0
 signal wake_up
 
 func connect_wakeups():
-	await await get_tree().create_timer(1).timeout
+	await await get_tree().create_timer(0.5).timeout
 	for enemy in get_parent().get_children():
 		enemy.wake_up.connect(_on_wake_up)
 
