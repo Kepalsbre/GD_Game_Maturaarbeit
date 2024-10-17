@@ -47,7 +47,7 @@ func _ready():
 	next_level = levels_temp[0]
 	
 	create_level(next_level)
-	clear_inventory()
+	#clear_inventory()
 	
 
 func _process(_delta):

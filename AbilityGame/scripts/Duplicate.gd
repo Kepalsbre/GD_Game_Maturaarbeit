@@ -1,7 +1,6 @@
 extends Node2D
 
-var damage := 25.0
-var knockback := 10.0
+
 const PLAYER_DUPLICATE = preload("res://scenes/player_duplicate.tscn")
 @onready var active_time = $ActiveTime
 @onready var duplicates = $Duplicates

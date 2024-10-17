@@ -276,7 +276,7 @@ scale_factor = 1.0
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_xajwr")
-max_health = 140.0
+max_health = 120.0
 
 [node name="OffsetTimer" type="Timer" parent="."]
 wait_time = 3.0

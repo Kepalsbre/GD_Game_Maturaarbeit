@@ -1,8 +1,8 @@
 extends Node2D
 
-@export var damage := 20.0
+@export var damage := 40.0
 @export var knockback := 1.0
-@export var dash_speed := 3200
+@export var dash_speed := 3500
 @onready var dash_animation = $DashAnimation
 @onready var collision = $HitboxComponent/Collision
 @onready var dash_particles = $DashParticles

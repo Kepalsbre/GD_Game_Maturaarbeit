@@ -4,7 +4,7 @@ extends Node2D
 @onready var shot = $Shot
 
 @onready var bullets = $Node/Bullets
-@export var damage := 7.5
+@export var damage := 16
 @export var knockback := 1.0
 @onready var marker_2d_flipped = $ShotgunImage/Marker2DFlipped
 @onready var marker_2d = $ShotgunImage/Marker2D

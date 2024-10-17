@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var rocks = $Node/Rocks
-@export var damage := 65.0
+@export var damage := 70.0
 @export var knockback := 3.0
 
 const ROCK = preload("res://scenes/rock.tscn")

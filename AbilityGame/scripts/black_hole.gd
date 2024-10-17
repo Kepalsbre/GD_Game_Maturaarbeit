@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var black_holes = $Node/BlackHoles
-@export var damage := 45.0
-@export var knockback := 15.0
+@export var damage := 50.0
+@export var knockback := 12.0
 var speed := 400
 const BLACK_HOLE_PROJECTILE = preload("res://scenes/black_hole_projectile.tscn")
 var executing := false

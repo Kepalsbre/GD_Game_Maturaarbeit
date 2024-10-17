@@ -8,4 +8,4 @@ script = ExtResource("1_c8bfd")
 name = "True Form"
 texture = ExtResource("2_8mxy4")
 uses = 1
-desc = "Your sword reveals its true form for 8 sec"
+desc = "Your sword reveals its true form for 7 sec"

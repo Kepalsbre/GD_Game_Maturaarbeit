@@ -3,11 +3,11 @@ extends CharacterBody2D
 
 enum state {idle, seek, attack}
 @export var current_state: state = state.idle
-@export var wake_lenght := 450
+@export var wake_lenght := 500
 @export var knockback: float = 3:
 	get:
 		return knockback * Global.enemy_knockback_multiplier
-@export var damage: float = 14.0:
+@export var damage: float = 12.0:
 	get:
 		return damage * Global.enemy_dmg_multiplier
 
@@ -33,7 +33,7 @@ var attack_velocity : Vector2
 var can_detect = false
 var waking_up = false
 var player_pos
-var speed : int = randi_range(500, 580)
+var speed : int = randi_range(530, 560)
 var offset : Vector2
 var knockback_received := Vector2.ZERO
 var awake := false
@@ -88,7 +88,7 @@ func _physics_process(_delta):
 				
 			
 		state.attack:
-			velocity = attack_velocity.normalized() * (speed + 380)
+			velocity = attack_velocity.normalized() * (speed + 350)
 
 	
 	if knock_frames != 0:

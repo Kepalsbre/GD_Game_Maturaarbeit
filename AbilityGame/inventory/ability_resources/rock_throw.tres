@@ -7,5 +7,5 @@
 script = ExtResource("1_wdkok")
 name = "Rock Throw"
 texture = ExtResource("2_gpryu")
-uses = 5
+uses = 6
 desc = "Throw a rock"

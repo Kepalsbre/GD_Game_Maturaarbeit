@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var sword = $Sword
 @export var speed: int = 800
-var damage
+var damage :=  20.0
 
 @onready var dash_timer = $DashTimer
 @onready var dash_timeout = $DashTimer/DashTimeout
@@ -19,7 +19,7 @@ var op := 1
 
 
 func _ready():
-	sword.damage = 20.0
+	sword.damage = damage
 
 
 

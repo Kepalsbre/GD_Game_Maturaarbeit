@@ -30,7 +30,7 @@ script = ExtResource("2_bm7fc")
 shape = SubResource("RectangleShape2D_yiaa6")
 
 [node name="Lifetime" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.4
 one_shot = true
 autostart = true
 

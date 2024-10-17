@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var damage := 10.0
-@export var knockback := 24.0
+@export var damage := 20.0
+@export var knockback := 26.0
 @onready var knock_image = $KnockImage
 @onready var collision = $HitboxComponent/Collision
 var executing = false

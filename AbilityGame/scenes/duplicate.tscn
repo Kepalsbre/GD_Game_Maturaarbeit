@@ -8,7 +8,7 @@
 script = ExtResource("1_c7vpi")
 
 [node name="ActiveTime" type="Timer" parent="."]
-wait_time = 9.0
+wait_time = 7.0
 one_shot = true
 
 [node name="Duplicates" type="Node2D" parent="."]
