@@ -4,7 +4,8 @@ extends Node2D
 @onready var map = $Map
 @onready var enemy_projectiles = $EnemyProjectiles
 @onready var player = $Player
-@onready var audio_stream_player = $AudioStreamPlayer
+@onready var battle_win_music = $WinMusic
+#@onready var battle_music = $BattleMusic
 @onready var inv_ui = player.get_node("PlayerUI").get_node("InvUI")
 @onready var continue_button = $ContinueUI/Continue
 @onready var instructions = $ContinueUI/Instructions
@@ -49,6 +50,8 @@ func _ready():
 	create_level(next_level)
 	clear_inventory()
 	
+	#battle_music.play()
+	
 
 func _process(_delta):
 	update_nearest_enemy()
@@ -58,21 +61,21 @@ func _process(_delta):
 	
 	if enemies.get_child_count() == 0:
 		Global.combat = false
+		#battle_music.stream_paused = true
 		if len(levels_temp) == 0:
-			audio_stream_player.process_mode = Node.PROCESS_MODE_ALWAYS
-			audio_stream_player.stream = load("res://music/combatwin.ogg")
-			audio_stream_player.pitch_scale = 0.9
-			audio_stream_player.play()
+			battle_win_music.process_mode = Node.PROCESS_MODE_ALWAYS
+			battle_win_music.stream = load("res://music/combatwin.ogg")
+			battle_win_music.pitch_scale = 0.9
+			battle_win_music.play()
 			get_tree().root.add_child(WIN_MENU.instantiate())
 		elif lootbox_can_spawn:
 			lootbox_can_spawn = false
 			Global.ability_uses_list = [0,0,0,0]
 			await get_tree().create_timer(0.5).timeout
-			Global.ability_uses_list
 			spawn_box()
-			audio_stream_player.pitch_scale = [0.5, 0.6,0.7, 0.75, 0.8, 1, 1.15].pick_random()
-			audio_stream_player.stream = load("res://music/combatwin.ogg")
-			audio_stream_player.play()
+			battle_win_music.pitch_scale = [0.5, 0.6,0.7, 0.75, 0.8, 1, 1.15].pick_random()
+			battle_win_music.stream = load("res://music/combatwin.ogg")
+			battle_win_music.play()
 			instructions.visible = true
 			player.heal(35)
 	
@@ -286,6 +289,7 @@ func create_enemies(enemy_positions):
 	
 
 func _on_continue_pressed():
-	audio_stream_player.stop()
+	battle_win_music.stop()
 	create_level(next_level)
+	#battle_music.stream_paused = false
 	
