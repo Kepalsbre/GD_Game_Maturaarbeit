@@ -20,7 +20,6 @@ boot_splash/use_filter=false
 [autoload]
 
 Global="*res://scripts/Global.gd"
-CrazySdk="*res://CrazySDK.gd"
 
 [display]
 
