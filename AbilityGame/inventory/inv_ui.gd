@@ -58,7 +58,8 @@ func open():
 
 func on_select(slotnum: int):
 	if step == 1:
-		if Global.inv[slotnum]:  # check if ability in slot
+		if Global.inv[slotnum]:  # check if ability in sloty
+			$Clicked.play()
 			selec1 = Global.inv[slotnum]
 			num1 = slotnum
 			slots[slotnum].blink()
@@ -67,10 +68,13 @@ func on_select(slotnum: int):
 			
 			
 	else:
+		$Clicked.play()
 		Global.inv[num1] = Global.inv[slotnum]  # 1st selected ability into new selected
 		Global.inv[slotnum] = selec1  # new selected is the 1st selected
 		step = 1
 		update_slots()
 		update_equipped()
+	
+	
 
 	

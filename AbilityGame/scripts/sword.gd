@@ -13,6 +13,7 @@ var lvl3 = load("res://art/sword/sword_3.png")
 var lvl4 = load("res://art/sword/sword_4.png")
 var attack_animation = "attack"
 
+var last_mouse_pos : Vector2
 
 func _ready():
 	sword_image.visible = false
@@ -34,12 +35,16 @@ func lvlup():
 
 
 func current_loop_ended():
+	if last_mouse_pos.distance_to(get_global_mouse_position()) > 100 and Global.smart_sword:
+		look_at(get_global_mouse_position())
+		last_mouse_pos = get_global_mouse_position()
 	if not attacking:
 		sword_collision.set_deferred("disabled", true)
 		sword_image.visible = false
 		animation_player.stop()
 	$SwordImage/HitboxComponent.monitoring = false
 	$SwordImage/HitboxComponent.monitoring = true
+	
 	
 	
 func attack_started():
@@ -51,6 +56,7 @@ func attack_started():
 	else:
 		animation_player.play(attack_animation)
 	look_at(get_global_mouse_position())
+	last_mouse_pos = get_global_mouse_position()
 
 	
 func attack_stopped():

@@ -65,13 +65,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -85.5
-offset_top = -120.5
-offset_right = 85.5
-offset_bottom = 162.5
+offset_left = -87.0
+offset_top = -121.0
+offset_right = 87.0
+offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 5
 
 [node name="Resume" type="Button" parent="CanvasLayer/ButtonsOptions"]
 layout_mode = 2
@@ -138,6 +138,12 @@ theme_override_fonts/font = ExtResource("2_i26ov")
 text = "Fullscreen"
 alignment = 1
 
+[node name="SmartSword" type="CheckBox" parent="CanvasLayer/ButtonsOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i26ov")
+text = "Smart Sword"
+alignment = 1
+
 [node name="MainMenu" type="Button" parent="CanvasLayer/ButtonsOptions"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -196,6 +202,8 @@ bus = &"sfx"
 [connection signal="value_changed" from="CanvasLayer/ButtonsOptions/VBoxContainer3/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/CheckBox" to="." method="_on_button_mouse_entered"]
 [connection signal="toggled" from="CanvasLayer/ButtonsOptions/CheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/SmartSword" to="." method="_on_button_mouse_entered"]
+[connection signal="toggled" from="CanvasLayer/ButtonsOptions/SmartSword" to="." method="_on_smart_sword_toggled"]
 [connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/MainMenu" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ButtonsOptions/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/Quit" to="." method="_on_button_mouse_entered"]

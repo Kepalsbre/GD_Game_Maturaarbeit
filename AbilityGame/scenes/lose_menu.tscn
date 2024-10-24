@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b35f1vh7uyrh2"]
+[gd_scene load_steps=10 format=3 uid="uid://b35f1vh7uyrh2"]
 
 [ext_resource type="Script" path="res://scripts/lose_menu.gd" id="1_6w2sy"]
 [ext_resource type="FontFile" uid="uid://dthdwesvq0dpa" path="res://art/joystix monospace.otf" id="2_wwqj4"]
 [ext_resource type="AudioStream" uid="uid://cb4u1a2hm2fq3" path="res://sounds/ability/button_hover_sound.wav" id="3_r5gg0"]
+[ext_resource type="AudioStream" uid="uid://csofmtog3co7q" path="res://music/combatwin.ogg" id="4_3bgl1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f03fh"]
 bg_color = Color(0.0823529, 0.623529, 0, 1)
@@ -120,6 +121,13 @@ vertical_alignment = 1
 [node name="Buttonhover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_r5gg0")
 bus = &"sfx"
+
+[node name="LooseMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3bgl1")
+volume_db = -2.0
+pitch_scale = 0.25
+autoplay = true
+bus = &"Music"
 
 [connection signal="mouse_entered" from="CanvasLayer/ButtonsOptions/MainMenu" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ButtonsOptions/MainMenu" to="." method="_on_main_menu_pressed"]

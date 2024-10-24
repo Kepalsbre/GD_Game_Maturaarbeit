@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://14w1yhbvtxgk"]
+[gd_scene load_steps=30 format=3 uid="uid://14w1yhbvtxgk"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kbxrs"]
 [ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player/player_normal.png" id="2_jscfx"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://inventory/sloteq.gd" id="9_cfpf0"]
 [ext_resource type="PackedScene" uid="uid://xab8jthf0ptd" path="res://inventory/inv_ui.tscn" id="9_qogml"]
 [ext_resource type="FontFile" uid="uid://dthdwesvq0dpa" path="res://art/joystix monospace.otf" id="10_j5joy"]
+[ext_resource type="AudioStream" uid="uid://coxjmpsfdwq4y" path="res://sounds/player/player_hit.wav" id="13_yww6q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpbdo"]
 atlas = ExtResource("3_h0ifn")
@@ -125,6 +126,12 @@ radius = 16.4924
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y3npq"]
 radius = 28.0179
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kkxec"]
+random_pitch = 1.25
+streams_count = 1
+stream_0/stream = ExtResource("13_yww6q")
+stream_0/weight = 1.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
@@ -260,5 +267,15 @@ slot_number = 3
 script = ExtResource("9_cfpf0")
 slot_number = 4
 
+[node name="player_hit" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_kkxec")
+volume_db = -7.0
+bus = &"sfx"
+
+[node name="RedTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="hitted" from="HealthComponent" to="." method="_on_health_component_hitted"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
+[connection signal="timeout" from="RedTimer" to="." method="_on_red_timer_timeout"]

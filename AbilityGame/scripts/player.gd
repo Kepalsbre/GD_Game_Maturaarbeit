@@ -11,6 +11,8 @@ var speed: int = 800
 @onready var slot_4 = $EquippedAbilities/Slot4
 @onready var equipped_abilities = $EquippedAbilities
 @onready var hitbox_collision = $HitboxComponent/CollisionShape2D
+@onready var red_timer = $RedTimer
+@onready var player_image = $PlayerImage
 
 
 @onready var dash_timer = $DashTimer
@@ -158,6 +160,9 @@ func heal(amount :int):
 
 func _on_health_component_hitted():
 	if not invincible:
+		$player_hit.play()
+		player_image.self_modulate = Color8(255,0,0,255)
+		red_timer.start()
 		invincible = true
 		await get_tree().create_timer(0.8).timeout
 		invincible = false
@@ -166,3 +171,7 @@ func _on_health_component_hitted():
 func _on_health_component_killed():
 	label.text = str(health_component.health) + "/" + str(health_component.max_health)
 	get_tree().root.add_child(LOSE_MENU.instantiate())
+
+
+func _on_red_timer_timeout():
+	player_image.self_modulate = Color8(255,255,255,255)

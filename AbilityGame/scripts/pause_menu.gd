@@ -30,7 +30,7 @@ func _ready():
 	check_box.button_pressed = Global.is_fullscreen
 	refresh_audio()
 	get_tree().paused = true
-
+	$CanvasLayer/ButtonsOptions/SmartSword.button_pressed = Global.smart_sword
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -81,3 +81,7 @@ func _on_fullscreen_check_box_toggled(toggled_on):
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		Global.is_fullscreen = toggled_on
+
+
+func _on_smart_sword_toggled(toggled_on):
+	Global.smart_sword = toggled_on

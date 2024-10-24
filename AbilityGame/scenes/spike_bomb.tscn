@@ -15,7 +15,7 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1)
 radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5oi8k"]
-radius = 83.006
+radius = 95.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3by08"]
 random_pitch = 1.4

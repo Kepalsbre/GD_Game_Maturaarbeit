@@ -2,8 +2,8 @@ extends Node2D
 
 @onready var spike_bombs = $Node/SpikeBombs
 var explosion_damage = 35.0
-var damage := 30.0
-@export var knockback := 9.0
+var damage := 40.0
+@export var knockback := 7.0
 var speed := 850
 const SPIKE_BOMB = preload("res://scenes/spike_bomb.tscn")
 var executing := false

@@ -2,9 +2,9 @@ extends Node2D
 
 
 @onready var rockets = $Node/Rockets
-@export var damage := 20.0
+@export var damage := 30.0
 @export var knockback := 6.0
-@export var rocketcount := 15
+@export var rocketcount := 16
 const ROCKET = preload("res://scenes/rocket.tscn")
 @onready var points = $Points.get_children()
 var exerockets := 0

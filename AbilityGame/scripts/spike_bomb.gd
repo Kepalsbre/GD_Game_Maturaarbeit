@@ -16,6 +16,7 @@ var hitted := 0
 @onready var cpu_particles_2d = $SpikeBombImage/CPUParticles2D
 @onready var explosion_collision = $HitHitbox/ExplosionCollision
 @onready var bomb_collision = $HitHitbox/BombCollision
+var exploded = false
 
 
 
@@ -27,34 +28,34 @@ func _ready():
 func _physics_process(delta):
 	global_position += velocity * delta * speed
 	spike_bomb_image.rotate(deg_to_rad(340 * delta))
-	if hitted == 3:
+	if hitted >= 3 and not exploded:
 		bomb_collision.set_deferred("disabled", true)
-		explosion_collision.set_deferred("disabled", false)
+		explosion_collision.disabled = false
 
 		
 
 func _on_hitbox_component_area_entered(area):
-	if not hitted > 3:
-		if explosion_collision.disabled:
-			if area is HitboxComponent:
-				var hitbox : HitboxComponent = area
-				var attack = Attack.new()
-				attack.attack_damage = damage
-				attack.knockback_force = 1
-				attack.attack_position = global_position
-				hitbox.damage(attack)
-				hit.play()
-				hitted += 1
-		else:
-			if area is HitboxComponent:
-				var hitbox : HitboxComponent = area
-				var attack = Attack.new()
-				attack.attack_damage = explosion_damage
-				attack.knockback_force = knockback
-				attack.attack_position = global_position
-				hitbox.damage(attack)
-				explosion.play()
-				free_queue()
+	if explosion_collision.disabled:
+		if area is HitboxComponent:
+			var hitbox : HitboxComponent = area
+			var attack = Attack.new()
+			attack.attack_damage = damage
+			attack.knockback_force = 1
+			attack.attack_position = global_position
+			hitbox.damage(attack)
+			hit.play()
+			hitted += 1
+	else:
+		if area is HitboxComponent:
+			exploded = true
+			var hitbox : HitboxComponent = area
+			var attack = Attack.new()
+			attack.attack_damage = explosion_damage
+			attack.knockback_force = knockback
+			attack.attack_position = global_position
+			hitbox.damage(attack)
+			explosion.play()
+			free_queue()
 
 
 func free_queue():

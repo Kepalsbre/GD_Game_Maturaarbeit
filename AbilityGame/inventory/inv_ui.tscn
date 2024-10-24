@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://xab8jthf0ptd"]
+[gd_scene load_steps=7 format=3 uid="uid://xab8jthf0ptd"]
 
 [ext_resource type="Script" path="res://inventory/inv_ui.gd" id="1_owl5n"]
 [ext_resource type="Texture2D" uid="uid://dqrswfo37h5hb" path="res://art/inventory/inventory_background.png" id="2_ykka6"]
 [ext_resource type="PackedScene" uid="uid://d1dlqsnhss0oa" path="res://inventory/inv_ui_slot.tscn" id="3_em5w7"]
 [ext_resource type="Texture2D" uid="uid://b4jgem824u34l" path="res://art/inventory/inventory_equip_slot.png" id="4_xlni7"]
 [ext_resource type="FontFile" uid="uid://dthdwesvq0dpa" path="res://art/joystix monospace.otf" id="5_1vk0l"]
+[ext_resource type="AudioStream" uid="uid://c5irt2f1ixqgy" path="res://sounds/clicked.wav" id="6_22k5e"]
 
 [node name="InvUI" type="Control"]
 custom_minimum_size = Vector2(176, 176)
@@ -116,3 +117,8 @@ theme_override_font_sizes/font_size = 120
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="Clicked" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_22k5e")
+volume_db = 4.0
+bus = &"sfx"

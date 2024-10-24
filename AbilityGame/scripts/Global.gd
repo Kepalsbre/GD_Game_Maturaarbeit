@@ -12,6 +12,7 @@ var sfx_value := 1.0
 var music_value := 1.0
 var master_value := 1.0
 
+var smart_sword := true
 var combat := false
 
 var ability_uses_list := [0,0,0,0]

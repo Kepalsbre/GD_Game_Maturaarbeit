@@ -37,6 +37,7 @@ func _ready():
 	sfx_slider.value = Global.sfx_value
 	audio_slider.value = Global.master_value
 	$ButtonsOptions/CheckBox.button_pressed = Global.is_fullscreen
+	$ButtonsOptions/SmartSword.button_pressed = Global.smart_sword
 
 
 
@@ -134,3 +135,7 @@ func _on_hard_pressed():
 
 func update_difficulty_label():
 	difficulty_label.text = str(difficulty_text) + "\n\nEnemy HP: " + str(Global.enemy_hp_multiplier) + "x\nEnemy dmg: " + str(Global.enemy_dmg_multiplier) + "x\nEnemy KB: " + str(Global.enemy_knockback_multiplier) + "x"
+
+
+func _on_smart_sword_toggled(toggled_on):
+	Global.smart_sword = toggled_on

@@ -64,7 +64,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_egv1y"]
-radius = 25.0
+radius = 30.0
 
 [node name="BlackHoleProjectile" type="Node2D"]
 position = Vector2(240, 0)

@@ -236,20 +236,19 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
 text = "Exit"
 
 [node name="ButtonsOptions" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -85.5
-offset_top = -55.0
-offset_right = 85.5
-offset_bottom = 111.0
+offset_left = -87.0
+offset_top = -82.0
+offset_right = 87.0
+offset_bottom = 159.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ButtonsOptions"]
 layout_mode = 2
@@ -303,6 +302,12 @@ value = 1.0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_m8evv")
 text = "Fullscreen"
+alignment = 1
+
+[node name="SmartSword" type="CheckBox" parent="ButtonsOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_m8evv")
+text = "Smart Sword"
 alignment = 1
 
 [node name="Back" type="Button" parent="ButtonsOptions"]
@@ -404,6 +409,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_b8vgy")
 text = "Back"
 
 [node name="DifficultyLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -427,6 +433,7 @@ Enemy KB:"
 vertical_alignment = 2
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -461,9 +468,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -116.0
-offset_top = -116.0
+offset_top = -121.0
 offset_right = 116.0
-offset_bottom = -91.0
+offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -492,6 +499,8 @@ vertical_alignment = 1
 [connection signal="value_changed" from="ButtonsOptions/VBoxContainer3/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="mouse_entered" from="ButtonsOptions/CheckBox" to="." method="_on_button_mouse_entered"]
 [connection signal="toggled" from="ButtonsOptions/CheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="mouse_entered" from="ButtonsOptions/SmartSword" to="." method="_on_button_mouse_entered"]
+[connection signal="toggled" from="ButtonsOptions/SmartSword" to="." method="_on_smart_sword_toggled"]
 [connection signal="mouse_entered" from="ButtonsOptions/Back" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ButtonsOptions/Back" to="." method="_on_options_back_pressed"]
 [connection signal="mouse_entered" from="ButtonsDifficulty/VBoxContainer/HBoxContainer/Easy" to="." method="_on_button_mouse_entered"]

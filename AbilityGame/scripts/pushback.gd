@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var damage := 20.0
-@export var knockback := 26.0
+@export var knockback := 30.0
 @onready var knock_image = $KnockImage
 @onready var collision = $HitboxComponent/Collision
 var executing = false
@@ -14,14 +14,14 @@ func _ready():
 func _physics_process(_delta):
 	if executing:
 		
-		if exeframes == 10:
+		if exeframes == 12:
 			knock_image.visible = false
 			collision.disabled = true
 			executing = false
 			scale = Vector2(2.5,2.5)
 			exeframes = 0
 		
-		scale += Vector2(2,2)
+		scale += Vector2(2.5,2.5)
 		exeframes += 1
 		
 
