@@ -20,6 +20,7 @@ var bus_index_sounds : int
 
 
 func _ready():
+	DisplayServer.window_set_title("One-wheel Circuit")
 	DisplayServer.window_set_size(Vector2i(1920, 1080))
 	buttons_options.visible = false
 	buttons_main.visible = true
