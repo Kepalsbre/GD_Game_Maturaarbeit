@@ -13,6 +13,7 @@ var speed: int = 800
 @onready var hitbox_collision = $HitboxComponent/CollisionShape2D
 @onready var red_timer = $RedTimer
 @onready var player_image = $PlayerImage
+@onready var no_ability = $no_ability
 
 
 @onready var dash_timer = $DashTimer
@@ -75,24 +76,32 @@ func _physics_process(_delta):
 				slot_1.get_child(0).execute()
 				if slot_1.get_child(0).executing == true:
 					Global.ability_uses_list[0] -= 1
+			else:
+				no_ability.play()
 	elif Input.is_action_just_pressed("shift"):
 		if slot_2.get_child_count() != 0:
 			if slot_2.get_child(0).executing == false and Global.ability_uses_list[1] > 0:
 				slot_2.get_child(0).execute()
 				if slot_2.get_child(0).executing == true:
 					Global.ability_uses_list[1] -= 1
+			else:
+				no_ability.play()
 	elif Input.is_action_just_pressed("e"):
 		if slot_3.get_child_count() != 0:
 			if slot_3.get_child(0).executing == false and Global.ability_uses_list[2] > 0:
 				slot_3.get_child(0).execute()
 				if slot_3.get_child(0).executing == true:
 					Global.ability_uses_list[2] -= 1
+			else:
+				no_ability.play()
 	elif Input.is_action_just_pressed("q"):
 		if slot_4.get_child_count() != 0:
 			if slot_4.get_child(0).executing == false and Global.ability_uses_list[3] > 0:
 				slot_4.get_child(0).execute()
 				if slot_4.get_child(0).executing == true:
 					Global.ability_uses_list[3] -= 1
+			else:
+				no_ability.play()
 	
 	
 	

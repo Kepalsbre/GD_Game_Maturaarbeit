@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://14w1yhbvtxgk"]
+[gd_scene load_steps=31 format=3 uid="uid://14w1yhbvtxgk"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kbxrs"]
 [ext_resource type="Texture2D" uid="uid://bq4w11jkhc2c" path="res://art/player/player_normal.png" id="2_jscfx"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://xab8jthf0ptd" path="res://inventory/inv_ui.tscn" id="9_qogml"]
 [ext_resource type="FontFile" uid="uid://dthdwesvq0dpa" path="res://art/joystix monospace.otf" id="10_j5joy"]
 [ext_resource type="AudioStream" uid="uid://coxjmpsfdwq4y" path="res://sounds/player/player_hit.wav" id="13_yww6q"]
+[ext_resource type="AudioStream" uid="uid://eg0gkl46k2kb" path="res://sounds/player/no_ability.wav" id="14_4gj6s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpbdo"]
 atlas = ExtResource("3_h0ifn")
@@ -275,6 +276,9 @@ bus = &"sfx"
 [node name="RedTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="no_ability" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_4gj6s")
 
 [connection signal="hitted" from="HealthComponent" to="." method="_on_health_component_hitted"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
